@@ -13,7 +13,7 @@ The design and implementation of Node.js native modules follow a simple directiv
 <meta property="og:site_name" content=" ">
 <meta property="og:description" content="Deploying Node.js
 The design and implementation of Node.js native modules follow a simple directive: keep everything asynchronous. This design ethic, by convention, informs the design of modules contr">
-<meta property="og:updated_time" content="2016-03-18T05:59:25.000Z">
+<meta property="og:updated_time" content="2016-03-18T09:44:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node 内存优化笔记(一)">
 <meta name="twitter:description" content="Deploying Node.js
@@ -94,7 +94,8 @@ The design and implementation of Node.js native modules follow a simple directiv
       
         <p><a href="http://www.amazon.cn/Deploying-Node-js-Pasquali-Sandro/dp/1783981407/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1458280419&amp;sr=1-1&amp;keywords=9781783981403" target="_blank" rel="external">Deploying Node.js</a></p>
 <p>The design and implementation of Node.js native modules follow a simple directive: keep everything asynchronous. This design ethic, by convention, informs the design of modules contributed by the Node community.</p>
-<p>When a process operates synchronously, it holds, or locks, the total amount of memory it needs to fully complete, at which point the memory it has held is  ushed, usually returning this result to the calling method or process. For example, the following operation will load the entirety of a  le into the memory prior to returning it:</p>
+<a id="more"></a>
+<p>When a process operates synchronously, it holds, or locks, the total amount of memory it needs to fully complete, at which point the memory it has held is flushed, usually returning this result to the calling method or process. For example, the following operation will load the entirety of a file into the memory prior to returning it:</p>
 <pre><code>var http = require(&apos;http&apos;)
 var fs = require(&apos;fs&apos;)
 http.createServer(function(req, res) {
@@ -103,9 +104,9 @@ http.createServer(function(req, res) {
     res.end(data)
   })
 }).listen(8000)
-</code></pre><p>When a request is made to localhost:8000, the somefile.js  le is read off the  lesystem in its entirety and returned to the client. That is the desired effect—but there is a slight problem. Because the entire  le is being pushed into a buffer prior to being returned, an amount of memory equal to the byte size of the  le must be allocated on each request. While the operation is itself asynchronous (allowing other operations to proceed), just a few requests for a very large  le (of several MB, for example) can over ow the memory and take down the Node process.</p>
+</code></pre><p>When a request is made to localhost:8000, the somefile.js file is read off the filesystem in its entirety and returned to the client. That is the desired effect—but there is a slight problem. Because the entire file is being pushed into a buffer prior to being returned, an amount of memory equal to the byte size of the file must be allocated on each request. While the operation is itself asynchronous (allowing other operations to proceed), just a few requests for a very large file (of several MB, for example) can over ow the memory and take down the Node process.</p>
 <p>Node excels at creating scalable web services. One of the reasons for this is the focus on providing robust Stream interfaces.</p>
-<p>A better strategy is to stream the  le directly to the HTTP response object (which is a writable stream):</p>
+<p>A better strategy is to stream the file directly to the HTTP response object (which is a writable stream):</p>
 <pre><code>http.createServer(function(req, res) {
   fs.createReadStream(&apos;./static_buffered.js&apos;).pipe(res);
 }).listen(8000)

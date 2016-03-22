@@ -13,7 +13,7 @@ One example of a database command that you are probably familiar with is drop: t
 <meta property="og:site_name" content=" ">
 <meta property="og:description" content="笔记：MongoDB - The Definitive Guide
 One example of a database command that you are probably familiar with is drop: to drop a collection from the shell, we run db.test.drop(). Under the hood, this functi">
-<meta property="og:updated_time" content="2015-03-10T07:41:31.000Z">
+<meta property="og:updated_time" content="2016-03-22T01:09:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Database Commands 笔记">
 <meta name="twitter:description" content="笔记：MongoDB - The Definitive Guide
@@ -94,21 +94,20 @@ One example of a database command that you are probably familiar with is drop: t
       
         <p>笔记：MongoDB - The Definitive Guide</p>
 <p>One example of a database command that you are probably familiar with is drop: to drop a collection from the shell, we run db.test.drop(). Under the hood, this function is actually running the drop command—we can perform the exact same operation using runCommand:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.runCommand(&#123;&quot;drop&quot; : &quot;test&quot;&#125;);&#123;&quot;nIndexesWas&quot; : 1,&quot;msg&quot; : &quot;indexes dropped for collection&quot;, &quot;ns&quot; : &quot;test.test&quot;,&quot;ok&quot; : true&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.runCommand(&#123;&quot;drop&quot; : &quot;test&quot;&#125;);</span><br><span class="line">&#123;</span><br><span class="line">&quot;nIndexesWas&quot; : 1,</span><br><span class="line">&quot;msg&quot; : &quot;indexes dropped for collection&quot;, &quot;ns&quot; : &quot;test.test&quot;,</span><br><span class="line">&quot;ok&quot; : true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The document we get as a result is the command response, which contains information about whether the command was successful, as well as any other information that the command might provide. The command response will always contain the key “ok”. If “ok” is true, the command was successful, and if it is false, the command failed for some reason.</p>
 <p>If “ok” is false, then an additional key will be present, “errmsg”. The value of “errmsg” is a string explaining why the command failed. As an example, let’s try running the drop command again, on the collection that we just dropped:</p>
-<pre><code>&gt; db.runCommand({&quot;drop&quot; : &quot;test&quot;});
-{ &quot;errmsg&quot; : &quot;ns not found&quot;, &quot;ok&quot; : false }
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Commands in MongoDB are actually implemented as a special type of query that gets performed on the $cmd collection. runCommand just takes a command document and performs the equivalent query, so our drop call becomes the following:</span><br></pre></td></tr></table></figure>
-
-db.$cmd.findOne({&quot;drop&quot; : &quot;test&quot;});
-</code></pre><p>When the MongoDB server gets a query on the $cmd collection, it handles it using special logic, rather than the normal code for handling queries. Almost all MongoDB drivers provide a helper method like runCommand for running commands, but commands can always be run using a simple query if necessary.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.runCommand(&#123;&quot;drop&quot; : &quot;test&quot;&#125;);</span><br><span class="line">&#123; &quot;errmsg&quot; : &quot;ns not found&quot;, &quot;ok&quot; : false &#125;</span><br></pre></td></tr></table></figure>
+<p>Commands in MongoDB are actually implemented as a special type of query that gets performed on the $cmd collection. runCommand just takes a command document and performs the equivalent query, so our drop call becomes the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.$cmd.findOne(&#123;&quot;drop&quot; : &quot;test&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<p>When the MongoDB server gets a query on the $cmd collection, it handles it using special logic, rather than the normal code for handling queries. Almost all MongoDB drivers provide a helper method like runCommand for running commands, but commands can always be run using a simple query if necessary.</p>
 <p>Some commands require administrator access and must be run on the admin database. If such a command is run on any other database, it will return an “access denied” error.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/25/Database-Commands-笔记/" data-id="cim0vesx00000llrswpadicpr" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/25/Database-Commands-笔记/" data-id="cim2q4la00000k1rs446josdh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command/">command</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
@@ -182,7 +181,11 @@ db.$cmd.findOne({&quot;drop&quot; : &quot;test&quot;});
       <ul>
         
           <li>
-            <a href="/2016/03/18/node-内存优化笔记-一/">node 内存优化笔记(一)</a>
+            <a href="/2016/03/21/node-代码优化笔记（一）/">node 代码优化笔记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/18/node-内存优化笔记（一）/">node 内存优化笔记（一）</a>
           </li>
         
           <li>
@@ -195,10 +198,6 @@ db.$cmd.findOne({&quot;drop&quot; : &quot;test&quot;});
         
           <li>
             <a href="/2015/03/18/iWatch-使用/">iWatch 使用</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/12/markdown-生成目录/">markdown 生成目录</a>
           </li>
         
       </ul>

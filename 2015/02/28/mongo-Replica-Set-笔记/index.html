@@ -15,7 +15,7 @@ A replica set is basically a master-slave cluster with automatic failover. The b
 <meta property="og:description" content="笔记：MongoDB - The Definitive Guide
 Replica Sets
 A replica set is basically a master-slave cluster with automatic failover. The biggest difference between a master-slave cluster and a replica set is tha">
-<meta property="og:updated_time" content="2015-03-10T07:41:23.000Z">
+<meta property="og:updated_time" content="2016-03-22T01:09:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongo Replica Set 笔记">
 <meta name="twitter:description" content="笔记：MongoDB - The Definitive Guide
@@ -99,6 +99,7 @@ A replica set is basically a master-slave cluster with automatic failover. The b
 <h6 id="Replica-Sets"><a href="#Replica-Sets" class="headerlink" title="Replica Sets"></a>Replica Sets</h6><blockquote>
 <p>A replica set is basically a master-slave cluster with automatic failover. The biggest difference between a master-slave cluster and a replica set is that a replica set does not have a single master: one is elected by the cluster and may change to another node if the current master goes down. However, they look very similar: a replica set always has a single master node (called a primary) and one or more slaves (called secondaries). </p>
 </blockquote>
+<a id="more"></a>
 <h6 id="创建数据库目录"><a href="#创建数据库目录" class="headerlink" title="创建数据库目录"></a>创建数据库目录</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /Users/Fred/Desktop/mongoSetTest/dbs/node1</span><br><span class="line">mkdir -p /Users/Fred/Desktop/mongoSetTest/dbs/node2</span><br><span class="line">mkdir -p /Users/Fred/Desktop/mongoSetTest/dbs/node3</span><br></pre></td></tr></table></figure>
 <h6 id="运行-mongod"><a href="#运行-mongod" class="headerlink" title="运行 mongod"></a>运行 mongod</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node1 --port 10001 --replSet blort/Fred:10002</span><br><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node2 --port 10002 --replSet blort/Fred:10001</span><br><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node3 --port 10003 --replSet blort/Fred:10001</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -146,7 +147,7 @@ A replica set is basically a master-slave cluster with automatic failover. The b
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/28/mongo-Replica-Set-笔记/" data-id="cim0vesxg0006llrsd64gwxiw" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/28/mongo-Replica-Set-笔记/" data-id="cim2q4lai0003k1rsdmmxrvfh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/replication/">replication</a></li></ul>
@@ -220,7 +221,11 @@ A replica set is basically a master-slave cluster with automatic failover. The b
       <ul>
         
           <li>
-            <a href="/2016/03/18/node-内存优化笔记-一/">node 内存优化笔记(一)</a>
+            <a href="/2016/03/21/node-代码优化笔记（一）/">node 代码优化笔记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/18/node-内存优化笔记（一）/">node 内存优化笔记（一）</a>
           </li>
         
           <li>
@@ -233,10 +238,6 @@ A replica set is basically a master-slave cluster with automatic failover. The b
         
           <li>
             <a href="/2015/03/18/iWatch-使用/">iWatch 使用</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/12/markdown-生成目录/">markdown 生成目录</a>
           </li>
         
       </ul>

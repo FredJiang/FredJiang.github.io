@@ -68,6 +68,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-生成邀请码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/02/12/生成邀请码/" class="article-date">
+  <time datetime="2015-02-12T08:38:13.000Z" itemprop="datePublished">2015-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/12/生成邀请码/">生成邀请码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
+<li>生成长度为 4 位的字符串邀请码</li>
+<li>可以有数字和英文字母</li>
+<li>英文字符不区分大小写</li>
+<li>邀请码没有过期</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2015/02/12/生成邀请码/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2015/02/12/生成邀请码/" data-id="cim2q4lbz000nk1rsfq34blk2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-日志切割" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/02/12/日志切割/" class="article-date">
@@ -91,33 +137,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>以 pm2 为例，程序启动后，一直向指定文件中输出日志。一段时间后，这个日志文件就会变得很大。为减小单个日志的大小，需要按天分割日志</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h6 id="需要的命令工具"><a href="#需要的命令工具" class="headerlink" title="需要的命令工具"></a>需要的命令工具</h6><p>系统自带的 logrotate</p>
-<p>参考 <a href="http://linuxcommand.org/man_pages/logrotate8.html" target="_blank" rel="external">http://linuxcommand.org/man_pages/logrotate8.html</a></p>
-<blockquote>
-<p>logrotate  is  designed to ease administration of systems that generate<br> large numbers of log files.  It allows automatic rotation, compression,<br> removal, and mailing of log files.  Each log file may be handled daily,<br> weekly, monthly, or when it grows too large.</p>
-</blockquote>
-<h6 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h6><p>添加配置文件(root-pm2 可自定义，我这的意思是 root 用户启动的 pm2)</p>
-<p>/etc/logrotate.d/root-pm2</p>
-<p>内容为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/root/.pm2/logs/*.log &#123;</span><br><span class="line">        daily</span><br><span class="line">        rotate 10</span><br><span class="line">        missingok</span><br><span class="line">        notifempty</span><br><span class="line">        compress</span><br><span class="line">        sharedscripts</span><br><span class="line">        copytruncate</span><br><span class="line">        dateext</span><br><span class="line">        dateformat %Y-%m-%d</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置文件中的 /root/.pm2/logs/*.log 表示对文件夹 /root/.pm2/logs/ 下的，文件名以 .log 结尾的文件做分割</p>
-<h3 id="分割逻辑的大致说明"><a href="#分割逻辑的大致说明" class="headerlink" title="分割逻辑的大致说明"></a>分割逻辑的大致说明</h3><ul>
-<li>系统每天执行 /etc/cron.daily/logrotate</li>
-<li>logrotate 根据 /etc/logrotate.d 下的配置文件，分割文件</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>A common issue is when you first setup a daily logrotate.d entry, it will not rotate the first day. When you use a time based rotation (daily/weekly/monthly) logrotate scribbles a date stamp of the last date it saw the file in /var/lib/logrotate/status (or /var/lib/logrotate.status on RHEL systems).</p>
-<p>The scribbled date becomes the reference date from that future runs of logrotate will use to compare ‘daily’ rotations. Since the default cron job runs daily, this is typically only a problem in daily jobs.</p>
-<p>You can avoid this problem two ways;</p>
-<p>run sudo logrotate -f /etc/logrotate.d/<my rotate="" job=""></my></p>
-<p>This will scribble the date into the status file withOUT rotating the logs</p>
-<p>Edit /var/lib/logrotate/status and add the line manually:</p>
-<p>“/var/log/my_special.log”  2013-4-8</p>
-<p>setting it to today’s or a prior date. Next run should cause it to run.</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2015/02/12/日志切割/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/12/日志切割/" data-id="cim0vesxs000bllrsyle1xlk4" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/12/日志切割/" data-id="cim2q4lbi000ek1rs0dshv5iw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logrotate/">logrotate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li></ul>
@@ -205,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/11/mongodb-互为主从/" data-id="cim0vesz8001kllrstm6uw8sw" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/11/mongodb-互为主从/" data-id="cim2q4laz0008k1rs1u1fsei2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/master/">master</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slave/">slave</a></li></ul>
@@ -239,23 +267,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考地址 <a href="https://www.npmjs.com/package/jsonschemachecker" target="_blank" rel="external">https://www.npmjs.com/package/jsonschemachecker</a></p>
+        <p>参考地址 <a href="https://www.npmjs.com/package/jsonschemachecker">https://www.npmjs.com/package/jsonschemachecker</a></p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>验证服务器返回的数据，是否符合接口文档</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h6 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h6><p>登陆接口</p>
-<p>url : /login</p>
-<p>返回的数据格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    code: 0,//code 为 0 表示成功</span><br><span class="line">    user: &#123;</span><br><span class="line">        name: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="验证代码"><a href="#验证代码" class="headerlink" title="验证代码"></a>验证代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 根据接口文档，配置 url 和相应的返回数据格式</span><br><span class="line">var checkResParamsOptions = &#123;</span><br><span class="line">    &quot;/login&quot;: &#123;</span><br><span class="line">        code: &quot;number&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// https://www.npmjs.com/package/jsonschemachecker</span><br><span class="line">var jsonschemachecker = require(&quot;jsonschemachecker&quot;)</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">function checkResParams(req, resParams) &#123;</span><br><span class="line">    if (resParams &amp;&amp; resParams.code == 0) &#123;</span><br><span class="line">        var reqPath = req.path.replace(/\/&#123;2,&#125;/g, &quot;/&quot;);</span><br><span class="line"></span><br><span class="line">        if (checkResParamsOptions[reqPath]) &#123;</span><br><span class="line">            var result = jsonschemachecker.check(checkResParamsOptions[reqPath], resParams)</span><br><span class="line">            if (!result.validate) &#123;</span><br><span class="line">                console.log(result)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="项目中已做的"><a href="#项目中已做的" class="headerlink" title="项目中已做的"></a>项目中已做的</h3><ul>
-<li>接口文档都是统一格式的，返回数据中都有一个 code。如果接口成功，code 为 0</li>
-<li>所有接口返回的数据，都会经过同一个地方，我只需要在一个地方调用 checkResParams 来验证数据</li>
-<li>checkResParamsOptions 写到一个单独的配置文件中</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2015/02/11/验证服务器返回数据/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/11/验证服务器返回数据/" data-id="cim0veszd001ollrsodyt370j" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/11/验证服务器返回数据/" data-id="cim2q4lc1000pk1rsqhtlhhpl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li></ul>
@@ -313,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/01/pm2-web-安装/" data-id="cim0veszc001nllrseyts59te" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/01/pm2-web-安装/" data-id="cim2q4lbw000lk1rseh27rrmt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pm2/">pm2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pm2-web/">pm2-web</a></li></ul>
@@ -377,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2014/05/11/must-be-setuid-root/" data-id="cim0vesyy001hllrsx4nb2e3w" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2014/05/11/must-be-setuid-root/" data-id="cim2q4lbc000bk1rs1wkw2dz8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li></ul>
@@ -437,7 +459,11 @@
       <ul>
         
           <li>
-            <a href="/2016/03/18/node-内存优化笔记-一/">node 内存优化笔记(一)</a>
+            <a href="/2016/03/21/node-代码优化笔记（一）/">node 代码优化笔记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/18/node-内存优化笔记（一）/">node 内存优化笔记（一）</a>
           </li>
         
           <li>
@@ -450,10 +476,6 @@
         
           <li>
             <a href="/2015/03/18/iWatch-使用/">iWatch 使用</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/12/markdown-生成目录/">markdown 生成目录</a>
           </li>
         
       </ul>

@@ -68,9 +68,45 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-node-内存优化笔记-一" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-node-代码优化笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/18/node-内存优化笔记-一/" class="article-date">
+    <a href="/2016/03/21/node-代码优化笔记（一）/" class="article-date">
+  <time datetime="2016-03-21T05:41:23.000Z" itemprop="datePublished">2016-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/21/node-代码优化笔记（一）/">node 代码优化笔记（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/03/21/node-代码优化笔记（一）/" data-id="cim2q4lbn000ik1rsomaby1lt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-node-内存优化笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/18/node-内存优化笔记（一）/" class="article-date">
   <time datetime="2016-03-18T05:48:15.000Z" itemprop="datePublished">2016-03-18</time>
 </a>
     
@@ -82,7 +118,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/18/node-内存优化笔记-一/">node 内存优化笔记(一)</a>
+      <a class="article-title" href="/2016/03/18/node-内存优化笔记（一）/">node 内存优化笔记（一）</a>
     </h1>
   
 
@@ -94,13 +130,13 @@
 <p>The design and implementation of Node.js native modules follow a simple directive: keep everything asynchronous. This design ethic, by convention, informs the design of modules contributed by the Node community.</p>
         
           <p class="article-more-link">
-            <a href="/2016/03/18/node-内存优化笔记-一/#more">Read More</a>
+            <a href="/2016/03/18/node-内存优化笔记（一）/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/03/18/node-内存优化笔记-一/" data-id="cim0vesz1001illrs3w3extz9" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/03/18/node-内存优化笔记（一）/" data-id="cim2q4lbe000dk1rshm34ec1b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memerory/">memerory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -144,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/03/14/linux-启动过程/" data-id="cim0vesxc0003llrssfc0irux" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/03/14/linux-启动过程/" data-id="cim2q4lan0004k1rsrhe0jfrd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/boot/">boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/startup/">startup</a></li></ul>
@@ -180,25 +216,15 @@
       
         <p>以下面代码执行为例</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">fs.readFile(&apos;foo.js&apos;, &#123;encoding:&apos;utf8&apos;&#125;, function(err,</span><br><span class="line">  fileContents) &#123;</span><br><span class="line">  console.log(&apos;Then the contents are available&apos;, fileContents);</span><br><span class="line">&#125;);</span><br><span class="line">console.log(&apos;This happens first&apos;);</span><br></pre></td></tr></table></figure>
-<p>输出结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This happens first</span><br><span class="line">Then the contents are available, [file contents shown]</span><br></pre></td></tr></table></figure>
-<p>执行逻辑</p>
-<ul>
-<li>加载 fs 模块。获取到 fs.binding，fs.binding 用来连接 C++ 和 JS 代码</li>
-<li>调用 fs.readFile。通过 fs.binding，<a href="http://nikhilm.github.io/uvbook/basics.html" target="_blank" rel="external">libuv</a> 接收到一个读文件的请求和一个回调函数</li>
-<li>libuv 在自己的线程里调用系统级别的相关方法来读取文件</li>
-<li>JavaScript 程序继续执行，打印出 “This happens first”</li>
-<li>因为还有一个 callback，event loop 继续执行</li>
-<li>当 OS 读完文件描述符后，libuv 得到通知并且调用回调函数，为 JavaScript 的 callback 重新进入 V8 线程做准备</li>
-<li>JavaScript 的 callback 被放到 event loop 队列里面并在下一个 tick 中执行</li>
-<li>打印 “Then the contents are available “</li>
-<li>没有 callback 了，进程结束</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/03/11/node-事件驱动机制/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/03/11/node-事件驱动机制/" data-id="cim0vesxi0007llrs0zxq4y1u" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/03/11/node-事件驱动机制/" data-id="cim2q4lb7000ak1rsz38avb5f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -238,42 +264,15 @@
 <p>Internet Site</p>
 </blockquote>
 <h3 id="配置-iwatch"><a href="#配置-iwatch" class="headerlink" title="配置 iwatch"></a>配置 iwatch</h3><p>配置文件为 /etc/iwatch/iwatch.xml</p>
-<p>内容为</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;!DOCTYPE config SYSTEM &quot;/etc/iwatch/iwatch.dtd&quot; &gt;
-&lt;config&gt;
-  &lt;guard email=&quot;root@localhost&quot; name=&quot;IWatch&quot;/&gt;
-  &lt;watchlist&gt;
-    &lt;title&gt;报错了&lt;/title&gt;
-    &lt;contactpoint email=&quot;email1;email2&quot; name=&quot;&quot;/&gt;
-    &lt;path type=&quot;single&quot; syslog=&quot;on&quot; events=&quot;modify&quot; filter=&quot;([\s\S]*)error([\s\S]*)log&quot;&gt;/root/.pm2/logs&lt;/path&gt;
-  &lt;/watchlist&gt;
-&lt;/config&gt;
-</code></pre><p>或</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE config SYSTEM &quot;/etc/iwatch/iwatch.dtd&quot; &gt;</span><br><span class="line">&lt;config&gt;</span><br><span class="line">  &lt;guard email=&quot;root@localhost&quot; name=&quot;IWatch&quot;/&gt;</span><br><span class="line">  &lt;watchlist&gt;</span><br><span class="line">    &lt;title&gt;报错了&lt;/title&gt;</span><br><span class="line">    &lt;contactpoint email=&quot;&quot; name=&quot;&quot;/&gt;</span><br><span class="line">    &lt;path type=&quot;single&quot; syslog=&quot;on&quot; events=&quot;modify&quot; filter=&quot;([\s\S]*)error([\s\S]*)(log$)&quot; exec=&quot;if [ `cat %f | wc -l` -ne 0 ]; then cat %f | mail -s `hostname`&apos; %f is accessed&apos; &apos;email1,email2&apos;; else echo no content to email; fi;&quot;&gt;/root/.pm2/logs&lt;/path&gt;</span><br><span class="line">  &lt;/watchlist&gt;</span><br><span class="line">&lt;/config&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="运行-iwatch"><a href="#运行-iwatch" class="headerlink" title="运行 iwatch"></a>运行 iwatch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwatch -f /etc/iwatch/iwatch.xml -v</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>创建文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /root/.pm2/logs/testerror.log</span><br></pre></td></tr></table></figure>
-<p>如果正常的话，就能收到邮件了</p>
-<p>如果报错或者没收到邮件的话，可以查看 /var/log/mail.log 文件</p>
-<p>我遇到了</p>
-<blockquote>
-<p>Jul  4 23:04:37 ubuntu postfix/smtpd[15269]: disconnect from unknown[192.168.1.150]</p>
-</blockquote>
-<p>解决办法</p>
-<p>在 /etc/postfix/main.cf 中的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128</span><br></pre></td></tr></table></figure>
-<p>后面添加 192.168.1.150</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.1.150</span><br></pre></td></tr></table></figure>
-<h3 id="设置守护进程"><a href="#设置守护进程" class="headerlink" title="设置守护进程"></a>设置守护进程</h3><p>将 /etc/default/iwatch 中的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">START_DAEMON=false</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">START_DAEMON=true</span><br></pre></td></tr></table></figure>
-<h3 id="启动守护进程"><a href="#启动守护进程" class="headerlink" title="启动守护进程"></a>启动守护进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/iwatch restart</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/03/18/iWatch-使用/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/03/18/iWatch-使用/" data-id="cim0vesx60001llrs5dqj6cgp" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/03/18/iWatch-使用/" data-id="cim2q4la80001k1rsn0qeh2mb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iWatch/">iWatch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li></ul>
@@ -308,46 +307,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>用 markdown 写完接口文档后，想根据接口文档自动生成一个目录</p>
-<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><p>markdown 代码</p>
-<pre><code>[接口1](#interface1)
-### [/接口1](id:interface1)
-</code></pre><p>装换成对应的 html 代码</p>
-<pre><code>&lt;a href=&quot;#interface1&quot;&gt;接口1&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span id=&quot;interface1&quot;&gt;/接口1&lt;/span&gt;&lt;/h3&gt;
-</code></pre><p>在写 markdown 的时候，</p>
-<p>我只想写（修改接口文档时太麻烦了）</p>
-<pre><code>### [/接口1](id:interface1)
-</code></pre><p>不想写</p>
-<pre><code>[接口1](#interface1)
-</code></pre><p>所以这里需要做的是</p>
-<p>读取原 markdown 文件，根据</p>
-<pre><code>### [/接口1](id:interface1)
-</code></pre><p>得到</p>
-<pre><code>[接口1](#interface1)
-</code></pre><p>装换用的 python 代码</p>
-<pre><code>#!/usr/bin/python
-#coding:utf-8
-
-import sys
-import re
-
-markdownFileName = sys.argv[1]
-
-for line in open(markdownFileName):
-    match = re.search(r&quot;\[([\s\S]*)\]\(id:([\s\S]*)\)&quot;, line)
-    if match:
-        print(re.sub(&quot;id:&quot;, &quot;#&quot;, match.group(0)))
-        print(&quot;&quot;)
-</code></pre><p>使用方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python produceMDCategory.py test.md</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<pre><code>[/接口1](#interface1)
-</code></pre><p>现在只要把输出的内容，拷贝到 test.md 中即可</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2015/03/12/markdown-生成目录/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/03/12/markdown-生成目录/" data-id="cim0vesxe0004llrskwc8nla0" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/03/12/markdown-生成目录/" data-id="cim2q4lap0006k1rsjxxk2dug" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
@@ -514,7 +482,7 @@ while True:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/03/10/nginx-日志分析/" data-id="cim0vesxl0008llrsvk6xjtii" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/03/10/nginx-日志分析/" data-id="cim2q4lbk000gk1rsf0oxzwzn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/goaccess/">goaccess</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
@@ -596,7 +564,7 @@ while True:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/03/04/mongodb-sharding-笔记/" data-id="cim0vesxo000allrsa4hnu4b1" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/03/04/mongodb-sharding-笔记/" data-id="cim2q4lav0007k1rsfic7n4lh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sharding/">sharding</a></li></ul>
@@ -634,54 +602,15 @@ while True:
 <h6 id="Replica-Sets"><a href="#Replica-Sets" class="headerlink" title="Replica Sets"></a>Replica Sets</h6><blockquote>
 <p>A replica set is basically a master-slave cluster with automatic failover. The biggest difference between a master-slave cluster and a replica set is that a replica set does not have a single master: one is elected by the cluster and may change to another node if the current master goes down. However, they look very similar: a replica set always has a single master node (called a primary) and one or more slaves (called secondaries). </p>
 </blockquote>
-<h6 id="创建数据库目录"><a href="#创建数据库目录" class="headerlink" title="创建数据库目录"></a>创建数据库目录</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /Users/Fred/Desktop/mongoSetTest/dbs/node1</span><br><span class="line">mkdir -p /Users/Fred/Desktop/mongoSetTest/dbs/node2</span><br><span class="line">mkdir -p /Users/Fred/Desktop/mongoSetTest/dbs/node3</span><br></pre></td></tr></table></figure>
-<h6 id="运行-mongod"><a href="#运行-mongod" class="headerlink" title="运行 mongod"></a>运行 mongod</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node1 --port 10001 --replSet blort/Fred:10002</span><br><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node2 --port 10002 --replSet blort/Fred:10001</span><br><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node3 --port 10003 --replSet blort/Fred:10001</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Once you have a few servers up, you’ll notice that the server logs are complaining about the replica set not being initialized. This is because there’s one more step: initializing the set in the shell</p>
-</blockquote>
-<h6 id="初始化-replica-set"><a href="#初始化-replica-set" class="headerlink" title="初始化 replica set"></a>初始化 replica set</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mongo 127.0.0.1:10001</span><br><span class="line"></span><br><span class="line">use admin</span><br><span class="line"></span><br><span class="line">db.runCommand(&#123;</span><br><span class="line">    &quot;replSetInitiate&quot;: &#123;</span><br><span class="line">        &quot;_id&quot;: &quot;blort&quot;,</span><br><span class="line">        &quot;members&quot;: [&#123;</span><br><span class="line">            &quot;_id&quot;: 1,</span><br><span class="line">            &quot;host&quot;: &quot;10.8.6.229:10001&quot;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            &quot;_id&quot;: 2,</span><br><span class="line">            &quot;host&quot;: &quot;10.8.6.229:10002&quot;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            &quot;_id&quot;: 3,</span><br><span class="line">            &quot;host&quot;: &quot;10.8.6.229:10003&quot;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>再分别连接 mongo 的 shell，node1 为 PRIMARY，其他为 SECONDARY</p>
-<p>node1</p>
-<blockquote>
-<p>Fred:dbs Fred$ mongo 127.0.0.1:10001</p>
-<p>MongoDB shell version: 2.6.5</p>
-<p>connecting to: 127.0.0.1:10001/test</p>
-<p>blort:PRIMARY</p>
-</blockquote>
-<p>node2</p>
-<blockquote>
-<p>Fred:dbs Fred$ mongo 127.0.0.1:10002</p>
-<p>MongoDB shell version: 2.6.5</p>
-<p>connecting to: 127.0.0.1:10002/test</p>
-<p>blort:SECONDARY&gt;</p>
-</blockquote>
-<p>node3</p>
-<blockquote>
-<p>Fred:dbs Fred$ mongo 127.0.0.1:10003</p>
-<p>MongoDB shell version: 2.6.5</p>
-<p>connecting to: 127.0.0.1:10003/test</p>
-<p>blort:SECONDARY&gt;</p>
-</blockquote>
-<p>停掉 node1，过一会再启动，node1 由 PRIMARY 变为 SECONDARY</p>
-<blockquote>
-<p>If the current primary fails, the rest of the nodes in the set will attempt to elect a new primary node. This election process will be initiated by any node that cannot reach the primary.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath /Users/Fred/Desktop/mongoSetTest/dbs/node1 --port 10001 --replSet blort/Fred:10002</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Fred:dbs Fred$ mongo 127.0.0.1:10001</p>
-<p>MongoDB shell version: 2.6.5</p>
-<p>connecting to: 127.0.0.1:10001/test</p>
-<p>blort:SECONDARY&gt;</p>
-</blockquote>
-<p>在 SECONDARY node 上，不能 save 数据，不能 show collections</p>
-<blockquote>
-<p>There is a special query option to tell a slave server that it is allowed to handle a query. (By default, queries will not be executed on a slave.) This option is called slaveOkay, and all MongoDB drivers provide a mechanism for setting it.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">blort:SECONDARY&gt; use testDB</span><br><span class="line">switched to db testDB</span><br><span class="line">blort:SECONDARY&gt; show collections</span><br><span class="line">2015-02-28T14:26:12.305+0800 error: &#123; &quot;$err&quot; : &quot;not master and slaveOk=false&quot;, &quot;code&quot; : 13435 &#125; at src/mongo/shell/query.js:131</span><br><span class="line">blort:SECONDARY&gt; db.users.save(&#123;name:&quot;fred&quot;&#125;)</span><br><span class="line">WriteResult(&#123; &quot;writeError&quot; : &#123; &quot;code&quot; : undefined, &quot;errmsg&quot; : &quot;not master&quot; &#125; &#125;)</span><br><span class="line">blort:SECONDARY&gt; show dbs</span><br><span class="line">admin   (empty)</span><br><span class="line">local   0.328GB</span><br><span class="line">testDB  0.078GB</span><br><span class="line">blort:SECONDARY&gt;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/02/28/mongo-Replica-Set-笔记/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/28/mongo-Replica-Set-笔记/" data-id="cim0vesxg0006llrsd64gwxiw" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/28/mongo-Replica-Set-笔记/" data-id="cim2q4lai0003k1rsdmmxrvfh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/replication/">replication</a></li></ul>
@@ -717,139 +646,19 @@ while True:
       
         <p>笔记：MongoDB - The Definitive Guide</p>
 <p>One example of a database command that you are probably familiar with is drop: to drop a collection from the shell, we run db.test.drop(). Under the hood, this function is actually running the drop command—we can perform the exact same operation using runCommand:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.runCommand(&#123;&quot;drop&quot; : &quot;test&quot;&#125;);&#123;&quot;nIndexesWas&quot; : 1,&quot;msg&quot; : &quot;indexes dropped for collection&quot;, &quot;ns&quot; : &quot;test.test&quot;,&quot;ok&quot; : true&#125;</span><br></pre></td></tr></table></figure>
-<p>The document we get as a result is the command response, which contains information about whether the command was successful, as well as any other information that the command might provide. The command response will always contain the key “ok”. If “ok” is true, the command was successful, and if it is false, the command failed for some reason.</p>
-<p>If “ok” is false, then an additional key will be present, “errmsg”. The value of “errmsg” is a string explaining why the command failed. As an example, let’s try running the drop command again, on the collection that we just dropped:</p>
-<pre><code>&gt; db.runCommand({&quot;drop&quot; : &quot;test&quot;});
-{ &quot;errmsg&quot; : &quot;ns not found&quot;, &quot;ok&quot; : false }
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Commands in MongoDB are actually implemented as a special type of query that gets performed on the $cmd collection. runCommand just takes a command document and performs the equivalent query, so our drop call becomes the following:</span><br></pre></td></tr></table></figure>
-
-db.$cmd.findOne({&quot;drop&quot; : &quot;test&quot;});
-</code></pre><p>When the MongoDB server gets a query on the $cmd collection, it handles it using special logic, rather than the normal code for handling queries. Almost all MongoDB drivers provide a helper method like runCommand for running commands, but commands can always be run using a simple query if necessary.</p>
-<p>Some commands require administrator access and must be run on the admin database. If such a command is run on any other database, it will return an “access denied” error.</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2015/02/25/Database-Commands-笔记/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/25/Database-Commands-笔记/" data-id="cim0vesx00000llrswpadicpr" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/02/25/Database-Commands-笔记/" data-id="cim2q4la00000k1rs446josdh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command/">command</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-生成邀请码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/12/生成邀请码/" class="article-date">
-  <time datetime="2015-02-12T08:38:13.000Z" itemprop="datePublished">2015-02-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/12/生成邀请码/">生成邀请码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
-<li>生成长度为 4 位的字符串邀请码</li>
-<li>可以有数字和英文字母</li>
-<li>英文字符不区分大小写</li>
-<li>邀请码没有过期</li>
-</ul>
-<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><h6 id="将数字转换成邀请码"><a href="#将数字转换成邀请码" class="headerlink" title="将数字转换成邀请码"></a>将数字转换成邀请码</h6><table>
-<thead>
-<tr>
-<th>输入</th>
-<th>输出</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0000</td>
-</tr>
-<tr>
-<td>49360</td>
-<td>1234</td>
-</tr>
-<tr>
-<td>1679615</td>
-<td>zzzz</td>
-</tr>
-</tbody>
-</table>
-<p>实现方法，将 10 进制转为 36 进制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function getInvitingCode(codeNumber) &#123;</span><br><span class="line">    var items = [</span><br><span class="line">        &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;,</span><br><span class="line">        &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;,</span><br><span class="line">        &quot;e&quot;, &quot;f&quot;, &quot;g&quot;,</span><br><span class="line">        &quot;h&quot;, &quot;i&quot;, &quot;g&quot;, &quot;k&quot;,</span><br><span class="line">        &quot;l&quot;, &quot;m&quot;, &quot;n&quot;,</span><br><span class="line">        &quot;o&quot;, &quot;p&quot;, &quot;q&quot;,</span><br><span class="line">        &quot;r&quot;, &quot;s&quot;, &quot;t&quot;,</span><br><span class="line">        &quot;u&quot;, &quot;v&quot;, &quot;w&quot;,</span><br><span class="line">        &quot;x&quot;, &quot;y&quot;, &quot;z&quot;</span><br><span class="line">    ]</span><br><span class="line">    var finalArray = []</span><br><span class="line">    var maxLength = 4</span><br><span class="line"></span><br><span class="line">    for (var i = 0; i &lt; maxLength; i++) &#123;</span><br><span class="line">        finalArray[i] = items[Math.floor(codeNumber / Math.pow(items.length, maxLength - i - 1))]</span><br><span class="line">        codeNumber = codeNumber % Math.pow(items.length, maxLength - i - 1)</span><br><span class="line">        console.log(finalArray)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return finalArray.join().replace(/,/ig, &quot;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">console.log(getInvitingCode(0000) == &quot;0000&quot;)</span><br><span class="line">console.log(getInvitingCode(49360) == &quot;1234&quot;)</span><br><span class="line">console.log(getInvitingCode(1679615) == &quot;zzzz&quot;)</span><br></pre></td></tr></table></figure>
-<p>打印结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[ &apos;0&apos; ]</span><br><span class="line">[ &apos;0&apos;, &apos;0&apos; ]</span><br><span class="line">[ &apos;0&apos;, &apos;0&apos;, &apos;0&apos; ]</span><br><span class="line">[ &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos; ]</span><br><span class="line">true</span><br><span class="line">[ &apos;1&apos; ]</span><br><span class="line">[ &apos;1&apos;, &apos;2&apos; ]</span><br><span class="line">[ &apos;1&apos;, &apos;2&apos;, &apos;3&apos; ]</span><br><span class="line">[ &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos; ]</span><br><span class="line">true</span><br><span class="line">[ &apos;z&apos; ]</span><br><span class="line">[ &apos;z&apos;, &apos;z&apos; ]</span><br><span class="line">[ &apos;z&apos;, &apos;z&apos;, &apos;z&apos; ]</span><br><span class="line">[ &apos;z&apos;, &apos;z&apos;, &apos;z&apos;, &apos;z&apos; ]</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-<h6 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h6><ol>
-<li><p>根据数据库中已有的邀请码个数，生成下一个邀请码</p>
-<p> 比如数据库中已经有 1000 个了，则下一个邀请码由 getInvitingCode(1001) 得到 07pt</p>
-<p> 问题</p>
-<ul>
-<li>这样没有达到随机的效果，比如我得到了 0001 这样一个邀请码，则下一个就是 0002</li>
-</ul>
-</li>
-<li><p>随机生成一个数字，然后根据这个数字得到邀请码，如果数据库中没有这个邀请码，则保存，如果有的话，换一个数字，循环操作，直到生成新的邀请码</p>
-<p> 问题</p>
-<ul>
-<li>太慢，随着生成的邀请码增多，越来越慢</li>
-<li>我随便猜一个邀请码 0001，按道理来说，肯定是有这样一个邀请码的，也没实现真正的随机</li>
-</ul>
-</li>
-</ol>
-<p>上面两种，我用了第一种，发现在客户端看到的邀请码太有规律了，所以不能用</p>
-<p>要想实现随机，那就得减少邀请码的总数 36^{4} = 1679616</p>
-<ol>
-<li><p>最后一位为 0 至 9 的随机数</p>
-<p> 去掉最后一位，邀请码总个数为 1679616 / 10 = 167961</p>
-<p> 比如数据库中已有 1000 个邀请码，那么下一个就是 1001 + 一位随机数，即 10010(07q2) 到 10019(07qb)</p>
-<p> 问题    </p>
-<ul>
-<li>1001 猜 10 次，也能猜到</li>
-<li>有很多 0xxx 的数据（个人觉得不好）</li>
-</ul>
-</li>
-<li><p>最后两位为 0 至 99 的随机数</p>
-<p> 逻辑同上，邀请码总个数为 1679616 / 100 = 16796，要猜 100 次</p>
-</li>
-<li><p>前面两位取 0 至 15 的随机数</p>
-<p> 1679616 去掉前两位，还剩 79616 位</p>
-<p> 比如数据库中有 1000 个邀请码，下一个则为 (0至15) * 100000 + 1001</p>
-</li>
-<li><p>前面两位取 0 至 15 的随机数，并提前存到数据库</p>
-<ul>
-<li>邀请码，根据字符来排序，由于前面取的是随机数，那排序后，就得到了随机的顺序了</li>
-<li>每次从数据库总去一个还没用的邀请码</li>
-</ul>
-</li>
-</ol>
-<h6 id="update"><a href="#update" class="headerlink" title="update"></a>update</h6><p>为了减小被猜出来的可能性，可将 items 顺序打乱</p>
-<p>如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var items = [</span><br><span class="line">    &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;,</span><br><span class="line">    &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;,</span><br><span class="line">    &quot;e&quot;, &quot;f&quot;, &quot;g&quot;,</span><br><span class="line">    &quot;h&quot;, &quot;i&quot;, &quot;g&quot;, &quot;k&quot;,</span><br><span class="line">    &quot;l&quot;, &quot;m&quot;, &quot;n&quot;,</span><br><span class="line">    &quot;o&quot;, &quot;p&quot;, &quot;q&quot;,</span><br><span class="line">    &quot;r&quot;, &quot;s&quot;, &quot;t&quot;,</span><br><span class="line">    &quot;u&quot;, &quot;v&quot;, &quot;w&quot;,</span><br><span class="line">    &quot;x&quot;, &quot;y&quot;, &quot;z&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>可变为 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var items = [</span><br><span class="line">    &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;,</span><br><span class="line">    &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;,</span><br><span class="line">    &quot;h&quot;, &quot;i&quot;, &quot;g&quot;, &quot;k&quot;,</span><br><span class="line">    &quot;e&quot;, &quot;f&quot;, &quot;g&quot;,</span><br><span class="line">    &quot;l&quot;, &quot;m&quot;, &quot;n&quot;,</span><br><span class="line">    &quot;o&quot;, &quot;p&quot;, &quot;q&quot;,</span><br><span class="line">    &quot;u&quot;, &quot;v&quot;, &quot;w&quot;,</span><br><span class="line">    &quot;r&quot;, &quot;s&quot;, &quot;t&quot;,</span><br><span class="line">    &quot;x&quot;, &quot;y&quot;, &quot;z&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/02/12/生成邀请码/" data-id="cim0veszh001qllrsa6u4mxer" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -905,7 +714,11 @@ db.$cmd.findOne({&quot;drop&quot; : &quot;test&quot;});
       <ul>
         
           <li>
-            <a href="/2016/03/18/node-内存优化笔记-一/">node 内存优化笔记(一)</a>
+            <a href="/2016/03/21/node-代码优化笔记（一）/">node 代码优化笔记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/18/node-内存优化笔记（一）/">node 内存优化笔记（一）</a>
           </li>
         
           <li>
@@ -918,10 +731,6 @@ db.$cmd.findOne({&quot;drop&quot; : &quot;test&quot;});
         
           <li>
             <a href="/2015/03/18/iWatch-使用/">iWatch 使用</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/12/markdown-生成目录/">markdown 生成目录</a>
           </li>
         
       </ul>

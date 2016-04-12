@@ -3,30 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title> </title>
+  <title>mongodb sharding 笔记 |  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: mongodb sharding 笔记date: 2015-03-04 17:57:35
-tags: [mongo, sharding]笔记：MongoDB - The Definitive Guide
+  <meta name="description" content="笔记：MongoDB - The Definitive Guide
 http://docs.mongodb.org/manual/sharding
 When to Shard
-You’ve run out of disk space on your">
+You’ve run out of disk space on your current machine.
+You want to write data faster than a single mongod can han">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" ">
+<meta property="og:title" content="mongodb sharding 笔记">
 <meta property="og:url" content="http://fredjiang.github.io/2015/03/04/mongodb-sharding-笔记/index.html">
 <meta property="og:site_name" content=" ">
-<meta property="og:description" content="title: mongodb sharding 笔记date: 2015-03-04 17:57:35
-tags: [mongo, sharding]笔记：MongoDB - The Definitive Guide
+<meta property="og:description" content="笔记：MongoDB - The Definitive Guide
 http://docs.mongodb.org/manual/sharding
 When to Shard
-You’ve run out of disk space on your">
-<meta property="og:updated_time" content="2016-03-28T03:48:52.000Z">
+You’ve run out of disk space on your current machine.
+You want to write data faster than a single mongod can han">
+<meta property="og:updated_time" content="2016-04-12T04:50:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" ">
-<meta name="twitter:description" content="title: mongodb sharding 笔记date: 2015-03-04 17:57:35
-tags: [mongo, sharding]笔记：MongoDB - The Definitive Guide
+<meta name="twitter:title" content="mongodb sharding 笔记">
+<meta name="twitter:description" content="笔记：MongoDB - The Definitive Guide
 http://docs.mongodb.org/manual/sharding
 When to Shard
-You’ve run out of disk space on your">
+You’ve run out of disk space on your current machine.
+You want to write data faster than a single mongod can han">
   
     <link rel="alternate" href="/atom.xml" title=" " type="application/atom+xml">
   
@@ -82,17 +82,26 @@ You’ve run out of disk space on your">
         <section id="main"><article id="post-mongodb-sharding-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/03/04/mongodb-sharding-笔记/" class="article-date">
-  <time datetime="2015-03-04T09:57:35.000Z" itemprop="datePublished">2015-03-04</time>
+  <time datetime="2015-03-04T09:57:34.000Z" itemprop="datePublished">2015-03-04</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongodb sharding 笔记
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: mongodb sharding 笔记<br>date: 2015-03-04 17:57:35</p>
-<h2 id="tags-mongo-sharding"><a href="#tags-mongo-sharding" class="headerlink" title="tags: [mongo, sharding]"></a>tags: [mongo, sharding]</h2><p>笔记：MongoDB - The Definitive Guide</p>
+        <p>笔记：MongoDB - The Definitive Guide</p>
 <p><a href="http://docs.mongodb.org/manual/sharding" target="_blank" rel="external">http://docs.mongodb.org/manual/sharding</a></p>
 <h3 id="When-to-Shard"><a href="#When-to-Shard" class="headerlink" title="When to Shard"></a>When to Shard</h3><ul>
 <li>You’ve run out of disk space on your current machine.</li>
@@ -109,21 +118,17 @@ You’ve run out of disk space on your">
 <p>######config server<br>Config servers store the configuration of the cluster: which data is on which shard. Because mongos doesn’t store anything permanently, it needs somewhere to get the shard configuration. It syncs this data from the config servers.</p>
 <p>If you are working with MongoDB already, you probably have a shard ready to go. (Your current mongod can become your first shard.) The following section shows how to create a new shard from scratch, but feel free to use your existing database instead.</p>
 <h3 id="Starting-the-Servers"><a href="#Starting-the-Servers" class="headerlink" title="Starting the Servers"></a>Starting the Servers</h3><p>First we need to start up our config server and mongos. The config server needs to be started first, because mongos uses it to get its configuration. The config server can be started like any other mongod process:</p>
-<pre><code>mkdir -p ~/dbs/config
-mongod --dbpath ~/dbs/config --port 20000
-</code></pre><p>Now you need a mongos process for your application to connect to. Routing servers don’t even need a data directory, but they need to know where the config server is:</p>
-<pre><code>mongos --port 30000 --configdb localhost:20000
-</code></pre><h6 id="Adding-a-shard"><a href="#Adding-a-shard" class="headerlink" title="Adding a shard"></a>Adding a shard</h6><p>A shard is just a normal mongod instance (or replica set):</p>
-<pre><code>mkdir -p ~/dbs/shard1
-mongod --dbpath ~/dbs/shard1 --port 10000
-</code></pre><p>Now we’ll connect to the mongos process we started and add the shard to the cluster.<br>Start up a shell connected to your mongos:</p>
-<pre><code>mongo localhost:30000/admin
-</code></pre><p>Make sure you’re connected to mongos, not a mongod. Now you can add this shard with<br>the addshard database command:</p>
-<pre><code>db.runCommand({addshard : &quot;localhost:10000&quot;, allowLocal : true})
-</code></pre><h3 id="Sharding-Data"><a href="#Sharding-Data" class="headerlink" title="Sharding Data"></a>Sharding Data</h3><p>Let’s look at an example: we’ll shard the bar collection in the foo database on the “_id” key. First, we enable sharding for foo:</p>
-<pre><code>db.runCommand({&quot;enablesharding&quot; : &quot;foo&quot;})
-db.runCommand({&quot;shardcollection&quot; : &quot;foo.bar&quot;, &quot;key&quot; : {&quot;_id&quot; : 1}})
-</code></pre><h3 id="Production-Configuration"><a href="#Production-Configuration" class="headerlink" title="Production Configuration"></a>Production Configuration</h3><p>The example in the previous section is fine for trying sharding or for development. However, when you move an application into production, you’ll want a more robust setup. To set up sharding with no points of failure, you’ll need the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/dbs/config</span><br><span class="line">mongod --dbpath ~/dbs/config --port 20000</span><br></pre></td></tr></table></figure>
+<p>Now you need a mongos process for your application to connect to. Routing servers don’t even need a data directory, but they need to know where the config server is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos --port 30000 --configdb localhost:20000</span><br></pre></td></tr></table></figure>
+<h6 id="Adding-a-shard"><a href="#Adding-a-shard" class="headerlink" title="Adding a shard"></a>Adding a shard</h6><p>A shard is just a normal mongod instance (or replica set):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/dbs/shard1</span><br><span class="line">mongod --dbpath ~/dbs/shard1 --port 10000</span><br></pre></td></tr></table></figure></p>
+<p>Now we’ll connect to the mongos process we started and add the shard to the cluster.<br>Start up a shell connected to your mongos:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo localhost:30000/admin</span><br></pre></td></tr></table></figure>
+<p>Make sure you’re connected to mongos, not a mongod. Now you can add this shard with<br>the addshard database command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.runCommand(&#123;addshard : &quot;localhost:10000&quot;, allowLocal : true&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="Sharding-Data"><a href="#Sharding-Data" class="headerlink" title="Sharding Data"></a>Sharding Data</h3><p>Let’s look at an example: we’ll shard the bar collection in the foo database on the “_id” key. First, we enable sharding for foo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.runCommand(&#123;&quot;enablesharding&quot; : &quot;foo&quot;&#125;)</span><br><span class="line">db.runCommand(&#123;&quot;shardcollection&quot; : &quot;foo.bar&quot;, &quot;key&quot; : &#123;&quot;_id&quot; : 1&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="Production-Configuration"><a href="#Production-Configuration" class="headerlink" title="Production Configuration"></a>Production Configuration</h3><p>The example in the previous section is fine for trying sharding or for development. However, when you move an application into production, you’ll want a more robust setup. To set up sharding with no points of failure, you’ll need the following:</p>
 <ul>
 <li>Multiple config servers • Multiplemongosservers</li>
 <li>Replica sets for each shard</li>
@@ -131,25 +136,22 @@ db.runCommand({&quot;shardcollection&quot; : &quot;foo.bar&quot;, &quot;key&quot
 </ul>
 <h6 id="A-Robust-Config"><a href="#A-Robust-Config" class="headerlink" title="A Robust Config"></a>A Robust Config</h6><p>Setting up multiple config servers is simple. As of this writing, you can have one config server (for development) or three config servers (for production).</p>
 <p>Setting up multiple config servers is the same as setting up one; you just do it three times:</p>
-<pre><code>mkdir -p ~/dbs/config1 ~/dbs/config2 ~/dbs/config3
-mongod --dbpath ~/dbs/config1 --port 20001
-mongod --dbpath ~/dbs/config2 --port 20002
-mongod --dbpath ~/dbs/config3 --port 20003
-</code></pre><p>Then, when you start a mongos, you should connect it to all three config servers:</p>
-<pre><code>mongos --configdb localhost:20001,localhost:20002,localhost:20003
-</code></pre><p>Config servers use two-phase commit, not the normal MongoDB asynchronous repli- cation, to maintain separate copies of the cluster’s configuration. This ensures that they always have a consistent view of the cluster’s state. It also means that if a single config server is down, the cluster’s configuration information will go read-only. Clients are still able to do both reads and writes, but no rebalancing will happen until all of the config servers are back up.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/dbs/config1 ~/dbs/config2 ~/dbs/config3</span><br><span class="line">mongod --dbpath ~/dbs/config1 --port 20001</span><br><span class="line">mongod --dbpath ~/dbs/config2 --port 20002</span><br><span class="line">mongod --dbpath ~/dbs/config3 --port 20003</span><br></pre></td></tr></table></figure>
+<p>Then, when you start a mongos, you should connect it to all three config servers:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos --configdb localhost:20001,localhost:20002,localhost:20003</span><br></pre></td></tr></table></figure></p>
+<p>Config servers use two-phase commit, not the normal MongoDB asynchronous repli- cation, to maintain separate copies of the cluster’s configuration. This ensures that they always have a consistent view of the cluster’s state. It also means that if a single config server is down, the cluster’s configuration information will go read-only. Clients are still able to do both reads and writes, but no rebalancing will happen until all of the config servers are back up.</p>
 <h6 id="Many-mongos"><a href="#Many-mongos" class="headerlink" title="Many mongos"></a>Many mongos</h6><p>You can also run as many mongos processes as you want. One recommended setup is to run a mongos process for every application server. That way, each application server can talk to mongos locally, and if the server goes down, no one will be trying to talk to a mongos that isn’t there.</p>
-<h6 id="A-Sturdy-Shard"><a href="#A-Sturdy-Shard" class="headerlink" title="A Sturdy Shard"></a>A Sturdy Shard</h6><p>In production, each shard should be a replica set. That way, an individual server can fail without bringing down the whole shard. To add a replica set as a shard, pass its name and a seed to the addshard command.<br>For example, say we have a replica set named “foo” containing a server at prod.example.com:27017 (among other servers). We could add this set to the cluster with the following:</p>
-<pre><code>db.runCommand({&quot;addshard&quot; : &quot;foo/prod.example.com:27017&quot;})
-</code></pre><p>If prod.example.com goes down, mongos will know that it is connected to a replica set<br>and use the new primary for that set.</p>
+<h6 id="A-Sturdy-Shard"><a href="#A-Sturdy-Shard" class="headerlink" title="A Sturdy Shard"></a>A Sturdy Shard</h6><p>In production, each shard should be a replica set. That way, an individual server can fail without bringing down the whole shard. To add a replica set as a shard, pass its name and a seed to the addshard command.<br>For example, say we have a replica set named “foo” containing a server at prod.example.com:27017 (among other servers). We could add this set to the cluster with the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.runCommand(&#123;&quot;addshard&quot; : &quot;foo/prod.example.com:27017&quot;&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>If prod.example.com goes down, mongos will know that it is connected to a replica set<br>and use the new primary for that set.</p>
 <h6 id="Physical-Servers"><a href="#Physical-Servers" class="headerlink" title="Physical Servers"></a>Physical Servers</h6><p>This may seem like an overwhelming number of machines: three config servers, at least two mongods per shard, and as many mongos processes as you want. However, not ev- erything has to have its own machine. The main thing to avoid is putting an entire component on one machine. For example, avoid putting all three config servers, all of your mongos processes, or an entire replica set on one machine. However, a config server and mongos processes can happily share a box with a member of a replica set.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/03/04/mongodb-sharding-笔记/" data-id="cimeqszhk0007s7rsu84i44i0" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2015/03/04/mongodb-sharding-笔记/" data-id="cimwxigmy000oqgrsfht9fi4w" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sharding/">sharding</a></li></ul>
+
     </footer>
   </div>
   
@@ -187,7 +189,7 @@ mongod --dbpath ~/dbs/config3 --port 20003
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot/">boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goaccess/">goaccess</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iWatch/">iWatch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logrotate/">logrotate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/master/">master</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memerory/">memerory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/">pm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2-web/">pm2-web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/replication/">replication</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/runlevel/">runlevel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slave/">slave</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startup/">startup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subsystem/">subsystem</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot/">boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goaccess/">goaccess</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iWatch/">iWatch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logrotate/">logrotate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/master/">master</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memerory/">memerory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/">pm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2-web/">pm2-web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/replication/">replication</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/runlevel/">runlevel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sharding/">sharding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slave/">slave</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startup/">startup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subsystem/">subsystem</a></li></ul>
     </div>
   </div>
 
@@ -197,7 +199,7 @@ mongod --dbpath ~/dbs/config3 --port 20003
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/boot/" style="font-size: 10px;">boot</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/goaccess/" style="font-size: 10px;">goaccess</a> <a href="/tags/iWatch/" style="font-size: 10px;">iWatch</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/log/" style="font-size: 16.67px;">log</a> <a href="/tags/logrotate/" style="font-size: 10px;">logrotate</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/master/" style="font-size: 10px;">master</a> <a href="/tags/memerory/" style="font-size: 10px;">memerory</a> <a href="/tags/mongo/" style="font-size: 16.67px;">mongo</a> <a href="/tags/mongodb/" style="font-size: 13.33px;">mongodb</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/nodejs/" style="font-size: 13.33px;">nodejs</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pm2-web/" style="font-size: 10px;">pm2-web</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/server/" style="font-size: 16.67px;">server</a> <a href="/tags/slave/" style="font-size: 10px;">slave</a> <a href="/tags/startup/" style="font-size: 10px;">startup</a> <a href="/tags/subsystem/" style="font-size: 10px;">subsystem</a>
+      <a href="/tags/boot/" style="font-size: 10px;">boot</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/goaccess/" style="font-size: 10px;">goaccess</a> <a href="/tags/iWatch/" style="font-size: 10px;">iWatch</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/log/" style="font-size: 16.67px;">log</a> <a href="/tags/logrotate/" style="font-size: 10px;">logrotate</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/master/" style="font-size: 10px;">master</a> <a href="/tags/memerory/" style="font-size: 10px;">memerory</a> <a href="/tags/mongo/" style="font-size: 20px;">mongo</a> <a href="/tags/mongodb/" style="font-size: 13.33px;">mongodb</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/nodejs/" style="font-size: 13.33px;">nodejs</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pm2-web/" style="font-size: 10px;">pm2-web</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/server/" style="font-size: 16.67px;">server</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/slave/" style="font-size: 10px;">slave</a> <a href="/tags/startup/" style="font-size: 10px;">startup</a> <a href="/tags/subsystem/" style="font-size: 10px;">subsystem</a>
     </div>
   </div>
 

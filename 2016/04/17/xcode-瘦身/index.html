@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives |  </title>
+  <title>xcode 瘦身 |  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content=" ">
-<meta property="og:url" content="http://fredjiang.github.io/archives/page/2/index.html">
+  <meta name="description" content="原文
+1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。
+2) DerivedData这个是基于每个项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xcode 瘦身">
+<meta property="og:url" content="http://fredjiang.github.io/2016/04/17/xcode-瘦身/index.html">
 <meta property="og:site_name" content=" ">
-<meta property="og:description">
+<meta property="og:description" content="原文
+1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。
+2) DerivedData这个是基于每个项目">
+<meta property="og:updated_time" content="2016-04-17T08:43:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" ">
-<meta name="twitter:description">
+<meta name="twitter:title" content="xcode 瘦身">
+<meta name="twitter:description" content="原文
+1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。
+2) DerivedData这个是基于每个项目">
   
     <link rel="alternate" href="/atom.xml" title=" " type="application/atom+xml">
   
@@ -66,168 +73,59 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/25/Database-Commands-笔记/" class="archive-article-date">
-  <time datetime="2015-02-25T03:21:39.000Z" itemprop="datePublished">Feb 25</time>
+        <section id="main"><article id="post-xcode-瘦身" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/17/xcode-瘦身/" class="article-date">
+  <time datetime="2016-04-17T08:10:36.000Z" itemprop="datePublished">2016-04-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/25/Database-Commands-笔记/">Database Commands 笔记</a>
+    <h1 class="article-title" itemprop="name">
+      xcode 瘦身
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://blog.favo.org/post/31649090293/xcode-5-places-to-save-some-disk-space" target="_blank" rel="external">原文</a></p>
+<h6 id="1-Archives"><a href="#1-Archives" class="headerlink" title="1) Archives"></a>1) Archives</h6><p>打开 Window -&gt; Organizer -&gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 <code>~/Library/Developer/Xcode/Archives</code> 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。</p>
+<h6 id="2-DerivedData"><a href="#2-DerivedData" class="headerlink" title="2) DerivedData"></a>2) DerivedData</h6><p>这个是基于每个项目生成的，其中包含了项目的索引、build output 和日志。DerivedData 是在打开项目之后的某个阶段自动生成的。打开 Window -&gt; Organizer -&gt; Project，删除项目的 DerivedData。</p>
+<h6 id="3-Basics-Firmware-amp-Logs"><a href="#3-Basics-Firmware-amp-Logs" class="headerlink" title="3) Basics (Firmware &amp; Logs)"></a>3) Basics (Firmware &amp; Logs)</h6><h6 id="4-Old-Device-Information"><a href="#4-Old-Device-Information" class="headerlink" title="4) Old Device Information"></a>4) Old Device Information</h6><p>在 <code>~/Library/Developer/Xcode/iOS\ DeviceSupport</code> 下能删除一些老的 iOS 信息。当你链接一个新版本的设备时会在该目录下重新生成。</p>
+<h6 id="Simulator-Apps"><a href="#Simulator-Apps" class="headerlink" title="Simulator-Apps"></a>Simulator-Apps</h6><p>删除模拟器中的应用 <code>~/Library/Application\ Support/iPhone\ Simulator/</code> 中的 <code>Application</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/04/17/xcode-瘦身/" data-id="cin4bs303000gufrs99coeg4c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/29/linux-开机启动程序/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux 开机启动程序</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/12/生成邀请码/" class="archive-article-date">
-  <time datetime="2015-02-12T08:38:13.000Z" itemprop="datePublished">Feb 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/12/生成邀请码/">生成邀请码</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/12/日志切割/" class="archive-article-date">
-  <time datetime="2015-02-12T02:37:44.000Z" itemprop="datePublished">Feb 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/12/日志切割/">日志切割</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/11/mongodb-互为主从/" class="archive-article-date">
-  <time datetime="2015-02-11T11:41:44.000Z" itemprop="datePublished">Feb 11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/11/mongodb-互为主从/">mongodb 互为主从</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/11/验证服务器返回数据/" class="archive-article-date">
-  <time datetime="2015-02-11T07:05:24.000Z" itemprop="datePublished">Feb 11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/11/验证服务器返回数据/">验证服务器返回数据</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/01/pm2-web-安装/" class="archive-article-date">
-  <time datetime="2015-02-01T15:54:08.000Z" itemprop="datePublished">Feb 1</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/01/pm2-web-安装/">pm2-web 安装</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2014/05/11/must-be-setuid-root/" class="archive-article-date">
-  <time datetime="2014-05-11T15:13:42.000Z" itemprop="datePublished">May 11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/05/11/must-be-setuid-root/">must be setuid root</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
 </section>
         
           <aside id="sidebar">

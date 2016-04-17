@@ -6,21 +6,18 @@
   <title>xcode 瘦身 |  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文
-1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。
-2) DerivedData这个是基于每个项目">
+1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xcode 瘦身">
 <meta property="og:url" content="http://fredjiang.github.io/2016/04/17/xcode-瘦身/index.html">
 <meta property="og:site_name" content=" ">
 <meta property="og:description" content="原文
-1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。
-2) DerivedData这个是基于每个项目">
-<meta property="og:updated_time" content="2016-04-17T08:43:02.000Z">
+1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。">
+<meta property="og:updated_time" content="2016-04-17T08:44:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xcode 瘦身">
 <meta name="twitter:description" content="原文
-1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。
-2) DerivedData这个是基于每个项目">
+1) Archives打开 Window -&amp;gt; Organizer -&amp;gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 ~/Library/Developer/Xcode/Archives 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。">
   
     <link rel="alternate" href="/atom.xml" title=" " type="application/atom+xml">
   
@@ -97,6 +94,7 @@
       
         <p><a href="http://blog.favo.org/post/31649090293/xcode-5-places-to-save-some-disk-space" target="_blank" rel="external">原文</a></p>
 <h6 id="1-Archives"><a href="#1-Archives" class="headerlink" title="1) Archives"></a>1) Archives</h6><p>打开 Window -&gt; Organizer -&gt; Archives，删掉所有的 archives。如果你觉得一个一个的删太慢的的话，可以在目录 <code>~/Library/Developer/Xcode/Archives</code> 下一次全删了。archive 比 ipa 要大，因为里面包含了注入 debug 信息的其他数据。</p>
+<a id="more"></a>
 <h6 id="2-DerivedData"><a href="#2-DerivedData" class="headerlink" title="2) DerivedData"></a>2) DerivedData</h6><p>这个是基于每个项目生成的，其中包含了项目的索引、build output 和日志。DerivedData 是在打开项目之后的某个阶段自动生成的。打开 Window -&gt; Organizer -&gt; Project，删除项目的 DerivedData。</p>
 <h6 id="3-Basics-Firmware-amp-Logs"><a href="#3-Basics-Firmware-amp-Logs" class="headerlink" title="3) Basics (Firmware &amp; Logs)"></a>3) Basics (Firmware &amp; Logs)</h6><h6 id="4-Old-Device-Information"><a href="#4-Old-Device-Information" class="headerlink" title="4) Old Device Information"></a>4) Old Device Information</h6><p>在 <code>~/Library/Developer/Xcode/iOS\ DeviceSupport</code> 下能删除一些老的 iOS 信息。当你链接一个新版本的设备时会在该目录下重新生成。</p>
 <h6 id="Simulator-Apps"><a href="#Simulator-Apps" class="headerlink" title="Simulator-Apps"></a>Simulator-Apps</h6><p>删除模拟器中的应用 <code>~/Library/Application\ Support/iPhone\ Simulator/</code> 中的 <code>Application</code></p>

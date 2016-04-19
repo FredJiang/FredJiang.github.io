@@ -3,33 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iWatch 使用 |  </title>
+  <title>Tag: npm |  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装 iwatch1sudo apt-get install iwatch
-postfix 的配置选择
-
-Internet Site
-
-配置 iwatch">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iWatch 使用">
-<meta property="og:url" content="http://fredjiang.github.io/2015/03/18/iWatch-使用/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content=" ">
+<meta property="og:url" content="http://fredjiang.github.io/tags/npm/index.html">
 <meta property="og:site_name" content=" ">
-<meta property="og:description" content="安装 iwatch1sudo apt-get install iwatch
-postfix 的配置选择
-
-Internet Site
-
-配置 iwatch">
-<meta property="og:updated_time" content="2016-03-29T01:48:51.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iWatch 使用">
-<meta name="twitter:description" content="安装 iwatch1sudo apt-get install iwatch
-postfix 的配置选择
-
-Internet Site
-
-配置 iwatch">
+<meta name="twitter:title" content=" ">
+<meta name="twitter:description">
   
     <link rel="alternate" href="/atom.xml" title=" " type="application/atom+xml">
   
@@ -82,100 +66,39 @@ Internet Site
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-iWatch-使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/18/iWatch-使用/" class="article-date">
-  <time datetime="2015-03-18T12:50:27.000Z" itemprop="datePublished">2015-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      iWatch 使用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/04/19/node-习惯/" class="archive-article-date">
+  <time datetime="2016-04-19T02:06:02.000Z" itemprop="datePublished">Apr 19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/04/19/node-习惯/">node 习惯</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装-iwatch"><a href="#安装-iwatch" class="headerlink" title="安装 iwatch"></a>安装 iwatch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install iwatch</span><br></pre></td></tr></table></figure>
-<p>postfix 的配置选择</p>
-<blockquote>
-<p>Internet Site</p>
-</blockquote>
-<h3 id="配置-iwatch"><a href="#配置-iwatch" class="headerlink" title="配置 iwatch"></a>配置 iwatch</h3><a id="more"></a>
-<p>配置文件为 /etc/iwatch/iwatch.xml</p>
-<p>内容为</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;!DOCTYPE config SYSTEM &quot;/etc/iwatch/iwatch.dtd&quot; &gt;
-&lt;config&gt;
-  &lt;guard email=&quot;root@localhost&quot; name=&quot;IWatch&quot;/&gt;
-  &lt;watchlist&gt;
-    &lt;title&gt;报错了&lt;/title&gt;
-    &lt;contactpoint email=&quot;email1;email2&quot; name=&quot;&quot;/&gt;
-    &lt;path type=&quot;single&quot; syslog=&quot;on&quot; events=&quot;modify&quot; filter=&quot;([\s\S]*)error([\s\S]*)log&quot;&gt;/root/.pm2/logs&lt;/path&gt;
-  &lt;/watchlist&gt;
-&lt;/config&gt;
-</code></pre><p>或</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE config SYSTEM &quot;/etc/iwatch/iwatch.dtd&quot; &gt;</span><br><span class="line">&lt;config&gt;</span><br><span class="line">  &lt;guard email=&quot;root@localhost&quot; name=&quot;IWatch&quot;/&gt;</span><br><span class="line">  &lt;watchlist&gt;</span><br><span class="line">    &lt;title&gt;报错了&lt;/title&gt;</span><br><span class="line">    &lt;contactpoint email=&quot;&quot; name=&quot;&quot;/&gt;</span><br><span class="line">    &lt;path type=&quot;single&quot; syslog=&quot;on&quot; events=&quot;modify&quot; filter=&quot;([\s\S]*)error([\s\S]*)(log$)&quot; exec=&quot;if [ `cat %f | wc -l` -ne 0 ]; then cat %f | mail -s `hostname`&apos; %f is accessed&apos; &apos;email1,email2&apos;; else echo no content to email; fi;&quot;&gt;/root/.pm2/logs&lt;/path&gt;</span><br><span class="line">  &lt;/watchlist&gt;</span><br><span class="line">&lt;/config&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="运行-iwatch"><a href="#运行-iwatch" class="headerlink" title="运行 iwatch"></a>运行 iwatch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwatch -f /etc/iwatch/iwatch.xml -v</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>创建文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /root/.pm2/logs/testerror.log</span><br></pre></td></tr></table></figure>
-<p>如果正常的话，就能收到邮件了</p>
-<p>如果报错或者没收到邮件的话，可以查看 /var/log/mail.log 文件</p>
-<p>我遇到了</p>
-<blockquote>
-<p>Jul  4 23:04:37 ubuntu postfix/smtpd[15269]: disconnect from unknown[192.168.1.150]</p>
-</blockquote>
-<p>解决办法</p>
-<p>在 /etc/postfix/main.cf 中的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128</span><br></pre></td></tr></table></figure>
-<p>后面添加 192.168.1.150</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.1.150</span><br></pre></td></tr></table></figure>
-<h3 id="设置守护进程"><a href="#设置守护进程" class="headerlink" title="设置守护进程"></a>设置守护进程</h3><p>将 /etc/default/iwatch 中的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">START_DAEMON=false</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">START_DAEMON=true</span><br></pre></td></tr></table></figure>
-<h3 id="启动守护进程"><a href="#启动守护进程" class="headerlink" title="启动守护进程"></a>启动守护进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/iwatch restart</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2015/03/18/iWatch-使用/" data-id="cin6sk6p30003ovrsprexal3m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iWatch/">iWatch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/03/11/node-事件驱动机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          node 事件驱动机制
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/03/12/markdown-生成目录/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">markdown 生成目录</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         

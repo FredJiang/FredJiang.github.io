@@ -3,17 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: note |  </title>
+  <title>nodejs es6 特性 |  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content=" ">
-<meta property="og:url" content="http://fredjiang.github.io/tags/note/index.html">
+  <meta name="description" content="Node.js 是在 V8 的基础上建立的。所以 V8 支持的 ES 特性，Node.js 的最新版一般都支持。
+ECMAScript 2015 (ES6) 特性被分为 3 类，分别为 shipping、staged 和 in progress
+
+shipping：稳定的，在 Node.js 里面默认打开，不需要加任何的 runtime flag
+staged：基本已完成，还不够稳定，需要 run">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs es6 特性">
+<meta property="og:url" content="http://fredjiang.github.io/2016/04/22/nodejs-es6-特性/index.html">
 <meta property="og:site_name" content=" ">
-<meta property="og:description">
+<meta property="og:description" content="Node.js 是在 V8 的基础上建立的。所以 V8 支持的 ES 特性，Node.js 的最新版一般都支持。
+ECMAScript 2015 (ES6) 特性被分为 3 类，分别为 shipping、staged 和 in progress
+
+shipping：稳定的，在 Node.js 里面默认打开，不需要加任何的 runtime flag
+staged：基本已完成，还不够稳定，需要 run">
+<meta property="og:updated_time" content="2016-04-22T10:06:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" ">
-<meta name="twitter:description">
+<meta name="twitter:title" content="nodejs es6 特性">
+<meta name="twitter:description" content="Node.js 是在 V8 的基础上建立的。所以 V8 支持的 ES 特性，Node.js 的最新版一般都支持。
+ECMAScript 2015 (ES6) 特性被分为 3 类，分别为 shipping、staged 和 in progress
+
+shipping：稳定的，在 Node.js 里面默认打开，不需要加任何的 runtime flag
+staged：基本已完成，还不够稳定，需要 run">
   
     <link rel="alternate" href="/atom.xml" title=" " type="application/atom+xml">
   
@@ -66,39 +79,94 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/25/Database-Commands-笔记/" class="archive-article-date">
-  <time datetime="2015-02-25T03:21:39.000Z" itemprop="datePublished">Feb 25</time>
+        <section id="main"><article id="post-nodejs-es6-特性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/22/nodejs-es6-特性/" class="article-date">
+  <time datetime="2016-04-22T08:01:15.000Z" itemprop="datePublished">2016-04-22</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/25/Database-Commands-笔记/">Database Commands 笔记</a>
+    <h1 class="article-title" itemprop="name">
+      nodejs es6 特性
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Node.js 是在 <a href="https://developers.google.com/v8/" target="_blank" rel="external">V8</a> 的基础上建立的。所以 V8 支持的 ES 特性，Node.js 的最新版一般都支持。</p>
+<p>ECMAScript 2015 (ES6) 特性被分为 3 类，分别为 shipping、staged 和 in progress</p>
+<ul>
+<li>shipping：稳定的，在 Node.js 里面默认打开，不需要加任何的 runtime flag</li>
+<li>staged：基本已完成，还不够稳定，需要 runtime flag <code>--es_staging</code> 或 <code>--harmony</code> 来开启</li>
+<li>in progress：用 <code>--harmony_destructuring</code> 打开，不推荐使用</li>
+</ul>
+<p>ES6 中的哪些特性在 Node.js 是 shipping 的呢？</p>
+<ul>
+<li>Block scoping<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="external">let (strict mode only)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const" target="_blank" rel="external">const</a></li>
+<li>function-in-blocks (strict mode only [1])</li>
+</ul>
+</li>
+<li>Classes (strict mode only)</li>
+<li>Collections<ul>
+<li>Map</li>
+<li>WeakMap</li>
+<li>Set</li>
+<li>WeakSet</li>
+</ul>
+</li>
+<li>Typed arrays</li>
+<li>Generators</li>
+<li>Binary and Octal literals</li>
+<li>Object literal extensions (shorthand properties and methods)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">Promises</a></li>
+<li>New String methods</li>
+<li>Symbols</li>
+<li>Template strings</li>
+<li>Arrow Functions</li>
+<li>new.target [2]</li>
+<li>Object.assign</li>
+<li>Spread operator [2]</li>
+</ul>
+<p>上面的特性的具体用法可到 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a> 查询</p>
+<p>更详细的列表可以查看 <a href="https://kangax.github.io/compat-table/es6/" target="_blank" rel="external">https://kangax.github.io/compat-table/es6/</a></p>
+<p>查看 Node.js 的 V8 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -p process.versions.v8</span><br></pre></td></tr></table></figure>
+<p><a href="https://nodejs.org/en/docs/es6/" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/04/22/nodejs-es6-特性/" data-id="cinbjz0po000dmjrstukpnqgv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/V8/">V8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es/">es</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/19/node-习惯/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">node 习惯</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

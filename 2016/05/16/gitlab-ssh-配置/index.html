@@ -6,24 +6,18 @@
   <title>gitlab ssh 配置 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="遇到的问题：
-在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 npm install 来安装该模块时，报没有权限的错误。
-解决办法：
-在服务器 dev 上已经有个用户 a，a 在 gitlab.xxx.com 是有权限的。这时 root 以用户 a 的权限">
+在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 npm install 来安装该模块时，报没有权限的错误。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitlab ssh 配置">
 <meta property="og:url" content="http://fredjiang.github.io/2016/05/16/gitlab-ssh-配置/index.html">
 <meta property="og:site_name" content="Fred">
 <meta property="og:description" content="遇到的问题：
-在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 npm install 来安装该模块时，报没有权限的错误。
-解决办法：
-在服务器 dev 上已经有个用户 a，a 在 gitlab.xxx.com 是有权限的。这时 root 以用户 a 的权限">
-<meta property="og:updated_time" content="2016-05-16T09:36:07.000Z">
+在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 npm install 来安装该模块时，报没有权限的错误。">
+<meta property="og:updated_time" content="2016-05-16T09:37:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitlab ssh 配置">
 <meta name="twitter:description" content="遇到的问题：
-在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 npm install 来安装该模块时，报没有权限的错误。
-解决办法：
-在服务器 dev 上已经有个用户 a，a 在 gitlab.xxx.com 是有权限的。这时 root 以用户 a 的权限">
+在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 npm install 来安装该模块时，报没有权限的错误。">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -100,6 +94,7 @@
       
         <p>遇到的问题：</p>
 <p>在开发 nodejs 程序的过程中，新建了一个新的 npm 私有模块。这个模块在自己搭建的 gitlab 服务器 gitlab.xxx.com 上。在服务器 dev 上以 root 用户运行 <code>npm install</code> 来安装该模块时，报没有权限的错误。</p>
+<a id="more"></a>
 <p>解决办法：</p>
 <p>在服务器 dev 上已经有个用户 a，a 在 gitlab.xxx.com 是有权限的。这时 root 以用户 a 的权限去下载代码就可以了。</p>
 <p>可以在文件 <code>/root/.ssh/config</code> 中添加如下配置</p>

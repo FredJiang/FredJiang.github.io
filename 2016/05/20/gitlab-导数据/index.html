@@ -3,17 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: master | Fred</title>
+  <title>gitlab 导数据 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred">
-<meta property="og:url" content="http://fredjiang.github.io/tags/master/index.html">
+  <meta name="description" content="先说下在导数据的过程中出现的错误信息
+
+Failed to create repository via gitlab-shell
+Unable to save project
+
+导数据的命令为
+sudo gitlab-rake gitlab:import:repos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitlab 导数据">
+<meta property="og:url" content="http://fredjiang.github.io/2016/05/20/gitlab-导数据/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description">
+<meta property="og:description" content="先说下在导数据的过程中出现的错误信息
+
+Failed to create repository via gitlab-shell
+Unable to save project
+
+导数据的命令为
+sudo gitlab-rake gitlab:import:repos">
+<meta property="og:updated_time" content="2016-05-20T09:02:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred">
-<meta name="twitter:description">
+<meta name="twitter:title" content="gitlab 导数据">
+<meta name="twitter:description" content="先说下在导数据的过程中出现的错误信息
+
+Failed to create repository via gitlab-shell
+Unable to save project
+
+导数据的命令为
+sudo gitlab-rake gitlab:import:repos">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -66,39 +85,92 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/02/11/mongodb-互为主从/" class="archive-article-date">
-  <time datetime="2015-02-11T11:41:44.000Z" itemprop="datePublished">Feb 11</time>
+        <section id="main"><article id="post-gitlab-导数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/20/gitlab-导数据/" class="article-date">
+  <time datetime="2016-05-20T07:42:31.000Z" itemprop="datePublished">2016-05-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/11/mongodb-互为主从/">mongodb 互为主从</a>
+    <h1 class="article-title" itemprop="name">
+      gitlab 导数据
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先说下在导数据的过程中出现的错误信息</p>
+<blockquote>
+<p>Failed to create repository via gitlab-shell</p>
+<p>Unable to save project</p>
+</blockquote>
+<p>导数据的命令为</p>
+<p><code>sudo gitlab-rake gitlab:import:repos</code></p>
+<a id="more"></a>
+<p>版本信息</p>
+<p>老机器</p>
+<ul>
+<li>服务器版本 CentOS release 6.7 (Final)</li>
+<li>gitlab 7.14.3</li>
+<li>安装方式：源码 <a href="https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md" target="_blank" rel="external">https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md</a></li>
+</ul>
+<p>新机器</p>
+<ul>
+<li>服务器版本 Ubuntu 12.04</li>
+<li>gitlab 8.7.5</li>
+<li>安装方式：Omnibus package <a href="https://about.gitlab.com/downloads/#ubuntu1204" target="_blank" rel="external">https://about.gitlab.com/downloads/#ubuntu1204</a></li>
+</ul>
+<h4 id="安装和导数据的步骤"><a href="#安装和导数据的步骤" class="headerlink" title="安装和导数据的步骤"></a>安装和导数据的步骤</h4><ul>
+<li><a href="https://about.gitlab.com/downloads/#ubuntu1204" target="_blank" rel="external">安装 gitlab</a></li>
+<li><a href="http://docs.gitlab.com/omnibus/" target="_blank" rel="external">配置 gitlab</a></li>
+<li>使配置文件生效 <code>sudo gitlab-ctl reconfigure</code></li>
+<li><a href="http://docs.gitlab.com/omnibus/maintenance/README.html#starting-and-stopping" target="_blank" rel="external">开始，重启，关闭</a></li>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/raketasks/import.md" target="_blank" rel="external">导数据</a>，在运行命令 <code>sudo gitlab-rake gitlab:import:repos</code> 前，先看下我遇到的如下问题</li>
+</ul>
+<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p><a href="https://gitlab.com/gitlab-org/gitlab-ce/issues/2082" target="_blank" rel="external">解决方法</a></p>
+<p>此次问题的原因是：安装方式的不同，导致文件路径不同，导致导数据失败</p>
+<p>以 xxx 项目为例，把 xxx 从老机器导到新机器后，在 xxx.git 文件下，有个 hooks 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx 1 git git   28 May 19 19:00 hooks -&gt; /home/git/gitlab-shell/hooks</span><br></pre></td></tr></table></figure>
+<p>可以发现，这个文件其实是不存在的</p>
+<p>新安装的 gitlab 的相应文件在 <code>/opt/gitlab/embedded/service/gitlab-shell/hooks/</code></p>
+<p>这时把 xxx.git 下的 hooks 文件删了就行了 <code>mv hooks hooks-old</code></p>
+<p>然后运行  <code>sudo gitlab-rake gitlab:import:repos</code></p>
+<p>导数据成功后变成了这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx 1 git git   47 May 19 22:09 hooks -&gt; /opt/gitlab/embedded/service/gitlab-shell/hooks/</span><br><span class="line">lrwxrwxrwx 1 git git   28 May 19 19:00 hooks-old -&gt; /home/git/gitlab-shell/hooks</span><br></pre></td></tr></table></figure>
+<p>如果有很多项目，可以这样(注意别把正确的 hooks 改了)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find . -name &apos;hooks&apos; -execdir mv &#123;&#125; hooks-old \;</span><br><span class="line">sudo gitlab-rake gitlab:import:repos</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/05/20/gitlab-导数据/" data-id="ciofkx1hj00018wrstswmk5a0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bare-repository/">bare repository</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/">gitlab</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/16/gitlab-ssh-配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">gitlab ssh 配置</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Node.js | Fred</title>
+  <title>mysql 慢日志 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred">
-<meta property="og:url" content="http://fredjiang.github.io/tags/Node-js/index.html">
+  <meta name="description" content="查看相应的变量设置mysql&amp;gt; SHOW VARIABLES LIKE &amp;#39;%long%&amp;#39;;
+123456789+----------------------------------------------------------+-----------+| Variable_name                                            | V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql 慢日志">
+<meta property="og:url" content="http://fredjiang.github.io/2016/05/26/mysql-慢日志/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description">
+<meta property="og:description" content="查看相应的变量设置mysql&amp;gt; SHOW VARIABLES LIKE &amp;#39;%long%&amp;#39;;
+123456789+----------------------------------------------------------+-----------+| Variable_name                                            | V">
+<meta property="og:updated_time" content="2016-05-26T06:22:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred">
-<meta name="twitter:description">
+<meta name="twitter:title" content="mysql 慢日志">
+<meta name="twitter:description" content="查看相应的变量设置mysql&amp;gt; SHOW VARIABLES LIKE &amp;#39;%long%&amp;#39;;
+123456789+----------------------------------------------------------+-----------+| Variable_name                                            | V">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -66,39 +70,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/26/Node-js-tips/" class="archive-article-date">
-  <time datetime="2016-04-26T11:03:32.000Z" itemprop="datePublished">Apr 26</time>
+        <section id="main"><article id="post-mysql-慢日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/26/mysql-慢日志/" class="article-date">
+  <time datetime="2016-05-26T03:18:35.000Z" itemprop="datePublished">2016-05-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/26/Node-js-tips/">Node.js tips</a>
+    <h1 class="article-title" itemprop="name">
+      mysql 慢日志
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="查看相应的变量设置"><a href="#查看相应的变量设置" class="headerlink" title="查看相应的变量设置"></a>查看相应的变量设置</h4><p><code>mysql&gt; SHOW VARIABLES LIKE &#39;%long%&#39;;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----------------------------------------------------------+-----------+</span><br><span class="line">| Variable_name                                            | Value     |</span><br><span class="line">+----------------------------------------------------------+-----------+</span><br><span class="line">| long_query_time                                          | 10.000000 |</span><br><span class="line">| performance_schema_events_stages_history_long_size       | 1000      |</span><br><span class="line">| performance_schema_events_statements_history_long_size   | 1000      |</span><br><span class="line">| performance_schema_events_transactions_history_long_size | 1000      |</span><br><span class="line">| performance_schema_events_waits_history_long_size        | 1000      |</span><br><span class="line">+----------------------------------------------------------+-----------+</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><code>mysql&gt; SHOW VARIABLES LIKE &#39;%slow%&#39;;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+---------------------------+---------------------------------+</span><br><span class="line">| Variable_name             | Value                           |</span><br><span class="line">+---------------------------+---------------------------------+</span><br><span class="line">| log_slow_admin_statements | OFF                             |</span><br><span class="line">| log_slow_slave_statements | OFF                             |</span><br><span class="line">| slow_launch_time          | 2                               |</span><br><span class="line">| slow_query_log            | OFF                             |</span><br><span class="line">| slow_query_log_file       | /var/lib/mysql/sdktest-slow.log |</span><br><span class="line">+---------------------------+---------------------------------+</span><br><span class="line">5 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p><code>mysql&gt; SHOW VARIABLES LIKE &#39;%query%&#39;;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">+------------------------------+---------------------------------+</span><br><span class="line">| Variable_name                | Value                           |</span><br><span class="line">+------------------------------+---------------------------------+</span><br><span class="line">| binlog_rows_query_log_events | OFF                             |</span><br><span class="line">| ft_query_expansion_limit     | 20                              |</span><br><span class="line">| have_query_cache             | YES                             |</span><br><span class="line">| long_query_time              | 10.000000                       |</span><br><span class="line">| query_alloc_block_size       | 8192                            |</span><br><span class="line">| query_cache_limit            | 1048576                         |</span><br><span class="line">| query_cache_min_res_unit     | 4096                            |</span><br><span class="line">| query_cache_size             | 1048576                         |</span><br><span class="line">| query_cache_type             | OFF                             |</span><br><span class="line">| query_cache_wlock_invalidate | OFF                             |</span><br><span class="line">| query_prealloc_size          | 8192                            |</span><br><span class="line">| slow_query_log               | OFF                             |</span><br><span class="line">| slow_query_log_file          | /var/lib/mysql/sdktest-slow.log |</span><br><span class="line">+------------------------------+---------------------------------+</span><br></pre></td></tr></table></figure>
+<p><code>mysql&gt; SHOW VARIABLES LIKE &#39;%log%&#39;;</code></p>
+<p><code>mysql&gt; SHOW VARIABLES;</code></p>
+<h5 id="修改相应变量设置"><a href="#修改相应变量设置" class="headerlink" title="修改相应变量设置"></a>修改相应变量设置</h5><p>命令修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global slow_query_log=&apos;ON&apos;;</span><br><span class="line">mysql&gt; set global long_query_time=2;</span><br></pre></td></tr></table></figure>
+<p><code>set global long_query_time=2;</code> 测试结果为：exit 退出 mysql，重新连接，再查询 <code>SHOW VARIABLES LIKE &#39;%long%&#39;;</code> 才有变化</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/05/26/mysql-慢日志/" data-id="cionwxivd000ootrskik4upfa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slow/">slow</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/25/disque-安装/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">disque 安装</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

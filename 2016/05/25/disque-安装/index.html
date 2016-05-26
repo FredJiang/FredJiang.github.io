@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Node.js | Fred</title>
+  <title>disque 安装 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred">
-<meta property="og:url" content="http://fredjiang.github.io/tags/Node-js/index.html">
+  <meta name="description" content="https://github.com/antirez/disque">
+<meta property="og:type" content="article">
+<meta property="og:title" content="disque 安装">
+<meta property="og:url" content="http://fredjiang.github.io/2016/05/25/disque-安装/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description">
+<meta property="og:description" content="https://github.com/antirez/disque">
+<meta property="og:updated_time" content="2016-05-25T06:39:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred">
-<meta name="twitter:description">
+<meta name="twitter:title" content="disque 安装">
+<meta name="twitter:description" content="https://github.com/antirez/disque">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -66,39 +67,73 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/26/Node-js-tips/" class="archive-article-date">
-  <time datetime="2016-04-26T11:03:32.000Z" itemprop="datePublished">Apr 26</time>
+        <section id="main"><article id="post-disque-安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/25/disque-安装/" class="article-date">
+  <time datetime="2016-05-25T06:02:46.000Z" itemprop="datePublished">2016-05-25</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/26/Node-js-tips/">Node.js tips</a>
+    <h1 class="article-title" itemprop="name">
+      disque 安装
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/antirez/disque" target="_blank" rel="external">https://github.com/antirez/disque</a></p>
+<a id="more"></a>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/project/</span><br><span class="line">git clone https://github.com/antirez/disque.git</span><br><span class="line">cd disque</span><br><span class="line">make</span><br><span class="line">make test</span><br></pre></td></tr></table></figure>
+<h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><p><code>./src/disque-server</code></p>
+<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/project/disque</span><br><span class="line">./src/disque</span><br><span class="line">ping</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<h5 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h5><p><code>./disque -h ip -p port</code></p>
+<h5 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h5><p><a href="http://marshal.ohtly.com/2016/01/11/disque-cluster/" target="_blank" rel="external">http://marshal.ohtly.com/2016/01/11/disque-cluster/</a></p>
+<p>参考</p>
+<ul>
+<li><a href="http://marshal.ohtly.com/2016/01/09/getting-start-with-disque-and-node/" target="_blank" rel="external">http://marshal.ohtly.com/2016/01/09/getting-start-with-disque-and-node/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/05/25/disque-安装/" data-id="cionwxiu60003otrscfxm00nu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disque/">disque</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/26/mysql-慢日志/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mysql 慢日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/25/最近常用的-mysql-命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">最近常用的 mysql 命令</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

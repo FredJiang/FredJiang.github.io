@@ -5,17 +5,29 @@
   
   <title>nginx 负载均衡 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="负载均衡的作用：
+一台机器的压力太大，多台服务器可以分流，减小单台服务器的压力
+一台服务器挂了，负载均衡会自动剔除挂掉的服务器，保持业务的稳定性
+
+要实现的效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx 负载均衡">
 <meta property="og:url" content="http://fredjiang.github.io/2016/06/01/nginx-负载均衡/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description">
+<meta property="og:description" content="负载均衡的作用：
+一台机器的压力太大，多台服务器可以分流，减小单台服务器的压力
+一台服务器挂了，负载均衡会自动剔除挂掉的服务器，保持业务的稳定性
+
+要实现的效果">
 <meta property="og:image" content="http://fredjiang.github.io/2016/06/01/nginx-负载均衡/before_and_after.png">
-<meta property="og:updated_time" content="2016-06-01T02:22:06.000Z">
+<meta property="og:updated_time" content="2016-06-01T03:11:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx 负载均衡">
-<meta name="twitter:description">
+<meta name="twitter:description" content="负载均衡的作用：
+一台机器的压力太大，多台服务器可以分流，减小单台服务器的压力
+一台服务器挂了，负载均衡会自动剔除挂掉的服务器，保持业务的稳定性
+
+要实现的效果">
 <meta name="twitter:image" content="http://fredjiang.github.io/2016/06/01/nginx-负载均衡/before_and_after.png">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
@@ -91,15 +103,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <img src="/2016/06/01/nginx-负载均衡/before_and_after.png" alt="before_and_after.png" title="">
+        <h5 id="负载均衡的作用："><a href="#负载均衡的作用：" class="headerlink" title="负载均衡的作用："></a>负载均衡的作用：</h5><ul>
+<li>一台机器的压力太大，多台服务器可以分流，减小单台服务器的压力</li>
+<li>一台服务器挂了，负载均衡会自动剔除挂掉的服务器，保持业务的稳定性</li>
+</ul>
+<h5 id="要实现的效果"><a href="#要实现的效果" class="headerlink" title="要实现的效果"></a>要实现的效果</h5><img src="/2016/06/01/nginx-负载均衡/before_and_after.png" alt="before_and_after.png" title="">
 <a id="more"></a>
-<p>配置文件名字</p>
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>配置文件的名字</p>
 <p>/etc/nginx/conf.d/yyy.xxx.com.3018.conf</p>
 <p>负载均衡前配置文件的内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    client_max_body_size 4G;</span><br><span class="line">    listen  80;</span><br><span class="line"></span><br><span class="line">    server_name yyy.xxx.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header    X-Real-IP       $remote_addr;</span><br><span class="line">        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header    Host            $http_host;</span><br><span class="line">        proxy_set_header    X-NginX-Proxy   true;</span><br><span class="line">        proxy_set_header    Connection      &quot;&quot;;</span><br><span class="line">        proxy_http_version  1.1;</span><br><span class="line">        proxy_pass          http://127.0.0.1:3018;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>负载均衡后的配置文件的内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">upstream yyy.xxx.com &#123;</span><br><span class="line">    server 192.168.1.4:3018;</span><br><span class="line">    server 192.168.1.7:3018;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    client_max_body_size 4G;</span><br><span class="line">    listen  80;</span><br><span class="line"></span><br><span class="line">    server_name yyy.xxx.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header    X-Real-IP       $remote_addr;</span><br><span class="line">        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header    Host            $http_host;</span><br><span class="line">        proxy_set_header    X-NginX-Proxy   true;</span><br><span class="line">        proxy_set_header    Connection      &quot;&quot;;</span><br><span class="line">        proxy_http_version  1.1;</span><br><span class="line">#        proxy_pass          http://127.0.0.1:3018;</span><br><span class="line">        proxy_pass http://yyy.xxx.com;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我这的负载策略是 (192.168.1.4):(192.168.1.7)=1:1。其他的负载策略，可以查下 upstream，比如根据客户端的 ip 来做负载均衡。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream yyy.xxx.com &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server 192.168.1.4:3018;</span><br><span class="line">    server 192.168.1.7:3018;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考</p>
+<ul>
+<li><a href="http://www.cnblogs.com/xiaogangqq123/archive/2011/03/04/1971002.html" target="_blank" rel="external">http://www.cnblogs.com/xiaogangqq123/archive/2011/03/04/1971002.html</a></li>
+</ul>
 
       
     </div>

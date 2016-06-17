@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: key | Fred</title>
+  <title>shell 获取 mongo 表长度 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred">
-<meta property="og:url" content="http://fredjiang.github.io/tags/key/index.html">
+  <meta name="description" content="需求
+获取 mongo 中的所有数据库中的所有表的长度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 获取 mongo 表长度">
+<meta property="og:url" content="http://fredjiang.github.io/2016/06/17/shell-获取-mongo-表长度/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description">
+<meta property="og:description" content="需求
+获取 mongo 中的所有数据库中的所有表的长度">
+<meta property="og:updated_time" content="2016-06-17T07:14:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred">
-<meta name="twitter:description">
+<meta name="twitter:title" content="shell 获取 mongo 表长度">
+<meta name="twitter:description" content="需求
+获取 mongo 中的所有数据库中的所有表的长度">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -66,39 +70,61 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/24/mysql-外键操作/" class="archive-article-date">
-  <time datetime="2016-05-24T13:23:27.000Z" itemprop="datePublished">May 24</time>
+        <section id="main"><article id="post-shell-获取-mongo-表长度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/17/shell-获取-mongo-表长度/" class="article-date">
+  <time datetime="2016-06-17T07:09:52.000Z" itemprop="datePublished">2016-06-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/24/mysql-外键操作/">mysql 外键操作</a>
+    <h1 class="article-title" itemprop="name">
+      shell 获取 mongo 表长度
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>需求</p>
+<p>获取 mongo 中的所有数据库中的所有表的长度</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 显示所有数据库</span><br><span class="line">mongo test --eval &quot;printjson(db.adminCommand(&apos;listDatabases&apos;))&quot;</span><br><span class="line"></span><br><span class="line">// 显示数据库 test 中的所有表</span><br><span class="line">mongo test --eval &quot;printjson(db.getCollectionNames())&quot;</span><br><span class="line"></span><br><span class="line">// 显示数据库 test 中的 collectionName 表的长度</span><br><span class="line">mongo test --eval &quot;db.collectionName.count()&quot;</span><br></pre></td></tr></table></figure>
+<p>参考</p>
+<ul>
+<li><a href="https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/" target="_blank" rel="external">https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/06/17/shell-获取-mongo-表长度/" data-id="cipjeh7hr0010j3rs242d618u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/count/">count</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/13/文件夹大小统计/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">文件夹大小统计</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

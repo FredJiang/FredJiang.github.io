@@ -68,6 +68,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-disque-命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/19/disque-命令/" class="article-date">
+  <time datetime="2016-06-19T02:34:51.000Z" itemprop="datePublished">2016-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/19/disque-命令/">disque 命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="查看有多少队列"><a href="#查看有多少队列" class="headerlink" title="查看有多少队列"></a>查看有多少队列</h5><p><code>/opt/project/disque/src/disque -h 127.0.0.1 qscan</code></p>
+<h5 id="查看队列长度"><a href="#查看队列长度" class="headerlink" title="查看队列长度"></a>查看队列长度</h5><p><code>/opt/project/disque/src/disque -h 127.0.0.1 qlen message_mqtt</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/19/disque-命令/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/06/19/disque-命令/" data-id="cipm0lm190001g8rs7fnpbk13" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disque/">disque</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mongo-循环删除数据" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/19/mongo-循环删除数据/" class="article-date">
@@ -93,11 +137,15 @@
         <h5 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h5><p>线上的业务逻辑处理变慢了，原因是 mongo 数据库的数据量太大，而且这些数据都是多余的日志数据，因此比较快的处理方法就是：删数据。。。</p>
 <h5 id="一次性删除"><a href="#一次性删除" class="headerlink" title="一次性删除"></a>一次性删除</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collectionName.remove(conditions)</span><br></pre></td></tr></table></figure>
 <p>因为删除耗时太久，而且中间没有任何反馈，感觉像是卡死了</p>
-<h5 id="一条一条删除："><a href="#一条一条删除：" class="headerlink" title="一条一条删除："></a>一条一条删除：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var startTime = new Date(&quot;2015-04-01&quot;).getTime();</span><br><span class="line">var endTime = new Date(&quot;2016-04-01&quot;).getTime();</span><br><span class="line">print(startTime);</span><br><span class="line">print(new Date(startTime));</span><br><span class="line">print(endTime);</span><br><span class="line">print(new Date(endTime));</span><br><span class="line"></span><br><span class="line">var count = 0;</span><br><span class="line">var maxCount = 1000000;</span><br><span class="line">var whereConditions = &#123;</span><br><span class="line">    $and: [&#123;</span><br><span class="line">        loginTime: &#123;</span><br><span class="line">            $gt: startTime</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        loginTime: &#123;</span><br><span class="line">            $lt: endTime</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line">var myCursor = db.loginlogs.find(whereConditions);</span><br><span class="line">while (myCursor.hasNext() &amp;&amp; count &lt; maxCount) &#123;</span><br><span class="line">    // print(tojson(myCursor.next()));</span><br><span class="line">    var myDocument = myCursor.next();</span><br><span class="line">    if (myDocument) &#123;</span><br><span class="line">        print(new Date(myDocument.loginTime));</span><br><span class="line">        print(count);</span><br><span class="line">        db.loginlogs.remove(myDocument);</span><br><span class="line">    &#125;</span><br><span class="line">    count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/19/mongo-循环删除数据/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/06/19/mongo-循环删除数据/" data-id="ciplz8umu001b3rrsnxbtscof" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/06/19/mongo-循环删除数据/" data-id="cipm0lm3j001cg8rsxuow4mgp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loop/">loop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -141,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/06/17/shell-获取-mongo-表长度/" data-id="ciplz8unz00273rrsdb26844w" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/06/17/shell-获取-mongo-表长度/" data-id="cipm0lm5d0023g8rsi0qix8rz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/count/">count</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -188,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/06/13/文件夹大小统计/" data-id="ciplz8uoj002p3rrsq2p7wqjx" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/06/13/文件夹大小统计/" data-id="cipm0lm5s002ag8rs2t4njhni" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/du/">du</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/head/">head</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sort/">sort</a></li></ul>
@@ -231,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/06/12/Framework7-使用/" data-id="ciplz8ukv00063rrs9sruu6k4" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/06/12/Framework7-使用/" data-id="cipm0lm300016g8rsrqe8d48v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -277,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/06/03/ubuntu-禁止-mongo-开机启动/" data-id="ciplz8uo200293rrse7tlifk1" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/06/03/ubuntu-禁止-mongo-开机启动/" data-id="cipm0lm5k0026g8rs9f9sn1wn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/init/">init</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/startup/">startup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -324,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/06/01/nginx-负载均衡/" data-id="ciplz8unj001u3rrs6uqjsy6w" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/06/01/nginx-负载均衡/" data-id="cipm0lm4v001tg8rs6v9avko8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/upstream/">upstream</a></li></ul>
@@ -367,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/30/添加-sudo-权限/" data-id="ciplz8uoa002h3rrse5o0x0tf" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/30/添加-sudo-权限/" data-id="cipm0lm9f006yg8rsco2e0dmo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sudo/">sudo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/user/">user</a></li></ul>
@@ -411,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/26/mysql-慢日志/" data-id="ciplz8uni001t3rrstm1sf79f" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/26/mysql-慢日志/" data-id="cipm0lm4c001kg8rss6e06en5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysqldumpslow/">mysqldumpslow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slow/">slow</a></li></ul>
@@ -454,54 +502,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/25/disque-安装/" data-id="ciplz8ukm00013rrs2f52t9du" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/25/disque-安装/" data-id="cipm0lm1g0003g8rsd9j6lfax" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disque/">disque</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-最近常用的-mysql-命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/25/最近常用的-mysql-命令/" class="article-date">
-  <time datetime="2016-05-25T03:57:38.000Z" itemprop="datePublished">2016-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/25/最近常用的-mysql-命令/">最近常用的 mysql 命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="在数据库中运行脚本"><a href="#在数据库中运行脚本" class="headerlink" title="在数据库中运行脚本"></a>在数据库中运行脚本</h5><p><code>mysql -u user -p dbname &lt; ./sdk.sql</code></p>
-<h5 id="显示字符集"><a href="#显示字符集" class="headerlink" title="显示字符集"></a>显示字符集</h5><p><code>SHOW VARIABLES WHERE Variable_name LIKE &#39;character_set_%&#39; OR Variable_name LIKE &#39;collation%&#39;;</code></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/25/最近常用的-mysql-命令/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/25/最近常用的-mysql-命令/" data-id="ciplz8uo8002g3rrszdpqb95f" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command/">command</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
 
     </footer>
   </div>
@@ -536,7 +540,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES2015/" style="font-size: 10px;">ES2015</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/V8/" style="font-size: 10px;">V8</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/bare-repository/" style="font-size: 10px;">bare repository</a> <a href="/tags/boot/" style="font-size: 10px;">boot</a> <a href="/tags/charset/" style="font-size: 10px;">charset</a> <a href="/tags/command/" style="font-size: 12px;">command</a> <a href="/tags/count/" style="font-size: 10px;">count</a> <a href="/tags/create/" style="font-size: 10px;">create</a> <a href="/tags/database/" style="font-size: 12px;">database</a> <a href="/tags/db/" style="font-size: 14px;">db</a> <a href="/tags/disque/" style="font-size: 10px;">disque</a> <a href="/tags/du/" style="font-size: 10px;">du</a> <a href="/tags/es/" style="font-size: 10px;">es</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/foreign-key/" style="font-size: 10px;">foreign key</a> <a href="/tags/framework7/" style="font-size: 10px;">framework7</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 12px;">gitlab</a> <a href="/tags/goaccess/" style="font-size: 10px;">goaccess</a> <a href="/tags/head/" style="font-size: 10px;">head</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/iWatch/" style="font-size: 10px;">iWatch</a> <a href="/tags/id-rsa/" style="font-size: 10px;">id_rsa</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/ios/" style="font-size: 12px;">ios</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/linux/" style="font-size: 18px;">linux</a> <a href="/tags/log/" style="font-size: 16px;">log</a> <a href="/tags/logrotate/" style="font-size: 10px;">logrotate</a> <a href="/tags/loop/" style="font-size: 10px;">loop</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/master/" style="font-size: 10px;">master</a> <a href="/tags/memerory/" style="font-size: 10px;">memerory</a> <a href="/tags/mongo/" style="font-size: 20px;">mongo</a> <a href="/tags/mongodb/" style="font-size: 14px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysqldumpslow/" style="font-size: 10px;">mysqldumpslow</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/nginx/" style="font-size: 12px;">nginx</a> <a href="/tags/node/" style="font-size: 18px;">node</a> <a href="/tags/nodejs/" style="font-size: 18px;">nodejs</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/npm/" style="font-size: 12px;">npm</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pm2-web/" style="font-size: 10px;">pm2-web</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/server/" style="font-size: 18px;">server</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/shell/" style="font-size: 12px;">shell</a> <a href="/tags/slave/" style="font-size: 10px;">slave</a> <a href="/tags/slow/" style="font-size: 10px;">slow</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/startup/" style="font-size: 12px;">startup</a> <a href="/tags/subsystem/" style="font-size: 10px;">subsystem</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/upstream/" style="font-size: 10px;">upstream</a> <a href="/tags/user/" style="font-size: 12px;">user</a> <a href="/tags/utf8/" style="font-size: 10px;">utf8</a> <a href="/tags/utf8mb4/" style="font-size: 10px;">utf8mb4</a> <a href="/tags/utf8mb4-unicode-ci/" style="font-size: 10px;">utf8mb4_unicode_ci</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a>
+      <a href="/tags/ES2015/" style="font-size: 10px;">ES2015</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/V8/" style="font-size: 10px;">V8</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/bare-repository/" style="font-size: 10px;">bare repository</a> <a href="/tags/boot/" style="font-size: 10px;">boot</a> <a href="/tags/charset/" style="font-size: 10px;">charset</a> <a href="/tags/command/" style="font-size: 12px;">command</a> <a href="/tags/count/" style="font-size: 10px;">count</a> <a href="/tags/create/" style="font-size: 10px;">create</a> <a href="/tags/database/" style="font-size: 12px;">database</a> <a href="/tags/db/" style="font-size: 14px;">db</a> <a href="/tags/disque/" style="font-size: 12px;">disque</a> <a href="/tags/du/" style="font-size: 10px;">du</a> <a href="/tags/es/" style="font-size: 10px;">es</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/foreign-key/" style="font-size: 10px;">foreign key</a> <a href="/tags/framework7/" style="font-size: 10px;">framework7</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 12px;">gitlab</a> <a href="/tags/goaccess/" style="font-size: 10px;">goaccess</a> <a href="/tags/head/" style="font-size: 10px;">head</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/iWatch/" style="font-size: 10px;">iWatch</a> <a href="/tags/id-rsa/" style="font-size: 10px;">id_rsa</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/ios/" style="font-size: 12px;">ios</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/linux/" style="font-size: 18px;">linux</a> <a href="/tags/log/" style="font-size: 16px;">log</a> <a href="/tags/logrotate/" style="font-size: 10px;">logrotate</a> <a href="/tags/loop/" style="font-size: 10px;">loop</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/master/" style="font-size: 10px;">master</a> <a href="/tags/memerory/" style="font-size: 10px;">memerory</a> <a href="/tags/mongo/" style="font-size: 20px;">mongo</a> <a href="/tags/mongodb/" style="font-size: 14px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysqldumpslow/" style="font-size: 10px;">mysqldumpslow</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/nginx/" style="font-size: 12px;">nginx</a> <a href="/tags/node/" style="font-size: 18px;">node</a> <a href="/tags/nodejs/" style="font-size: 18px;">nodejs</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/npm/" style="font-size: 12px;">npm</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pm2-web/" style="font-size: 10px;">pm2-web</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/server/" style="font-size: 18px;">server</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/shell/" style="font-size: 14px;">shell</a> <a href="/tags/slave/" style="font-size: 10px;">slave</a> <a href="/tags/slow/" style="font-size: 10px;">slow</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/startup/" style="font-size: 12px;">startup</a> <a href="/tags/subsystem/" style="font-size: 10px;">subsystem</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/upstream/" style="font-size: 10px;">upstream</a> <a href="/tags/user/" style="font-size: 12px;">user</a> <a href="/tags/utf8/" style="font-size: 10px;">utf8</a> <a href="/tags/utf8mb4/" style="font-size: 10px;">utf8mb4</a> <a href="/tags/utf8mb4-unicode-ci/" style="font-size: 10px;">utf8mb4_unicode_ci</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a>
     </div>
   </div>
 
@@ -558,6 +562,10 @@
       <ul>
         
           <li>
+            <a href="/2016/06/19/disque-命令/">disque 命令</a>
+          </li>
+        
+          <li>
             <a href="/2016/06/19/mongo-循环删除数据/">mongo 循环删除数据</a>
           </li>
         
@@ -571,10 +579,6 @@
         
           <li>
             <a href="/2016/06/12/Framework7-使用/">Framework7 使用</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/03/ubuntu-禁止-mongo-开机启动/">ubuntu 禁止 mongo 开机启动</a>
           </li>
         
       </ul>

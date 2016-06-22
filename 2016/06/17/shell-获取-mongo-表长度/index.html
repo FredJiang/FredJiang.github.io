@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Fred">
 <meta property="og:description" content="需求
 获取 mongo 中的所有数据库中的所有表的长度">
-<meta property="og:updated_time" content="2016-06-17T07:14:33.000Z">
+<meta property="og:updated_time" content="2016-06-21T11:16:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 获取 mongo 表长度">
 <meta name="twitter:description" content="需求
@@ -96,6 +96,8 @@
 <p>获取 mongo 中的所有数据库中的所有表的长度</p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 显示所有数据库</span><br><span class="line">mongo test --eval &quot;printjson(db.adminCommand(&apos;listDatabases&apos;))&quot;</span><br><span class="line"></span><br><span class="line">// 显示数据库 test 中的所有表</span><br><span class="line">mongo test --eval &quot;printjson(db.getCollectionNames())&quot;</span><br><span class="line"></span><br><span class="line">// 显示数据库 test 中的 collectionName 表的长度</span><br><span class="line">mongo test --eval &quot;db.collectionName.count()&quot;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 显示数据库 test 中表长度大于 0 的</span><br><span class="line">mongo test</span><br><span class="line"></span><br><span class="line">db.getCollectionNames().map(function(name) &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        &quot;name&quot;: name,</span><br><span class="line">        &quot;count&quot;: db[name].count()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).filter(function(data) &#123;</span><br><span class="line">    return data.count &gt; 0</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>参考</p>
 <ul>
 <li><a href="https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/" target="_blank" rel="external">https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/</a></li>

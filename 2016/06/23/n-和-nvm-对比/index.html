@@ -5,10 +5,14 @@
   
   <title>n 和 nvm 对比 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="n
+  <meta name="description" content=".
 .
 
 
+
+
+n
+.
 
 
 GitHub:
@@ -16,7 +20,7 @@ https://github.com/visionmedia/n
 
 
 Install:
-$ npm install -g n
+npm install -g n
 
 
 Path to Script:
@@ -28,15 +32,19 @@ Node Versions Path:
 
 
 How n gets a new version:
-Downloads B">
+Downloa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="n 和 nvm 对比">
 <meta property="og:url" content="http://fredjiang.github.io/2016/06/23/n-和-nvm-对比/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description" content="n
+<meta property="og:description" content=".
 .
 
 
+
+
+n
+.
 
 
 GitHub:
@@ -44,7 +52,7 @@ https://github.com/visionmedia/n
 
 
 Install:
-$ npm install -g n
+npm install -g n
 
 
 Path to Script:
@@ -56,14 +64,18 @@ Node Versions Path:
 
 
 How n gets a new version:
-Downloads B">
-<meta property="og:updated_time" content="2016-06-23T14:38:15.000Z">
+Downloa">
+<meta property="og:updated_time" content="2016-06-23T16:49:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="n 和 nvm 对比">
-<meta name="twitter:description" content="n
+<meta name="twitter:description" content=".
 .
 
 
+
+
+n
+.
 
 
 GitHub:
@@ -71,7 +83,7 @@ https://github.com/visionmedia/n
 
 
 Install:
-$ npm install -g n
+npm install -g n
 
 
 Path to Script:
@@ -83,7 +95,7 @@ Node Versions Path:
 
 
 How n gets a new version:
-Downloads B">
+Downloa">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -161,76 +173,74 @@ Downloads B">
         <table>
 <thead>
 <tr>
-<th>n</th>
+<th>.</th>
 <th>.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GitHub:</td>
+<td>n</td>
+<td>.</td>
+</tr>
+<tr>
+<td><span style="color:red;">GitHub:</span></td>
 <td><a href="https://github.com/visionmedia/n" target="_blank" rel="external">https://github.com/visionmedia/n</a></td>
 </tr>
 <tr>
-<td>Install:</td>
-<td>$ npm install -g n</td>
+<td><span style="color:red;">Install:</span></td>
+<td>npm install -g n</td>
 </tr>
 <tr>
-<td>Path to Script:</td>
+<td><span style="color:red;">Path to Script:</span></td>
 <td>/usr/local/bin/n</td>
 </tr>
 <tr>
-<td>Node Versions Path:</td>
+<td><span style="color:red;">Node Versions Path:</span></td>
 <td>/usr/local/n/versions</td>
 </tr>
 <tr>
-<td>How n gets a new version:</td>
+<td><span style="color:red;">How n gets a new version:</span></td>
 <td>Downloads Binary Node tar.gz file for platform</td>
 </tr>
 <tr>
-<td>How n switches versions:</td>
+<td><span style="color:red;">How n switches versions:</span></td>
 <td>Copies files from /usr/local/n/versions/node/someVersion/bin/node to /usr/local/bin/node</td>
 </tr>
 <tr>
-<td>.</td>
+<td><span style="color:red;">global packages</span></td>
 <td>N works by storing different versions of node in some directory somewhere and when you switch versions, it will copy it to  /usr/local/bin. This is great for simplicity. It’s easy to install, easy to use, the only problem is that you basically have to sudo every command. Also, because it’s just swapping out different versions of node from your install directory, it doesn’t have a good way of handling those pesky <code>npm install -g packages</code>.</td>
 </tr>
-</tbody>
-</table>
-<table>
-<thead>
 <tr>
-<th>nvm</th>
-<th>.</th>
+<td>nvm</td>
+<td>.</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>GitHub:</td>
+<td><span style="color:red;">GitHub:</span></td>
 <td><a href="https://github.com/creationix/nvm" target="_blank" rel="external">https://github.com/creationix/nvm</a></td>
 </tr>
 <tr>
-<td>Install:</td>
+<td><span style="color:red;">Install:</span></td>
 <td>curl <a href="https://raw.github.com/creationix/nvm/master/install.sh" target="_blank" rel="external">https://raw.github.com/creationix/nvm/master/install.sh</a></td>
 <td>sh</td>
 </tr>
 <tr>
-<td>Path to Script:</td>
+<td><span style="color:red;">Path to Script:</span></td>
 <td>~/.nvm/nvm.sh</td>
 </tr>
 <tr>
-<td>Node Versions Path:</td>
+<td><span style="color:red;">Node Versions Path:</span></td>
 <td>~/.nvm/</td>
 </tr>
 <tr>
-<td>How nvm gets a new version:</td>
+<td><span style="color:red;">How nvm gets a new version:</span></td>
 <td>Downloads and compiles source node distribution (binary option also available)</td>
 </tr>
 <tr>
-<td>How nvm switches versions:</td>
+<td><span style="color:red;">How nvm switches versions:</span></td>
 <td>updates $PATH variables to point to requested version within ~/.nvm/ directory</td>
 </tr>
 <tr>
-<td>.</td>
+<td><span style="color:red;">global packages</span></td>
 <td>NVM installs node to <code>~/.nvm/&lt;version&gt;/</code>. Then it modifies your PATH to include the proper bin directory. When installing global packages, they too get installed under  <code>~/.nvm/&lt;version&gt;</code></td>
 </tr>
 </tbody>

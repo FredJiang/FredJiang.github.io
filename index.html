@@ -90,24 +90,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://wiki.postgresql.org/wiki/YUM_Installation" target="_blank" rel="external">在 CentOS 下安装</a></p>
+        <p><a href="https://wiki.postgresql.org/wiki/YUM_Installation">在 CentOS 下安装</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line"></span><br><span class="line">sudo yum install postgresql-server</span><br><span class="line"></span><br><span class="line">sudo yum install postgresql</span><br><span class="line"></span><br><span class="line"># 初始化数据库</span><br><span class="line">sudo postgresql-setup initdb</span><br><span class="line"></span><br><span class="line"># 开机启动数据库</span><br><span class="line">sudo chkconfig postgresql on</span><br><span class="line"></span><br><span class="line"># 启动数据库</span><br><span class="line">sudo service postgresql start</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 切换到用户 postgres</span><br><span class="line">sudo su postgres</span><br><span class="line"></span><br><span class="line"># 切换到 postgres 的 $HOME 目录下</span><br><span class="line">cd</span><br><span class="line"></span><br><span class="line">createdb mytestdb</span><br></pre></td></tr></table></figure>
-<p>或</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 切换到用户 postgres</span><br><span class="line">sudo su postgres</span><br><span class="line"></span><br><span class="line"># 打开 PostgreSQL 的 shell</span><br><span class="line">psql</span><br><span class="line"></span><br><span class="line">CREATE DATABASE mytestdb;</span><br></pre></td></tr></table></figure>
-<p><code>sudo su postgres</code> 后需要运行 <code>cd</code> 到 postgres 的 $HOME 目录下，否则运行 <code>psql</code> 可能会报 could not change directory to “/home/xxx 的提示，也就是对当前目录没有写权限</p>
-<h4 id="显示数据库"><a href="#显示数据库" class="headerlink" title="显示数据库"></a>显示数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 切换到用户 postgres</span><br><span class="line">sudo su postgres</span><br><span class="line"></span><br><span class="line"># 切换到 postgres 的 $HOME 目录下</span><br><span class="line">cd</span><br><span class="line"></span><br><span class="line">psql</span><br><span class="line"></span><br><span class="line">\l</span><br></pre></td></tr></table></figure>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>\h：查看 SQL 命令的解释，比如 \h select。</li>
-<li>\?：查看psql命令列表。</li>
-<li>\l：列出所有数据库。</li>
-<li>\c [database_name]：连接其他数据库。</li>
-<li>\d：列出当前数据库的所有表格。</li>
-<li>\d [table_name]：列出某一张表格的结构。</li>
-<li>\du：列出所有用户。</li>
-<li>\conninfo：列出当前数据库和连接的信息。</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/07/30/PostgreSQL入门/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

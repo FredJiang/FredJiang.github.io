@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Fred">
 <meta property="og:description" content="在 CentOS 下安装
 1234567891011121314sudo yum updatesudo yum install postgresql-serversudo yum install postgresql# 初始化数据库sudo postgresql-setup initdb# 开机启动数据库sudo chkconfig postgresql on# 启动数据库sudo service">
-<meta property="og:updated_time" content="2016-07-30T15:51:55.000Z">
+<meta property="og:updated_time" content="2016-07-30T15:52:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PostgreSQL入门">
 <meta name="twitter:description" content="在 CentOS 下安装
@@ -94,6 +94,7 @@
       
         <p><a href="https://wiki.postgresql.org/wiki/YUM_Installation" target="_blank" rel="external">在 CentOS 下安装</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line"></span><br><span class="line">sudo yum install postgresql-server</span><br><span class="line"></span><br><span class="line">sudo yum install postgresql</span><br><span class="line"></span><br><span class="line"># 初始化数据库</span><br><span class="line">sudo postgresql-setup initdb</span><br><span class="line"></span><br><span class="line"># 开机启动数据库</span><br><span class="line">sudo chkconfig postgresql on</span><br><span class="line"></span><br><span class="line"># 启动数据库</span><br><span class="line">sudo service postgresql start</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 切换到用户 postgres</span><br><span class="line">sudo su postgres</span><br><span class="line"></span><br><span class="line"># 切换到 postgres 的 $HOME 目录下</span><br><span class="line">cd</span><br><span class="line"></span><br><span class="line">createdb mytestdb</span><br></pre></td></tr></table></figure>
 <p>或</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 切换到用户 postgres</span><br><span class="line">sudo su postgres</span><br><span class="line"></span><br><span class="line"># 打开 PostgreSQL 的 shell</span><br><span class="line">psql</span><br><span class="line"></span><br><span class="line">CREATE DATABASE mytestdb;</span><br></pre></td></tr></table></figure>

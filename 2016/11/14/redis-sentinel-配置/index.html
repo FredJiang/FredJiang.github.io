@@ -5,19 +5,16 @@
   
   <title>redis sentinel 配置 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录结构tree /opt/redis_*
-12345678910111213141516171819202122232425/opt/redis_6├── dump.rdb├── nohup.out├── redis.conf└── sentinel    ├── nohup.out    └── sentinel.conf/opt/redis_7├── dump.rdb├── nohup.ou">
+  <meta name="description" content="目录结构tree /opt/redis_*">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis sentinel 配置">
 <meta property="og:url" content="http://fredjiang.github.io/2016/11/14/redis-sentinel-配置/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description" content="目录结构tree /opt/redis_*
-12345678910111213141516171819202122232425/opt/redis_6├── dump.rdb├── nohup.out├── redis.conf└── sentinel    ├── nohup.out    └── sentinel.conf/opt/redis_7├── dump.rdb├── nohup.ou">
-<meta property="og:updated_time" content="2016-11-14T11:41:46.000Z">
+<meta property="og:description" content="目录结构tree /opt/redis_*">
+<meta property="og:updated_time" content="2016-11-14T11:45:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis sentinel 配置">
-<meta name="twitter:description" content="目录结构tree /opt/redis_*
-12345678910111213141516171819202122232425/opt/redis_6├── dump.rdb├── nohup.out├── redis.conf└── sentinel    ├── nohup.out    └── sentinel.conf/opt/redis_7├── dump.rdb├── nohup.ou">
+<meta name="twitter:description" content="目录结构tree /opt/redis_*">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -93,6 +90,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><code>tree /opt/redis_*</code></p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/opt/redis_6</span><br><span class="line">├── dump.rdb</span><br><span class="line">├── nohup.out</span><br><span class="line">├── redis.conf</span><br><span class="line">└── sentinel</span><br><span class="line">    ├── nohup.out</span><br><span class="line">    └── sentinel.conf</span><br><span class="line">/opt/redis_7</span><br><span class="line">├── dump.rdb</span><br><span class="line">├── nohup.out</span><br><span class="line">├── redis.conf</span><br><span class="line">└── sentinel</span><br><span class="line">    ├── nohup.out</span><br><span class="line">    └── sentinel.conf</span><br><span class="line">/opt/redis_8</span><br><span class="line">├── dump.rdb</span><br><span class="line">├── nohup.out</span><br><span class="line">├── redis.conf</span><br><span class="line">└── sentinel</span><br><span class="line">    ├── nohup.out</span><br><span class="line">    └── sentinel.conf</span><br><span class="line">/opt/redis_9</span><br><span class="line">├── dump.rdb</span><br><span class="line">├── nohup.out</span><br><span class="line">└── redis.conf</span><br></pre></td></tr></table></figure>
 <h3 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h3><h4 id="cat-opt-redis-6-redis-conf"><a href="#cat-opt-redis-6-redis-conf" class="headerlink" title="cat /opt/redis_6/redis.conf"></a><code>cat /opt/redis_6/redis.conf</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">.</span><br><span class="line">port 6376</span><br><span class="line">pidfile &quot;/var/run/redis_6376.pid&quot;</span><br><span class="line">dir &quot;/opt/redis_6&quot;</span><br><span class="line">protected-mode no</span><br><span class="line">.</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
 <p>对应的 7 8 9 文件要改参数 <code>port</code> <code>pidfile</code> <code>dir</code></p>

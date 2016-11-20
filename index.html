@@ -134,32 +134,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>apt-get install nmon</code></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="交互方式"><a href="#交互方式" class="headerlink" title="交互方式"></a>交互方式</h4><p>终端输入 <code>nmon</code>, 根据提示按下 m, 显示内存信息, 再按下 c 显示 CPU 信息. 再按下 m, 关闭内存信息. 帮助信息按 h. q 退出. </p>
-<h4 id="非交互方式"><a href="#非交互方式" class="headerlink" title="非交互方式"></a>非交互方式</h4><p><code>nmon -f -t -s 30 -c 180</code></p>
-<ul>
-<li>-f: 按标准格式输出文件: <hostname>_YYMMDD_HHMM.nmon</hostname></li>
-<li>-t: 输出中包括占用率较高的进程</li>
-<li>-s: 每 30 秒进行一次数据采集</li>
-<li>-c: 一共采集 180 次</li>
-</ul>
-<p>查看结果</p>
-<p><code>sort fred-UBUNTU_161115_1116.nmon &gt; fred-UBUNTU_161115_1116.csv</code></p>
-<p>可以直接查看 csv 文件.</p>
-<p>也可以用 <a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Power+Systems/page/nmon_analyser" target="_blank" rel="external">Analyze nmon data</a> 以图表的方式查看</p>
-<p><a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Power+Systems/page/nmon_analyser" target="_blank" rel="external">Analyze nmon data</a> 的使用</p>
-<ul>
-<li>下载 <a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Power+Systems/page/nmon_analyser" target="_blank" rel="external">Analyze nmon data</a>, 我这里用的是 <a href="https://www.ibm.com/developerworks/community/wikis/form/anonymous/api/wiki/61ad9cf2-c6a3-4d2c-b779-61ff0266d32a/page/b7fc61a1-eef9-4756-8028-6e687997f176/attachment/d32a74ae-0ab5-4abc-8e61-567b5f41c5e5/media/nmon_analyser_v51_2.zip" target="_blank" rel="external">nmon_analyser_v51_2.zip</a> 版本</li>
-<li>解压 nmon_analyser_v51_2.zip</li>
-<li>打开 nmon analyser v51_2.xlsm</li>
-<li>如果 excel 提示是否用宏, 选择使用宏</li>
-<li>点击 Analyze nmon data</li>
-<li>选择 csv 文件 fred-UBUNTU_161115_1116.csv</li>
-<li>静静地等待结果…</li>
-<li>查看结果文件 fred-UBUNTU_161115_1116.nmon.xlsx 中的各种数据</li>
-<li>如果以上步骤没有得到图表的话, 可以换个 excel 版本试试(我这 2011 版本的 excel 用不了,我更新了 2016 版本的 excel 才好的)</li>
-<li>祝你好运!</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/11/15/nmon-使用/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

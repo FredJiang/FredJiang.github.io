@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/3 | Fred</title>
+  <title>UNIX 网络编程 笔记 6 -- 描述符就绪 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred">
-<meta property="og:url" content="http://fredjiang.github.io/archives/2015/03/index.html">
+  <meta name="description" content="满足下列四个条件中的任何一个时，一个套接字准备好读取。
+
+该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。
+该连接的读取半部关闭（也就是接收了 FI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UNIX 网络编程 笔记 6 -- 描述符就绪">
+<meta property="og:url" content="http://fredjiang.github.io/2016/12/24/UNIX-网络编程-笔记-6-描述符就绪/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description">
+<meta property="og:description" content="满足下列四个条件中的任何一个时，一个套接字准备好读取。
+
+该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。
+该连接的读取半部关闭（也就是接收了 FI">
+<meta property="og:updated_time" content="2016-12-24T14:24:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred">
-<meta name="twitter:description">
+<meta name="twitter:title" content="UNIX 网络编程 笔记 6 -- 描述符就绪">
+<meta name="twitter:description" content="满足下列四个条件中的任何一个时，一个套接字准备好读取。
+
+该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。
+该连接的读取半部关闭（也就是接收了 FI">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -66,96 +76,68 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/03/18/iWatch-使用/" class="archive-article-date">
-  <time datetime="2015-03-18T12:50:27.000Z" itemprop="datePublished">Mar 18</time>
+        <section id="main"><article id="post-UNIX-网络编程-笔记-6-描述符就绪" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/24/UNIX-网络编程-笔记-6-描述符就绪/" class="article-date">
+  <time datetime="2016-12-24T14:00:14.000Z" itemprop="datePublished">2016-12-24</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/18/iWatch-使用/">iWatch 使用</a>
+    <h1 class="article-title" itemprop="name">
+      UNIX 网络编程 笔记 6 -- 描述符就绪
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/03/12/markdown-生成目录/" class="archive-article-date">
-  <time datetime="2015-03-12T13:37:39.000Z" itemprop="datePublished">Mar 12</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/12/markdown-生成目录/">markdown 生成目录</a>
-    </h1>
-  
+        <a id="more"></a>
+<p>满足下列四个条件中的任何一个时，一个套接字准备好读取。</p>
+<ul>
+<li>该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。</li>
+<li>该连接的读取半部关闭（也就是接收了 FIN 的 TCP 连接）。对这样的套接字的读取操作将不阻塞并返回 0（也就是返回 EOF）。</li>
+<li>该套接字是一个监听套接字且已完成的连接数不为 0。对这样的套接字的 accept 通常不会阻塞。</li>
+<li>其上有一个套接字错误待处理。对这样的套接字的读操作将不阻塞并返回 -1（也就是返回一个错误），同时把 error 设置成确切的错误条件。</li>
+</ul>
+<p>下列四个条件中的任何一个满足时，一个套接字准备好写。</p>
+<ul>
+<li>该套接字发送缓冲区中的可用空间字节数大于等于套接字发送缓冲区低水位标记的当前大小，并且或者该套接字已连接，或者该套接字不需要连接（如 UDP 套接字）。</li>
+<li>该连接的写半部分关闭。对这样的套接字的写操作将产生 SIGPIPE 信号。</li>
+<li>使用非阻塞式 connect 的套接字已建立连接，或者 connect 已经以失败告终。</li>
+<li>其上有一个套接字错误待处理。对这样的套接字的写操作将不阻塞并返回 -1（也就是返回一个错误），同时把 errno 设置成确切的错误条件。</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/03/10/nginx-日志分析/" class="archive-article-date">
-  <time datetime="2015-03-10T07:27:39.000Z" itemprop="datePublished">Mar 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/10/nginx-日志分析/">nginx 日志分析</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/03/04/mongodb-sharding-笔记/" class="archive-article-date">
-  <time datetime="2015-03-04T09:57:34.000Z" itemprop="datePublished">Mar 4</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/12/24/UNIX-网络编程-笔记-6-描述符就绪/" data-id="cix3bi9j4000rn7rsk5wjlofr" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/04/mongodb-sharding-笔记/">mongodb sharding 笔记</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UNIX-网络编程/">UNIX 网络编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix/">unix</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/21/atom-编辑-uml/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">atom 编辑 uml</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

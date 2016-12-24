@@ -5,25 +5,19 @@
   
   <title>UNIX 网络编程 笔记 6 -- 描述符就绪 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="满足下列四个条件中的任何一个时，一个套接字准备好读取。
-
-该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。
-该连接的读取半部关闭（也就是接收了 FI">
+  <meta name="description" content="套接字准备好读取
+套接字准备好写">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UNIX 网络编程 笔记 6 -- 描述符就绪">
 <meta property="og:url" content="http://fredjiang.github.io/2016/12/24/UNIX-网络编程-笔记-6-描述符就绪/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description" content="满足下列四个条件中的任何一个时，一个套接字准备好读取。
-
-该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。
-该连接的读取半部关闭（也就是接收了 FI">
-<meta property="og:updated_time" content="2016-12-24T14:24:44.000Z">
+<meta property="og:description" content="套接字准备好读取
+套接字准备好写">
+<meta property="og:updated_time" content="2016-12-24T14:26:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UNIX 网络编程 笔记 6 -- 描述符就绪">
-<meta name="twitter:description" content="满足下列四个条件中的任何一个时，一个套接字准备好读取。
-
-该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。
-该连接的读取半部关闭（也就是接收了 FI">
+<meta name="twitter:description" content="套接字准备好读取
+套接字准备好写">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -98,7 +92,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <ul>
+<li>套接字准备好读取</li>
+<li>套接字准备好写</li>
+</ul>
+<a id="more"></a>
 <p>满足下列四个条件中的任何一个时，一个套接字准备好读取。</p>
 <ul>
 <li>该套接字接收缓冲区中的数据字节数大于等于套接字接收缓冲区低水位标记的当前大小。对这样的套接字执行读操作不会阻塞并将返回一个大于 0 的值（也就是返回准备好读入的数据）。我们可以使用 SO_RCVLOWAT 套接字 选项设置该套接字的低水位标记。对于 TCP 和 UDP 套接字而言，其默认值为 1。</li>

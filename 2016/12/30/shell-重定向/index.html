@@ -15,7 +15,7 @@ cmd 2&amp;gt;stderr.txt 1&amp;gt;stdout.txt
 <meta property="og:description" content="You can redirect stderr exclusively to a file and stdout to another file as follows: 
 cmd 2&amp;gt;stderr.txt 1&amp;gt;stdout.txt
 &amp;gt; is equivalent to 1&amp;gt; and similarly it applies for &amp;gt;&amp;gt; (equivalent">
-<meta property="og:updated_time" content="2017-01-01T05:59:56.000Z">
+<meta property="og:updated_time" content="2017-01-10T05:54:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 重定向">
 <meta name="twitter:description" content="You can redirect stderr exclusively to a file and stdout to another file as follows: 
@@ -98,6 +98,7 @@ cmd 2&amp;gt;stderr.txt 1&amp;gt;stdout.txt
         <p>You can redirect stderr exclusively to a file and stdout to another file as follows: </p>
 <p><code>cmd 2&gt;stderr.txt 1&gt;stdout.txt</code></p>
 <p><code>&gt;</code> is equivalent to <code>1&gt;</code> and similarly it applies for <code>&gt;&gt;</code> (equivalent to <code>1&gt;&gt;</code>).</p>
+<a id="more"></a>
 <p>It is also possible to redirect stderr and stdout to a single file by converting stderr to stdout using this preferred method:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cmd 2&gt;&amp;1 output.txt</div><div class="line"># or</div><div class="line">cmd &amp;&gt; output.txt</div></pre></td></tr></table></figure>
 <p>If you don’t want the output terminal burdened with the stderr details then you should redirect the stderr output to /dev/null, which removes it completely.</p>
@@ -114,7 +115,7 @@ cmd 2&amp;gt;stderr.txt 1&amp;gt;stdout.txt
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/30/shell-重定向/" data-id="cixr3ovbn006qlrrsn0ki991b" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/30/shell-重定向/" data-id="cixr3rq3m004o3drsw4hevjm8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redirect/">redirect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -188,6 +189,10 @@ cmd 2&amp;gt;stderr.txt 1&amp;gt;stdout.txt
       <ul>
         
           <li>
+            <a href="/2017/01/10/zabbix-agent-安装/">zabbix agent 安装</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/08/zabbix-服务器安装/">zabbix 服务器安装</a>
           </li>
         
@@ -201,10 +206,6 @@ cmd 2&amp;gt;stderr.txt 1&amp;gt;stdout.txt
         
           <li>
             <a href="/2016/12/30/shell-重定向/">shell 重定向</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/29/shell-数学/">shell 数学</a>
           </li>
         
       </ul>

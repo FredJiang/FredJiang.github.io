@@ -65,6 +65,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-zabbix-agent-安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/zabbix-agent-安装/" class="article-date">
+  <time datetime="2017-01-10T05:53:18.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/10/zabbix-agent-安装/">zabbix agent 安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/01/10/zabbix-agent-安装/" data-id="cixr3rqf900cm3drsktoc8nwc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-zabbix-服务器安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/08/zabbix-服务器安装/" class="article-date">
@@ -99,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/01/08/zabbix-服务器安装/" data-id="cixr3ovbv006ylrrsrrw1h80b" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2017/01/08/zabbix-服务器安装/" data-id="cixr3rqe500cf3drs9peia6ii" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
@@ -145,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/01/05/tcpdump-使用/" data-id="cixr3ovbo006rlrrsi2vu7zl4" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2017/01/05/tcpdump-使用/" data-id="cixr3rqd900ce3drswgb1po53" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcpdump/">tcpdump</a></li></ul>
@@ -188,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/30/UNIX-网络编程-笔记-9-gethostbyname/" data-id="cixr3ov53000qlrrsx0whm34c" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/30/UNIX-网络编程-笔记-9-gethostbyname/" data-id="cixr3rpwv00213drsym4xgtr4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -223,23 +259,15 @@
         <p>You can redirect stderr exclusively to a file and stdout to another file as follows: </p>
 <p><code>cmd 2&gt;stderr.txt 1&gt;stdout.txt</code></p>
 <p><code>&gt;</code> is equivalent to <code>1&gt;</code> and similarly it applies for <code>&gt;&gt;</code> (equivalent to <code>1&gt;&gt;</code>).</p>
-<p>It is also possible to redirect stderr and stdout to a single file by converting stderr to stdout using this preferred method:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cmd 2&gt;&amp;1 output.txt</div><div class="line"># or</div><div class="line">cmd &amp;&gt; output.txt</div></pre></td></tr></table></figure>
-<p>If you don’t want the output terminal burdened with the stderr details then you should redirect the stderr output to /dev/null, which removes it completely.</p>
-<p><code>cmd 2&gt;/dev/null</code></p>
-<p><code>/dev/null</code> is a special device file where any data received by the file is discard. The null device is often known as a black hole as all the data that goes into it is lost forever.</p>
-<p>In the following code, the stdin data is received by the tee command. It writes a copy of stdout to the out.txt and sends another copy stdin for the next command.</p>
-<p><code>cat a* | tee out.txt | cat -n</code></p>
-<p>The tee command can read from stdin only.</p>
-<p>By default, the tee command overwrites the file, but it can be used with appended options by providing the -a option, for example, </p>
-<p><code>cat a* | tee -a out.txt | cat -n</code></p>
-<p>By using redirection, we can read data from a file as  stdin as follows:</p>
-<p><code>cmd &lt; file</code></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/12/30/shell-重定向/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/30/shell-重定向/" data-id="cixr3ovbn006qlrrsn0ki991b" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/30/shell-重定向/" data-id="cixr3rq3m004o3drsw4hevjm8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redirect/">redirect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -282,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/29/shell-数学/" data-id="cixr3ovbh006ilrrs0dmga1lz" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/29/shell-数学/" data-id="cixr3rq9j00c73drs7ydaswwg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/">math</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -327,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/29/苹果鼠标移动速度调节/" data-id="cixr3ovcb007clrrsy1jb20su" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/29/苹果鼠标移动速度调节/" data-id="cixr3rqha00d33drs5q09wcr8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
@@ -374,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/29/ssh-登陆/" data-id="cixr3ovbk006llrrsvpus8pro" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/29/ssh-登陆/" data-id="cixr3rq9v00ca3drs4sts2m24" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/login/">login</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
@@ -418,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/27/node-cpu-优化-1-tick/" data-id="cixr3ovbq006tlrrsjsywp5a5" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/27/node-cpu-优化-1-tick/" data-id="cixr3rq2v003z3drs2lt605xn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpu/">cpu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/profile/">profile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tick/">tick</a></li></ul>
@@ -467,50 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/27/UNIX-网络编程-笔记-8-套接字选项/" data-id="cixr3ov52000nlrrs7fjccma7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UNIX-网络编程/">UNIX 网络编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix/">unix</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-UNIX-网络编程-笔记-7-select-函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/24/UNIX-网络编程-笔记-7-select-函数/" class="article-date">
-  <time datetime="2016-12-24T15:06:38.000Z" itemprop="datePublished">2016-12-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/UNIX-网络编程-笔记-7-select-函数/">UNIX 网络编程 笔记 7 -- select 函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>该函数允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个事件发生或经历一段指定的时间后才唤醒它。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/12/24/UNIX-网络编程-笔记-7-select-函数/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/12/24/UNIX-网络编程-笔记-7-select-函数/" data-id="cixr3ov50000llrrsd8842iz7" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/12/27/UNIX-网络编程-笔记-8-套接字选项/" data-id="cixr3rpwo001z3drsznlptbi4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UNIX-网络编程/">UNIX 网络编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix/">unix</a></li></ul>
@@ -525,7 +510,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">next &raquo;</a>
   </nav>
 </section>
         
@@ -570,6 +555,10 @@
       <ul>
         
           <li>
+            <a href="/2017/01/10/zabbix-agent-安装/">zabbix agent 安装</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/08/zabbix-服务器安装/">zabbix 服务器安装</a>
           </li>
         
@@ -583,10 +572,6 @@
         
           <li>
             <a href="/2016/12/30/shell-重定向/">shell 重定向</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/29/shell-数学/">shell 数学</a>
           </li>
         
       </ul>

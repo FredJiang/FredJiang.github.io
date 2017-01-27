@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: GBK | Fred</title>
+  <title>v8 笔记 3 -- ReferenceError: console is not defined | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Fred">
-<meta property="og:url" content="http://fredjiang.github.io/tags/GBK/index.html">
+  <meta name="description" content="先看一段代码
+1234567891011d8&amp;gt; console.log(&amp;quot;hello&amp;quot;);(d8):1: ReferenceError: console is not definedconsole.log(&amp;quot;hello&amp;quot;);^ReferenceError: console is not defined    at (d8):1:1d8&amp;gt; prin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="v8 笔记 3 -- ReferenceError: console is not defined">
+<meta property="og:url" content="http://fredjiang.github.io/2017/01/27/v8-笔记-3-ReferenceError-console-is-not-defined/index.html">
 <meta property="og:site_name" content="Fred">
+<meta property="og:description" content="先看一段代码
+1234567891011d8&amp;gt; console.log(&amp;quot;hello&amp;quot;);(d8):1: ReferenceError: console is not definedconsole.log(&amp;quot;hello&amp;quot;);^ReferenceError: console is not defined    at (d8):1:1d8&amp;gt; prin">
+<meta property="og:updated_time" content="2017-01-27T05:29:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred">
+<meta name="twitter:title" content="v8 笔记 3 -- ReferenceError: console is not defined">
+<meta name="twitter:description" content="先看一段代码
+1234567891011d8&amp;gt; console.log(&amp;quot;hello&amp;quot;);(d8):1: ReferenceError: console is not definedconsole.log(&amp;quot;hello&amp;quot;);^ReferenceError: console is not defined    at (d8):1:1d8&amp;gt; prin">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -63,39 +70,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/08/30/ASCII、Unicode、GBK和UTF-8字符编码的区别联系/" class="archive-article-date">
-  <time datetime="2016-08-30T01:34:44.000Z" itemprop="datePublished">Aug 30</time>
+        <section id="main"><article id="post-v8-笔记-3-ReferenceError-console-is-not-defined" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/27/v8-笔记-3-ReferenceError-console-is-not-defined/" class="article-date">
+  <time datetime="2017-01-26T16:02:04.000Z" itemprop="datePublished">2017-01-27</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/30/ASCII、Unicode、GBK和UTF-8字符编码的区别联系/">ASCII、Unicode、GBK和UTF-8字符编码的区别联系</a>
+    <h1 class="article-title" itemprop="name">
+      v8 笔记 3 -- ReferenceError: console is not defined
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先看一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">d8&gt; console.log(&quot;hello&quot;);</div><div class="line">(d8):1: ReferenceError: console is not defined</div><div class="line">console.log(&quot;hello&quot;);</div><div class="line">^</div><div class="line">ReferenceError: console is not defined</div><div class="line">    at (d8):1:1</div><div class="line"></div><div class="line">d8&gt; print(&quot;hello&quot;);</div><div class="line">hello</div><div class="line">undefined</div><div class="line">d8&gt;</div></pre></td></tr></table></figure>
+<p>居然报了一个 <code>ReferenceError: console is not defined</code> 错。没有 console？</p>
+<a id="more"></a>
+<p>答案在下面两个连接中</p>
+<ul>
+<li><a href="https://github.com/sameeri/JavaScript-WithLove/wiki/JavaScript-Shells" target="_blank" rel="external">https://github.com/sameeri/JavaScript-WithLove/wiki/JavaScript-Shells</a></li>
+<li><a href="https://github.com/sameeri/JavaScript-WithLove/wiki/d8" target="_blank" rel="external">https://github.com/sameeri/JavaScript-WithLove/wiki/d8</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/01/27/v8-笔记-3-ReferenceError-console-is-not-defined/" data-id="ciyffe3j7004ggtrs63kbe3m9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v8/">v8</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/26/v8-笔记-2-d8-使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">v8 笔记 2 -- d8 使用</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

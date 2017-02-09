@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Fred">
 <meta property="og:description" content="参考 https://github.com/v8/v8/wiki/Getting%20Started%20with%20Embedding
 接上篇 v8 笔记 1 – 编译 v8">
-<meta property="og:updated_time" content="2017-02-01T04:16:08.000Z">
+<meta property="og:updated_time" content="2017-02-09T01:56:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="v8 笔记 4 -- C++ 使用 v8">
 <meta name="twitter:description" content="参考 https://github.com/v8/v8/wiki/Getting%20Started%20with%20Embedding
@@ -93,7 +93,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>参考 <a href="https://github.com/v8/v8/wiki/Getting%20Started%20with%20Embedding" target="_blank" rel="external">https://github.com/v8/v8/wiki/Getting%20Started%20with%20Embedding</a></p>
-<p>接上篇 <a href="../../../../2017/01/26/v8-笔记-2-d8-使用/">v8 笔记 1 – 编译 v8</a></p>
+<p>接上篇 <a href="../../../../2017/01/26/v8-笔记-1-编译-v8/">v8 笔记 1 – 编译 v8</a></p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout -b 4.8 -t branch-heads/4.8</div><div class="line">gclient sync</div><div class="line">make clean</div><div class="line">make x64.release</div></pre></td></tr></table></figure>
 <p>报错</p>
@@ -111,7 +111,7 @@
 <p><code>make x64.release</code></p>
 <p>编译 v8 成功，接着运行 hello world 程序，<a href="https://chromium.googlesource.com/v8/v8/+/branch-heads/4.8/samples/hello-world.cc" target="_blank" rel="external">代码点这里</a></p>
 <p>编译代码</p>
-<p><code>g++ -I. hello_world.cpp -o hello_world -Wl,--start-group out/x64.release/obj.target/{tools/gyp/libv8_{base,libbase,external_snapshot,libplatform},third_party/icu/libicu{uc,i18n,data}}.a -Wl,--end-group -lrt -ldl -pthread -std=c++0x</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ -I. hello_world.cpp -o hello_world -Wl,--start-group out/x64.release/obj.target/&#123;tools/gyp/libv8_&#123;base,libbase,external_snapshot,libplatform&#125;,third_party/icu/libicu&#123;uc,i18n,data&#125;&#125;.a -Wl,--end-group -lrt -ldl -pthread -std=c++0x</div></pre></td></tr></table></figure>
 <p>运行程序，报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./hello_world</div><div class="line">[1]    30190 segmentation fault (core dumped)  ./hello_world</div></pre></td></tr></table></figure>
 <p>解决方法</p>
@@ -129,12 +129,8 @@
 <p>3、<code>-pthread</code></p>
 <p>支持多线程</p>
 <p><a href="http://blog.chinaunix.net/uid-25909722-id-3026989.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-25909722-id-3026989.html</a></p>
-<p>4、</p>
-<p>-std=c++0x</p>
+<p>4、-std=c++0x</p>
 <p><a href="https://gcc.gnu.org/onlinedocs/gcc-4.4.4/gcc/C-Dialect-Options.html" target="_blank" rel="external">https://gcc.gnu.org/onlinedocs/gcc-4.4.4/gcc/C-Dialect-Options.html</a></p>
-<p>注:</p>
-<p>以上方法生成静态库，如果用共享库的话，使用以下命令</p>
-<p><code>make native library=shared</code></p>
 
       
     </div>

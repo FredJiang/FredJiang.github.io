@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://fredjiang.github.io/2017/02/20/jmeter-使用/server-result.png">
 <meta property="og:image" content="http://fredjiang.github.io/2017/02/20/jmeter-使用/server-outer.png">
 <meta property="og:image" content="http://fredjiang.github.io/2017/02/20/jmeter-使用/remote-result.png">
-<meta property="og:updated_time" content="2017-02-21T11:55:01.000Z">
+<meta property="og:updated_time" content="2017-02-21T11:59:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jmeter 使用">
 <meta name="twitter:description" content="jmeter 能做什么，看这里 http://jmeter.apache.org/">
@@ -145,7 +145,7 @@
 <p>在 10.8.6.216 上</p>
 <img src="/2017/02/20/jmeter-使用/server-result.png" alt="server-result.png" title="">
 <h3 id="使用外网的机器测试"><a href="#使用外网的机器测试" class="headerlink" title="使用外网的机器测试"></a>使用外网的机器测试</h3><p>登陆外网服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ssh \</div><div class="line">-R 25000:127.0.0.1:25000 \</div><div class="line">-L 24002:127.0.0.1:24002 \</div><div class="line">-L 26002:127.0.0.1:26002 \</div><div class="line">fred@115.28.223.194</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ssh \</div><div class="line">-R 25000:127.0.0.1:25000 \</div><div class="line">-L 24002:127.0.0.1:24002 \</div><div class="line">-L 26002:127.0.0.1:26002 \</div><div class="line">fred@hostip</div></pre></td></tr></table></figure>
 <p>在外网机器上修改文件 <code>bin/jmeter.properties</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">server_port=24002</div><div class="line">server.rmi.localhostname=127.0.0.1</div><div class="line">server.rmi.localport=26002</div></pre></td></tr></table></figure>
 <p>本机配置</p>

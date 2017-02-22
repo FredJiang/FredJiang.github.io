@@ -65,6 +65,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql-慢日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/26/mysql-慢日志/" class="article-date">
+  <time datetime="2016-05-26T03:18:35.000Z" itemprop="datePublished">2016-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/26/mysql-慢日志/">mysql 慢日志</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="查看相应的变量设置"><a href="#查看相应的变量设置" class="headerlink" title="查看相应的变量设置"></a>查看相应的变量设置</h4><p><code>mysql&gt; SHOW VARIABLES LIKE &#39;%long%&#39;;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+----------------------------------------------------------+-----------+</div><div class="line">| Variable_name                                            | Value     |</div><div class="line">+----------------------------------------------------------+-----------+</div><div class="line">| long_query_time                                          | 10.000000 |</div><div class="line">| performance_schema_events_stages_history_long_size       | 1000      |</div><div class="line">| performance_schema_events_statements_history_long_size   | 1000      |</div><div class="line">| performance_schema_events_transactions_history_long_size | 1000      |</div><div class="line">| performance_schema_events_waits_history_long_size        | 1000      |</div><div class="line">+----------------------------------------------------------+-----------+</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/26/mysql-慢日志/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2016/05/26/mysql-慢日志/" data-id="cizh6diuv003l1irs0f52y8mj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysqldumpslow/">mysqldumpslow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slow/">slow</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-disque-安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/25/disque-安装/" class="article-date">
@@ -96,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/25/disque-安装/" data-id="cizexvh3c0018usrsu8bz2rup" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/25/disque-安装/" data-id="cizh6dii600211irsmy4855td" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disque/">disque</a></li></ul>
@@ -140,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/25/最近常用的-mysql-命令/" data-id="cizexvh7d004tusrs70ax3k8y" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/25/最近常用的-mysql-命令/" data-id="cizh6dixn005s1irse37obel8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command/">command</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
@@ -185,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/24/mysql-修改字符集/" data-id="cizexvh4i002iusrsrudt339c" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/24/mysql-修改字符集/" data-id="cizh6diuj003a1irs5moewhqw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/charset/">charset</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sequelize/">sequelize</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/utf8/">utf8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/utf8mb4/">utf8mb4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/utf8mb4-unicode-ci/">utf8mb4_unicode_ci</a></li></ul>
@@ -231,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/24/mysql-外键操作/" data-id="cizexvh4n002nusrs1aenq142" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/24/mysql-外键操作/" data-id="cizh6diuz003o1irsau0hl779" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/foreign-key/">foreign key</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/key/">key</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
@@ -274,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/24/mysql-创建用户/" data-id="cizexvh4j002jusrsa8iy573s" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/24/mysql-创建用户/" data-id="cizh6diuu003j1irsqof6mxs9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/create/">create</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/user/">user</a></li></ul>
@@ -323,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/20/gitlab-导数据/" data-id="cizexvh3r001rusrspyyfkafv" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/20/gitlab-导数据/" data-id="cizh6disx002o1irsslenpekh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bare-repository/">bare repository</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/">gitlab</a></li></ul>
@@ -367,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/05/16/gitlab-ssh-配置/" data-id="cizexvh3q001pusrsm7etwcom" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/05/16/gitlab-ssh-配置/" data-id="cizh6dist002m1irs5f4iqaxk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/">gitlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/id-rsa/">id_rsa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/root/">root</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
@@ -410,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/04/26/Node-js-tips/" data-id="cizexvh1d0007usrsfyd6f6sc" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/04/26/Node-js-tips/" data-id="cizh6di9b00111irsn1xwco7i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES2015/">ES2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
@@ -459,56 +503,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/04/22/nodejs-es6-特性/" data-id="cizexvh560037usrsii93own4" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2016/04/22/nodejs-es6-特性/" data-id="cizh6divv00461irsvouauab5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/V8/">V8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es/">es</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-node-习惯" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/19/node-习惯/" class="article-date">
-  <time datetime="2016-04-19T02:06:02.000Z" itemprop="datePublished">2016-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/19/node-习惯/">node 习惯</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="1-用-npm-init-开始新项目"><a href="#1-用-npm-init-开始新项目" class="headerlink" title="1. 用 npm init 开始新项目"></a>1. 用 <code>npm init</code> 开始新项目</h6><p>Npm 的 init 命令能为项目生成一个 package.json 文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir my-awesome-app</div><div class="line">cd my-awesome-app</div><div class="line">npm init --yes</div></pre></td></tr></table></figure>
-<p>然后编辑 package.json 文件，如添加 node 版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;engines&quot;: &#123;</div><div class="line">&quot;node&quot;: &quot;4.2.1&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2016/04/19/node-习惯/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2016/04/19/node-习惯/" data-id="cizexvh540034usrsglipjp09" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
 
     </footer>
   </div>
@@ -565,6 +563,10 @@
       <ul>
         
           <li>
+            <a href="/2017/02/22/mongo-数据创建时间/">mongo 数据创建时间</a>
+          </li>
+        
+          <li>
             <a href="/2017/02/20/jmeter-使用/">jmeter 使用</a>
           </li>
         
@@ -578,10 +580,6 @@
         
           <li>
             <a href="/2017/02/12/node-addon/">node addon</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/12/gyp-使用/">gyp 使用</a>
           </li>
         
       </ul>

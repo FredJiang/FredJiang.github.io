@@ -5,16 +5,16 @@
   
   <title>url 编码 | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，就是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
+  <meta name="description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，只不过是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="url 编码">
 <meta property="og:url" content="http://fredjiang.github.io/2017/03/09/url-编码/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，就是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
-<meta property="og:updated_time" content="2017-03-09T11:47:55.000Z">
+<meta property="og:description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，只不过是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
+<meta property="og:updated_time" content="2017-03-09T11:55:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="url 编码">
-<meta name="twitter:description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，就是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
+<meta name="twitter:description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，只不过是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -89,7 +89,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，就是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。</p>
+        <p>和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，只不过是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。</p>
 <a id="more"></a>
 <ul>
 <li><a href="#实验">实验</a><ul>
@@ -120,13 +120,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">req.originalUrl /?code=1&amp;title=çº§&amp;content=çº§</div><div class="line">req.query &#123; code: &apos;1&apos;, title: &apos;çº§&apos;, content: &apos;çº§&apos; &#125;</div><div class="line">GET /?code=1&amp;title=çº§&amp;content=çº§ 200 0.942 ms - 10</div></pre></td></tr></table></figure>
 <p>抓包结果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">15:38:53.879367 IP localhost.65510 &gt; localhost.3000: Flags [P.], seq 1:108, ack 1, win 128, options [nop,nop,TS val 20894671 ecr 20894671], length 107</div><div class="line">	0x0000:  4500 009f f2d8 4000 4006 497e 7f00 0001  E.....@.@.I~....</div><div class="line">	0x0010:  7f00 0001 ffe6 0bb8 26bf 211a 3071 55c1  ........&amp;.!.0qU.</div><div class="line">	0x0020:  8018 0080 fe93 0000 0101 080a 013e d3cf  .............&gt;..</div><div class="line">	0x0030:  013e d3cf 4745 5420 2f3f 636f 6465 3d31  .&gt;..GET./?code=1</div><div class="line">	0x0040:  2674 6974 6c65 3de7 baa7 2663 6f6e 7465  &amp;title=...&amp;conte</div><div class="line">	0x0050:  6e74 3de7 baa7 2048 5454 502f 312e 310d  nt=....HTTP/1.1.</div><div class="line">	0x0060:  0a48 6f73 743a 2031 3237 2e30 2e30 2e31  .Host:.127.0.0.1</div><div class="line">	0x0070:  3a33 3030 300d 0a55 7365 722d 4167 656e  :3000..User-Agen</div><div class="line">	0x0080:  743a 2063 7572 6c2f 372e 3437 2e30 0d0a  t:.curl/7.47.0..</div><div class="line">	0x0090:  4163 6365 7074 3a20 2a2f 2a0d 0a0d 0a    Accept:.*/*....</div></pre></td></tr></table></figure>
-<p>参考 <a href="../../../../2017/01/316/tcpdump-分析-ping-命令/">tcpdump-分析-ping-命令</a> 重点看以下这句</p>
+<p>参考 <a href="../../../../2017/01/16/tcpdump-分析-ping-命令/">tcpdump-分析-ping-命令</a> 重点看以下这句</p>
 <p><code>0x0040:  2674 6974 6c65 3de7 baa7 2663 6f6e 7465  &amp;title=...&amp;conte</code></p>
 <p>根据 <a href="http://ascii.cl/" target="_blank" rel="external">http://ascii.cl/</a> </p>
 <p><code>3d</code> 为 <code>=</code></p>
 <p><code>26</code> 为 <code>&amp;</code></p>
 <p>中间的 <code>...</code> 对应的是 title 的内容，也就是 <code>e7 baa7</code> </p>
-<p>根据 <a href="http://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank" rel="external">http://www.tamasoft.co.jp/en/general-info/unicode.html</a> 找到 <code>级</code> 的 unicode 编码 <code>7EA7</code></p>
+<p>根据 <a href="http://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank" rel="external">http://www.tamasoft.co.jp/en/general-info/unicode.html</a> 找到 <code>级</code> 的 unicode 编码为 <code>7EA7</code></p>
 <p>或者用工具 <a href="http://tool.chinaz.com/tools/unicode.aspx" target="_blank" rel="external">http://tool.chinaz.com/tools/unicode.aspx</a> 获取</p>
 <p>再根据 <a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html</a> 可以算出相应的 utf-8 编码</p>
 <p>或者用工具 <a href="http://tool.chinaz.com/tools/urlencode.aspx" target="_blank" rel="external">http://tool.chinaz.com/tools/urlencode.aspx</a> 得到 <code>级</code> url encode 后为 <code>%e7%ba%a7</code>， 去掉 % 即为 <code>e7baa7</code></p>

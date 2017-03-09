@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://fredjiang.github.io/2017/03/09/url-编码/index.html">
 <meta property="og:site_name" content="Fred">
 <meta property="og:description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，就是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
-<meta property="og:updated_time" content="2017-03-09T11:46:28.000Z">
+<meta property="og:updated_time" content="2017-03-09T11:47:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="url 编码">
 <meta name="twitter:description" content="和一同事对接一个接口，我这边传给他的中文，他解析出来为乱码（虽然不是中文，其实也不算是乱码，就是 url encode 后的值），但是直接使用 curl 命令他那能正常解析。">
@@ -106,7 +106,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const request = require(&apos;request&apos;);</div><div class="line">const querystring = require(&apos;querystring&apos;);</div><div class="line">let params = &#123;code:1,title:&quot;级&quot;,content:&quot;级&quot;&#125;</div><div class="line">let requestOptions = &#123;</div><div class="line">  url: &quot;http://127.0.0.1:3000?&quot; + querystring.stringify(params),</div><div class="line">  method: &apos;GET&apos;</div><div class="line">&#125;</div><div class="line">console.log(requestOptions)</div><div class="line">request(requestOptions, function (error, response, body) &#123;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>他那是这么显示的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">code=1&amp;title=%E7%BA%A7&amp;content=%E7%BA%A7</div></pre></td></tr></table></figure>
-<p>其实我认为这样是正确的，是他那边没有对 url decode，但是他那边不能改，不能改。。。</p>
+<p>其实我认为这样是正确的，只是他那边没有对 url decode，但是他那边不能改，不能改。。。</p>
 <p>告诉我 <code>curl &quot;http://127.0.0.1:3000?code=1&amp;title=级&amp;content=级&quot;</code> 是可以的，所以不用改</p>
 <p>好吧，我们就来看看上面两种方式有什么区别吧。</p>
 <p>先用 express 跑一个服务端，我这用的 3000 端口</p>

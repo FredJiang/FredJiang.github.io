@@ -3,23 +3,15 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>go web 服务器的 hello world | Fred</title>
+  <title>Tag: Jenkins | Fred</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="代码结构  helloweb.go">
-<meta name="keywords" content="go,web">
-<meta property="og:type" content="article">
-<meta property="og:title" content="go web 服务器的 hello world">
-<meta property="og:url" content="http://fredjiang.github.io/2017/05/07/go-web-服务器的-hello-world/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Fred">
+<meta property="og:url" content="http://fredjiang.github.io/tags/Jenkins/index.html">
 <meta property="og:site_name" content="Fred">
-<meta property="og:description" content="代码结构  helloweb.go">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://fredjiang.github.io/2017/05/07/go-web-服务器的-hello-world/code.png">
-<meta property="og:image" content="http://fredjiang.github.io/2017/05/07/go-web-服务器的-hello-world/demo.png">
-<meta property="og:updated_time" content="2017-05-25T16:44:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go web 服务器的 hello world">
-<meta name="twitter:description" content="代码结构  helloweb.go">
-<meta name="twitter:image" content="http://fredjiang.github.io/2017/05/07/go-web-服务器的-hello-world/code.png">
+<meta name="twitter:title" content="Fred">
   
     <link rel="alternate" href="/atom.xml" title="Fred" type="application/atom+xml">
   
@@ -72,73 +64,39 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-go-web-服务器的-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/07/go-web-服务器的-hello-world/" class="article-date">
-  <time datetime="2017-05-07T09:25:10.000Z" itemprop="datePublished">2017-05-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      go web 服务器的 hello world
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/06/26/获取-Jenkins-所有-jobs-的配置/" class="archive-article-date">
+  <time datetime="2017-06-26T07:56:51.000Z" itemprop="datePublished">Jun 26</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/26/获取-Jenkins-所有-jobs-的配置/">获取 Jenkins 所有 jobs 的配置</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>代码结构</p>
-<img src="/2017/05/07/go-web-服务器的-hello-world/code.png" alt="code.png" title="">
-<p><code>helloweb.go</code></p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">	&quot;fmt&quot;</div><div class="line">	&quot;log&quot;</div><div class="line">	&quot;net/http&quot;</div><div class="line">	&quot;runtime&quot;</div><div class="line">	&quot;strconv&quot;</div><div class="line">	&quot;strings&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func fileLine() string &#123;</div><div class="line">	_, file, line, _ := runtime.Caller(1)</div><div class="line">	fileLine := file + &quot; &quot; + strconv.Itoa(line)</div><div class="line">	fileLineSlice := strings.Split(fileLine, &quot;/helloweb/&quot;)</div><div class="line">	return fileLineSlice[len(fileLineSlice)-1]</div><div class="line">&#125;</div><div class="line"></div><div class="line">func uploadProcesses(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">	fmt.Println(fileLine(), &quot;path&quot;, r.URL.Path)</div><div class="line"></div><div class="line">	r.ParseForm()</div><div class="line">	fmt.Println(fileLine(), r.Form)</div><div class="line"></div><div class="line">	for k, v := range r.Form &#123;</div><div class="line">		fmt.Println(fileLine(), &quot;key:&quot;, k)</div><div class="line">		fmt.Println(fileLine(), &quot;val:&quot;, strings.Join(v, &quot;&quot;))</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	fmt.Fprintf(w, &quot;&#123; \&quot;code\&quot;: 0 &#125;&quot;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">	http.HandleFunc(&quot;/&quot;, uploadProcesses)</div><div class="line">	err := http.ListenAndServe(&quot;:3002&quot;, nil)</div><div class="line">	if err != nil &#123;</div><div class="line">		log.Fatal(&quot;ListenAndServe: &quot;, err)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>演示</p>
-<img src="/2017/05/07/go-web-服务器的-hello-world/demo.png" alt="demo.png" title="">
-<p>参考</p>
-<ul>
-<li><a href="../../../../2017/04/30/emacs-配置-go-开发环境/">emacs 配置 go 开发环境</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/05/07/go-web-服务器的-hello-world/" data-id="cj5pf1wrb004u6brs058nqm7k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/05/09/es6-class-this-is-undefined/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          es6 class this is undefined
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/05/03/ip-转换地理信息并存放在-mongo-中/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ip 转换地理信息并存放在 mongo 中</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         

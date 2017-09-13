@@ -66,10 +66,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-mysql-导出数据" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-libuv-事件循环" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/24/mysql-导出数据/" class="article-date">
-  <time datetime="2017-02-24T08:07:33.000Z" itemprop="datePublished">2017-02-24</time>
+    <a href="/2017/03/31/libuv-事件循环/" class="article-date">
+  <time datetime="2017-03-31T12:15:19.000Z" itemprop="datePublished">2017-03-31</time>
 </a>
     
   </div>
@@ -80,7 +80,278 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/mysql-导出数据/">mysql 导出数据</a>
+      <a class="article-title" href="/2017/03/31/libuv-事件循环/">libuv 事件循环</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考</p>
+<ul>
+<li><a href="https://github.com/libuv/libuv" target="_blank" rel="external">https://github.com/libuv/libuv</a></li>
+<li><a href="https://nikhilm.github.io/uvbook/basics.html#hello-world" target="_blank" rel="external">https://nikhilm.github.io/uvbook/basics.html#hello-world</a></li>
+<li><a href="http://neethack.com/2013/01/understand-event-loops/" target="_blank" rel="external">http://neethack.com/2013/01/understand-event-loops/</a></li>
+<li><a href="../../../../2016/03/11/node-事件驱动机制/">node 事件驱动机制</a></li>
+<li><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" target="_blank" rel="external">https://www.youtube.com/watch?v=8aGhZQkoFbQ</a></li>
+<li><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="external">http://latentflip.com/loupe/</a></li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/31/libuv-事件循环/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/03/31/libuv-事件循环/" data-id="cj7jnd7sp005yx7rs7kulecrz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libuv/">libuv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongo-aggregation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/28/mongo-aggregation/" class="article-date">
+  <time datetime="2017-03-28T08:41:13.000Z" itemprop="datePublished">2017-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/28/mongo-aggregation/">mongo aggregation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用以下命令准备数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">db.students.save(&#123;age:1, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:1, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:2, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:3, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:4, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:4, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:4, class:&quot;1&quot;&#125;)</div><div class="line">db.students.save(&#123;age:4, class:&quot;2&quot;&#125;)</div><div class="line">db.students.save(&#123;age:4, class:&quot;2&quot;&#125;)</div><div class="line">db.students.save(&#123;age:4, class:&quot;3&quot;&#125;)</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/28/mongo-aggregation/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/03/28/mongo-aggregation/" data-id="cj7jnd7tb006rx7rszy34p8tu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aggregation/">aggregation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-node-http-系统调用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/node-http-系统调用/" class="article-date">
+  <time datetime="2017-03-23T07:18:40.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/node-http-系统调用/">node http 系统调用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务器代码 <a href="https://nodejs.org/api/synopsis.html" target="_blank" rel="external">example.js</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/23/node-http-系统调用/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/03/23/node-http-系统调用/" data-id="cj7jnd7v3008bx7rsrvhhpg6d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/strace/">strace</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-内核编译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/21/内核编译/" class="article-date">
+  <time datetime="2017-03-20T16:01:14.000Z" itemprop="datePublished">2017-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/内核编译/">内核编译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>查看当前内核版本</p>
+<p><code>uname -r</code></p>
+<p>查看内核模块列表目录</p>
+<p><code>ls /usr/lib/modules/$(uname -r)/kernel</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/21/内核编译/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/03/21/内核编译/" data-id="cj7jnd7z600btx7rstp746ifd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kvm-常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/kvm-常用命令/" class="article-date">
+  <time datetime="2017-03-20T11:29:59.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/kvm-常用命令/">kvm 常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="KVM-虚拟机默认配置文件位置："><a href="#KVM-虚拟机默认配置文件位置：" class="headerlink" title="KVM 虚拟机默认配置文件位置："></a>KVM 虚拟机默认配置文件位置：</h3><p><code>/etc/libvirt/qemu/</code></p>
+<h3 id="KVM-虚拟机开机自启动目录："><a href="#KVM-虚拟机开机自启动目录：" class="headerlink" title="KVM 虚拟机开机自启动目录："></a>KVM 虚拟机开机自启动目录：</h3><p><code>/etc/libvirt/qemu/autostart/</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/20/kvm-常用命令/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/03/20/kvm-常用命令/" data-id="cj7jnd7sl005tx7rs2acgcxaq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command/">command</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kvm/">kvm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ssh-反向隧道" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/ssh-反向隧道/" class="article-date">
+  <time datetime="2017-03-20T02:20:04.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/ssh-反向隧道/">ssh 反向隧道</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="../../../../2017/02/28/ssh-forward-port/">ssh forward port</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/20/ssh-反向隧道/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fredjiang.github.io/2017/03/20/ssh-反向隧道/" data-id="cj7jnd7wz009yx7rsmx4arnf8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-安装双系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/17/安装双系统/" class="article-date">
+  <time datetime="2017-03-17T01:24:21.000Z" itemprop="datePublished">2017-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/安装双系统/">安装双系统</a>
     </h1>
   
 
@@ -89,248 +360,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><a href="#SELECT INTO OUTFILE">SELECT INTO OUTFILE</a></li>
-<li><a href="#mysqldump">mysqldump</a></li>
-<li><a href="#mysql">mysql</a></li>
-</ul>
-<h3 id="SELECT-INTO-OUTFILE"><a href="#SELECT-INTO-OUTFILE" class="headerlink" title="SELECT INTO OUTFILE"></a>SELECT INTO OUTFILE</h3>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/24/mysql-导出数据/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/24/mysql-导出数据/" data-id="cj5sbh4rw00amo7rsmhu0wcrx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysqldump/">mysqldump</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-netstat-连接数统计" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/23/netstat-连接数统计/" class="article-date">
-  <time datetime="2017-02-23T12:08:01.000Z" itemprop="datePublished">2017-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/23/netstat-连接数统计/">netstat 连接数统计</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>统计 9001 端口的连接数</p>
-<p>1</p>
-<p><code>netstat -nt | grep &quot;:9001&quot; | awk &#39;{print $6}&#39; | sort | uniq -c | sort -n</code></p>
-<p>2</p>
-<p><code>netstat -nt | awk &#39;/:9001/ {++state[$NF]} END {for(key in state) print key, &quot;\t&quot;, state[key]}&#39;</code></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/23/netstat-连接数统计/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/23/netstat-连接数统计/" data-id="cj5sbh4ra00a3o7rs1xsvub6b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/awk/">awk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netstat/">netstat</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-kernel-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/23/kernel-1/" class="article-date">
-  <time datetime="2017-02-22T16:35:35.000Z" itemprop="datePublished">2017-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/23/kernel-1/">kernel - 1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>根据网上的经验和资料，从 kernel 0.11 开始，代码大概 2w 行。</p>
-<p>相关资料</p>
-<ul>
-<li><a href="https://www.kernel.org/pub/linux/kernel/Historic/old-versions/" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel/Historic/old-versions/</a></li>
-<li><a href="https://github.com/yuanxinyu/Linux-0.11" target="_blank" rel="external">https://github.com/yuanxinyu/Linux-0.11</a></li>
-<li><a href="https://github.com/karottc/linux-0.11" target="_blank" rel="external">https://github.com/karottc/linux-0.11</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/23/kernel-1/" data-id="cj5sbh4ju008ho7rscbgw5z0m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mongo-数据创建时间" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/mongo-数据创建时间/" class="article-date">
-  <time datetime="2017-02-22T06:33:09.000Z" itemprop="datePublished">2017-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/mongo-数据创建时间/">mongo 数据创建时间</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>将据库中记录的错误的创建时间改为正确的</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/22/mongo-数据创建时间/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/22/mongo-数据创建时间/" data-id="cj5sbh4qt009no7rswy2rbwn9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jmeter-使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/20/jmeter-使用/" class="article-date">
-  <time datetime="2017-02-20T07:16:06.000Z" itemprop="datePublished">2017-02-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/20/jmeter-使用/">jmeter 使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>jmeter 能做什么，看这里 <a href="http://jmeter.apache.org/" target="_blank" rel="external">http://jmeter.apache.org/</a></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/20/jmeter-使用/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/20/jmeter-使用/" data-id="cj5sbh4jo008do7rsoiw8zq28" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/benchmark/">benchmark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jmeter/">jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plot/">plot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-UNIX-网络编程-笔记-11-epoll-使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/19/UNIX-网络编程-笔记-11-epoll-使用/" class="article-date">
-  <time datetime="2017-02-19T01:50:52.000Z" itemprop="datePublished">2017-02-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/19/UNIX-网络编程-笔记-11-epoll-使用/">UNIX 网络编程 笔记 11 -- epoll 使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考博客 </p>
-<ul>
-<li><a href="https://www.zhihu.com/question/20122137/answer/146866418" target="_blank" rel="external">https://www.zhihu.com/question/20122137/answer/146866418</a></li>
-<li><a href="https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/" target="_blank" rel="external">https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/</a></li>
+<li>一台新电脑</li>
+<li>需要安装双系统</li>
 </ul>
         
           <p class="article-more-link">
-            <a href="/2017/02/19/UNIX-网络编程-笔记-11-epoll-使用/#more">Read More</a>
+            <a href="/2017/03/17/安装双系统/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/19/UNIX-网络编程-笔记-11-epoll-使用/" data-id="cj5sbh47s000no7rsz76u6cc9" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2017/03/17/安装双系统/" data-id="cj7jnd7zf00bvx7rs2jugjtet" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UNIX-网络编程/">UNIX 网络编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix/">unix</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/">system</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
 
     </footer>
   </div>
@@ -339,10 +383,10 @@
 
 
   
-    <article id="post-UNIX-环境高级编程-笔记-1-运行程序" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-elk-安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/12/UNIX-环境高级编程-笔记-1-运行程序/" class="article-date">
-  <time datetime="2017-02-12T14:13:29.000Z" itemprop="datePublished">2017-02-12</time>
+    <a href="/2017/03/14/elk-安装/" class="article-date">
+  <time datetime="2017-03-14T02:30:01.000Z" itemprop="datePublished">2017-03-14</time>
 </a>
     
   </div>
@@ -353,7 +397,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/12/UNIX-环境高级编程-笔记-1-运行程序/">UNIX 环境高级编程 笔记 1 -- 运行程序</a>
+      <a class="article-title" href="/2017/03/14/elk-安装/">elk 安装</a>
     </h1>
   
 
@@ -361,20 +405,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目录结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">├── apuesource</div><div class="line">└── myls.c</div></pre></td></tr></table></figure>
+        <ul>
+<li><a href="#参考">参考</a></li>
+<li><a href="#环境">环境</a></li>
+<li><a href="#安装-java（1.8）">安装 java（1.8）</a></li>
+<li><a href="#安装-elasticsearch">安装 elasticsearch</a></li>
+<li><a href="#安装-Kibana">安装 Kibana</a></li>
+<li><a href="#配置-Nginx">配置 Nginx</a></li>
+<li><a href="#安装-Logstash">安装 Logstash</a></li>
+<li><a href="#安装-Filebeat">安装 Filebeat</a></li>
+<li><a href="#查看结果">查看结果</a></li>
+<li><a href="#注意">注意</a></li>
+</ul>
         
           <p class="article-more-link">
-            <a href="/2017/02/12/UNIX-环境高级编程-笔记-1-运行程序/#more">Read More</a>
+            <a href="/2017/03/14/elk-安装/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/12/UNIX-环境高级编程-笔记-1-运行程序/" data-id="cj5sbh47o000io7rse20ekezv" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2017/03/14/elk-安装/" data-id="cj7jnd7m4003kx7rsej8x6rtd" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UNIX-环境高级编程/">UNIX 环境高级编程</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elk/">elk</a></li></ul>
 
     </footer>
   </div>
@@ -383,10 +437,10 @@
 
 
   
-    <article id="post-node-addon" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-vnc-使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/12/node-addon/" class="article-date">
-  <time datetime="2017-02-12T06:28:44.000Z" itemprop="datePublished">2017-02-12</time>
+    <a href="/2017/03/14/vnc-使用/" class="article-date">
+  <time datetime="2017-03-13T23:59:46.000Z" itemprop="datePublished">2017-03-14</time>
 </a>
     
   </div>
@@ -397,7 +451,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/12/node-addon/">node addon</a>
+      <a class="article-title" href="/2017/03/14/vnc-使用/">vnc 使用</a>
     </h1>
   
 
@@ -405,20 +459,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在 node 中使用 C++</p>
-<p>参考 <a href="https://nodejs.org/api/addons.html" target="_blank" rel="external">https://nodejs.org/api/addons.html</a></p>
+        <h3 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h3><p>安装 tightvncserver</p>
+<p><code>sudo apt-get install xfce4 xfce4-goodies tightvncserver</code></p>
         
           <p class="article-more-link">
-            <a href="/2017/02/12/node-addon/#more">Read More</a>
+            <a href="/2017/03/14/vnc-使用/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/12/node-addon/" data-id="cj5sbh4rn00ado7rsf2ejlhcc" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2017/03/14/vnc-使用/" data-id="cj7jnd7y700bbx7rs5972q2o8" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v8/">v8</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vnc/">vnc</a></li></ul>
 
     </footer>
   </div>
@@ -427,10 +481,10 @@
 
 
   
-    <article id="post-gyp-使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-kvm-安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/12/gyp-使用/" class="article-date">
-  <time datetime="2017-02-12T01:37:44.000Z" itemprop="datePublished">2017-02-12</time>
+    <a href="/2017/03/13/kvm-安装/" class="article-date">
+  <time datetime="2017-03-13T00:00:28.000Z" itemprop="datePublished">2017-03-13</time>
 </a>
     
   </div>
@@ -441,7 +495,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/12/gyp-使用/">gyp 使用</a>
+      <a class="article-title" href="/2017/03/13/kvm-安装/">kvm 安装</a>
     </h1>
   
 
@@ -449,63 +503,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>gyp 是 google 为 chromium 项目开发的管理工具，功能类似于 cmake。gyp 只能产生编译脚本，真正的编译工作还有靠其他工具。</p>
+        <p>安装准备</p>
+<p>首先检查 CPU 是否支持安装 KVM</p>
+<p><code>egrep -o &#39;(vmx|svm)&#39; /proc/cpuinfo</code></p>
         
           <p class="article-more-link">
-            <a href="/2017/02/12/gyp-使用/#more">Read More</a>
+            <a href="/2017/03/13/kvm-安装/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/12/gyp-使用/" data-id="cj5sbh4io007no7rsxj5cww8b" class="article-share-link">Share</a>
+      <a data-url="http://fredjiang.github.io/2017/03/13/kvm-安装/" data-id="cj7jnd7sr0060x7rsxn9q8byb" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/build/">build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gyp/">gyp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/make/">make</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-v8-笔记-5-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/10/v8-笔记-5-hello-world/" class="article-date">
-  <time datetime="2017-02-10T15:37:53.000Z" itemprop="datePublished">2017-02-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/10/v8-笔记-5-hello-world/">v8 笔记 5 -- hello world</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>接上篇 <a href="../../../../2017/02/01/v8-笔记-4-C-使用-v8/">v8 笔记 4 — C++ 使用 v8</a></p>
-<p>在把 <code>hello_world.cpp</code> 运行起来后，接着来看下具体的代码是什么意思。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/10/v8-笔记-5-hello-world/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://fredjiang.github.io/2017/02/10/v8-笔记-5-hello-world/" data-id="cj5sbh4ul00d2o7rs3gybhq29" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v8/">v8</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kvm/">kvm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -517,7 +529,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/">next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">next &raquo;</a>
   </nav>
 </section>
         
@@ -530,7 +542,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASCII/">ASCII</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GBK/">GBK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoLite/">GeoLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProxyCommand/">ProxyCommand</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UNIX-环境高级编程/">UNIX 环境高级编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UNIX-网络编程/">UNIX 网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UTF-8/">UTF-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unicode/">Unicode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/agent/">agent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aggregation/">aggregation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/args/">args</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asm/">asm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/assembly/">assembly</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bare-repository/">bare repository</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmark/">benchmark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot/">boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/charset/">charset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cluster/">cluster</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/color/">color</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/count/">count</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coursera/">coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpu/">cpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create/">create</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/date/">date</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deploy/">deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/df/">df</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dired/">dired</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/disque/">disque</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ditaa/">ditaa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dosbox/">dosbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/du/">du</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/editor/">editor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/">elk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/emacs/">emacs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/">email</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/english/">english</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/">environment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es/">es</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/escape/">escape</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exports/">exports</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firewall/">firewall</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fonts/">fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foreign-key/">foreign key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/forward/">forward</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc/">gcc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/getline/">getline</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnuplot/">gnuplot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goaccess/">goaccess</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grep/">grep</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gyp/">gyp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/head/">head</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iWatch/">iWatch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/id-rsa/">id_rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ip/">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iptables/">iptables</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iterm2/">iterm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jmeter/">jmeter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsdoc/">jsdoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kernel/">kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/key/">key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kvm/">kvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libuv/">libuv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logrotate/">logrotate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loop/">loop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lsof/">lsof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macdown/">macdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/machine-learning/">machine learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/make/">make</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/masm/">masm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/master/">master</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maxmind/">maxmind</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memerory/">memerory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module/">module</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/monitor/">monitor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mycli/">mycli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldumpslow/">mysqldumpslow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/n/">n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netstat/">netstat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nmon/">nmon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/octave/">octave</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ops/">ops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phthon/">phthon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ping/">ping</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plantuml/">plantuml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/">pm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2-web/">pm2-web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/">postgresql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proc/">proc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/profile/">profile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redirect/">redirect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/replication/">replication</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/request/">request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/root/">root</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/runlevel/">runlevel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentinel/">sentinel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sequelize/">sequelize</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sharding/">sharding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slave/">slave</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slow/">slow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/source-code/">source code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sshpass/">sshpass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startup/">startup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subsystem/">subsystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subtitle/">subtitle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supervisor/">supervisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ternimal/">ternimal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tick/">tick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/">time</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tr/">tr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unicode/">unicode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix/">unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/upstream/">upstream</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/user/">user</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useradd/">useradd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf-8/">utf-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf8/">utf8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf8mb4/">utf8mb4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf8mb4-unicode-ci/">utf8mb4_unicode_ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v8/">v8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnc/">vnc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word/">word</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zabbix/">zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符集/">字符集</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASCII/">ASCII</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GBK/">GBK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoLite/">GeoLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProxyCommand/">ProxyCommand</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UNIX-环境高级编程/">UNIX 环境高级编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UNIX-网络编程/">UNIX 网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UTF-8/">UTF-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unicode/">Unicode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/agent/">agent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aggregation/">aggregation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/args/">args</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/assembly/">assembly</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bare-repository/">bare repository</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/base64/">base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmark/">benchmark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blowfish/">blowfish</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot/">boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/charset/">charset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cluster/">cluster</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/color/">color</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/count/">count</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coursera/">coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpu/">cpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create/">create</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/">crypto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/date/">date</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deploy/">deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/df/">df</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/disque/">disque</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ditaa/">ditaa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dosbox/">dosbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/du/">du</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/editor/">editor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/">elk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/emacs/">emacs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/">email</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/english/">english</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/env/">env</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/">environment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es/">es</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/escape/">escape</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exports/">exports</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fail2ban/">fail2ban</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firewall/">firewall</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fonts/">fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foreign-key/">foreign key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/forward/">forward</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc/">gcc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/getline/">getline</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnuplot/">gnuplot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goaccess/">goaccess</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grep/">grep</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gyp/">gyp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/head/">head</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2/">iTerm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iWatch/">iWatch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/id-rsa/">id_rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ip/">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iptables/">iptables</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iterm2/">iterm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jmeter/">jmeter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsdoc/">jsdoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kernel/">kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/key/">key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kvm/">kvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libuv/">libuv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logrotate/">logrotate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loop/">loop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lsof/">lsof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macdown/">macdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/machine-learning/">machine learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/make/">make</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/masm/">masm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/master/">master</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maxmind/">maxmind</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memerory/">memerory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module/">module</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/monitor/">monitor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mycli/">mycli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldumpslow/">mysqldumpslow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/n/">n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netstat/">netstat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nmon/">nmon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/octave/">octave</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ops/">ops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/org-mode/">org-mode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phthon/">phthon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ping/">ping</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plantuml/">plantuml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/">pm2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2-web/">pm2-web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/">postgresql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powerline/">powerline</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proc/">proc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/profile/">profile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redirect/">redirect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/replication/">replication</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/request/">request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/root/">root</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/runlevel/">runlevel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentinel/">sentinel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sequelize/">sequelize</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sharding/">sharding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slave/">slave</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slow/">slow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp/">smtp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/source-code/">source code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sshpass/">sshpass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startup/">startup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subsystem/">subsystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subtitle/">subtitle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supervisor/">supervisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ternimal/">ternimal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tick/">tick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/">time</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux-resurrect/">tmux-resurrect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tpm/">tpm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tr/">tr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unicode/">unicode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix/">unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/upstream/">upstream</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/user/">user</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useradd/">useradd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf-8/">utf-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf8/">utf8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf8mb4/">utf8mb4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utf8mb4-unicode-ci/">utf8mb4_unicode_ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v8/">v8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnc/">vnc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word/">word</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zabbix/">zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符集/">字符集</a></li></ul>
     </div>
   </div>
 
@@ -540,7 +552,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ASCII/" style="font-size: 10.77px;">ASCII</a> <a href="/tags/ES2015/" style="font-size: 10px;">ES2015</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/GBK/" style="font-size: 10px;">GBK</a> <a href="/tags/GeoLite/" style="font-size: 10px;">GeoLite</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/ProxyCommand/" style="font-size: 10px;">ProxyCommand</a> <a href="/tags/UNIX-环境高级编程/" style="font-size: 10px;">UNIX 环境高级编程</a> <a href="/tags/UNIX-网络编程/" style="font-size: 16.15px;">UNIX 网络编程</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/agent/" style="font-size: 10px;">agent</a> <a href="/tags/aggregation/" style="font-size: 10px;">aggregation</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/args/" style="font-size: 10px;">args</a> <a href="/tags/asm/" style="font-size: 10px;">asm</a> <a href="/tags/assembly/" style="font-size: 11.54px;">assembly</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/awk/" style="font-size: 11.54px;">awk</a> <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/bare-repository/" style="font-size: 10px;">bare repository</a> <a href="/tags/benchmark/" style="font-size: 12.31px;">benchmark</a> <a href="/tags/boot/" style="font-size: 10px;">boot</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/c/" style="font-size: 10.77px;">c</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/centos/" style="font-size: 10.77px;">centos</a> <a href="/tags/charset/" style="font-size: 10px;">charset</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/color/" style="font-size: 10px;">color</a> <a href="/tags/command/" style="font-size: 11.54px;">command</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/count/" style="font-size: 10px;">count</a> <a href="/tags/coursera/" style="font-size: 10px;">coursera</a> <a href="/tags/cpu/" style="font-size: 10.77px;">cpu</a> <a href="/tags/create/" style="font-size: 10px;">create</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/database/" style="font-size: 10.77px;">database</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/db/" style="font-size: 13.85px;">db</a> <a href="/tags/deploy/" style="font-size: 10.77px;">deploy</a> <a href="/tags/df/" style="font-size: 10px;">df</a> <a href="/tags/dired/" style="font-size: 10px;">dired</a> <a href="/tags/disque/" style="font-size: 10.77px;">disque</a> <a href="/tags/ditaa/" style="font-size: 10px;">ditaa</a> <a href="/tags/docker/" style="font-size: 10.77px;">docker</a> <a href="/tags/dosbox/" style="font-size: 10px;">dosbox</a> <a href="/tags/du/" style="font-size: 10px;">du</a> <a href="/tags/editor/" style="font-size: 10.77px;">editor</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/emacs/" style="font-size: 13.85px;">emacs</a> <a href="/tags/email/" style="font-size: 10px;">email</a> <a href="/tags/english/" style="font-size: 10px;">english</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/es/" style="font-size: 10px;">es</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/escape/" style="font-size: 10.77px;">escape</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/exports/" style="font-size: 10px;">exports</a> <a href="/tags/firewall/" style="font-size: 11.54px;">firewall</a> <a href="/tags/fonts/" style="font-size: 10px;">fonts</a> <a href="/tags/foreign-key/" style="font-size: 10px;">foreign key</a> <a href="/tags/forward/" style="font-size: 10px;">forward</a> <a href="/tags/gcc/" style="font-size: 11.54px;">gcc</a> <a href="/tags/getline/" style="font-size: 10px;">getline</a> <a href="/tags/git/" style="font-size: 13.08px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 11.54px;">gitlab</a> <a href="/tags/gnuplot/" style="font-size: 10.77px;">gnuplot</a> <a href="/tags/go/" style="font-size: 11.54px;">go</a> <a href="/tags/goaccess/" style="font-size: 10px;">goaccess</a> <a href="/tags/grep/" style="font-size: 10.77px;">grep</a> <a href="/tags/gyp/" style="font-size: 10px;">gyp</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/head/" style="font-size: 10px;">head</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/iWatch/" style="font-size: 10px;">iWatch</a> <a href="/tags/id-rsa/" style="font-size: 10px;">id_rsa</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/iptables/" style="font-size: 10.77px;">iptables</a> <a href="/tags/iterm2/" style="font-size: 10.77px;">iterm2</a> <a href="/tags/javascript/" style="font-size: 11.54px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/jmeter/" style="font-size: 10px;">jmeter</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/jsdoc/" style="font-size: 10px;">jsdoc</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kernel/" style="font-size: 10.77px;">kernel</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/kvm/" style="font-size: 10.77px;">kvm</a> <a href="/tags/libuv/" style="font-size: 11.54px;">libuv</a> <a href="/tags/linux/" style="font-size: 19.23px;">linux</a> <a href="/tags/log/" style="font-size: 13.08px;">log</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/logrotate/" style="font-size: 10.77px;">logrotate</a> <a href="/tags/loop/" style="font-size: 10px;">loop</a> <a href="/tags/lsof/" style="font-size: 10px;">lsof</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/macdown/" style="font-size: 10px;">macdown</a> <a href="/tags/machine-learning/" style="font-size: 11.54px;">machine learning</a> <a href="/tags/make/" style="font-size: 10px;">make</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 11.54px;">markdown</a> <a href="/tags/masm/" style="font-size: 10.77px;">masm</a> <a href="/tags/master/" style="font-size: 10px;">master</a> <a href="/tags/math/" style="font-size: 10.77px;">math</a> <a href="/tags/maxmind/" style="font-size: 10px;">maxmind</a> <a href="/tags/memerory/" style="font-size: 10px;">memerory</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/mongo/" style="font-size: 17.69px;">mongo</a> <a href="/tags/monitor/" style="font-size: 10px;">monitor</a> <a href="/tags/mycli/" style="font-size: 10px;">mycli</a> <a href="/tags/mysql/" style="font-size: 15.38px;">mysql</a> <a href="/tags/mysqldump/" style="font-size: 10px;">mysqldump</a> <a href="/tags/mysqldumpslow/" style="font-size: 10px;">mysqldumpslow</a> <a href="/tags/n/" style="font-size: 10.77px;">n</a> <a href="/tags/netstat/" style="font-size: 10px;">netstat</a> <a href="/tags/network/" style="font-size: 18.46px;">network</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/nginx/" style="font-size: 11.54px;">nginx</a> <a href="/tags/nmon/" style="font-size: 10px;">nmon</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/npm/" style="font-size: 10.77px;">npm</a> <a href="/tags/nvm/" style="font-size: 10.77px;">nvm</a> <a href="/tags/octave/" style="font-size: 11.54px;">octave</a> <a href="/tags/ops/" style="font-size: 10px;">ops</a> <a href="/tags/phthon/" style="font-size: 10px;">phthon</a> <a href="/tags/ping/" style="font-size: 10px;">ping</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/plantuml/" style="font-size: 13.85px;">plantuml</a> <a href="/tags/plot/" style="font-size: 13.08px;">plot</a> <a href="/tags/pm2/" style="font-size: 12.31px;">pm2</a> <a href="/tags/pm2-web/" style="font-size: 10px;">pm2-web</a> <a href="/tags/postgresql/" style="font-size: 10.77px;">postgresql</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/proc/" style="font-size: 10px;">proc</a> <a href="/tags/profile/" style="font-size: 10px;">profile</a> <a href="/tags/python/" style="font-size: 10.77px;">python</a> <a href="/tags/redirect/" style="font-size: 10px;">redirect</a> <a href="/tags/redis/" style="font-size: 11.54px;">redis</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/request/" style="font-size: 10px;">request</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/sentinel/" style="font-size: 10px;">sentinel</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/server/" style="font-size: 13.85px;">server</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/shell/" style="font-size: 16.92px;">shell</a> <a href="/tags/slave/" style="font-size: 10px;">slave</a> <a href="/tags/slow/" style="font-size: 10px;">slow</a> <a href="/tags/socket/" style="font-size: 16.92px;">socket</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/source-code/" style="font-size: 10px;">source code</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh/" style="font-size: 14.62px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/startup/" style="font-size: 11.54px;">startup</a> <a href="/tags/strace/" style="font-size: 10.77px;">strace</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/subsystem/" style="font-size: 10px;">subsystem</a> <a href="/tags/subtitle/" style="font-size: 10px;">subtitle</a> <a href="/tags/sudo/" style="font-size: 10.77px;">sudo</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/system/" style="font-size: 10px;">system</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tcpdump/" style="font-size: 10.77px;">tcpdump</a> <a href="/tags/ternimal/" style="font-size: 10px;">ternimal</a> <a href="/tags/test/" style="font-size: 13.08px;">test</a> <a href="/tags/tick/" style="font-size: 10px;">tick</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tr/" style="font-size: 10px;">tr</a> <a href="/tags/ubuntu/" style="font-size: 11.54px;">ubuntu</a> <a href="/tags/uml/" style="font-size: 13.85px;">uml</a> <a href="/tags/unicode/" style="font-size: 10px;">unicode</a> <a href="/tags/unix/" style="font-size: 16.15px;">unix</a> <a href="/tags/upstream/" style="font-size: 10px;">upstream</a> <a href="/tags/user/" style="font-size: 10.77px;">user</a> <a href="/tags/useradd/" style="font-size: 10px;">useradd</a> <a href="/tags/utf-8/" style="font-size: 10px;">utf-8</a> <a href="/tags/utf8/" style="font-size: 10px;">utf8</a> <a href="/tags/utf8mb4/" style="font-size: 10px;">utf8mb4</a> <a href="/tags/utf8mb4-unicode-ci/" style="font-size: 10px;">utf8mb4_unicode_ci</a> <a href="/tags/v8/" style="font-size: 14.62px;">v8</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vnc/" style="font-size: 10px;">vnc</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/word/" style="font-size: 10px;">word</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/zabbix/" style="font-size: 11.54px;">zabbix</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/字符集/" style="font-size: 10px;">字符集</a>
+      <a href="/tags/ASCII/" style="font-size: 10.71px;">ASCII</a> <a href="/tags/ES2015/" style="font-size: 10px;">ES2015</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/GBK/" style="font-size: 10px;">GBK</a> <a href="/tags/GeoLite/" style="font-size: 10px;">GeoLite</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/ProxyCommand/" style="font-size: 10px;">ProxyCommand</a> <a href="/tags/UNIX-环境高级编程/" style="font-size: 10px;">UNIX 环境高级编程</a> <a href="/tags/UNIX-网络编程/" style="font-size: 16.43px;">UNIX 网络编程</a> <a href="/tags/UTF-8/" style="font-size: 10.71px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/agent/" style="font-size: 10px;">agent</a> <a href="/tags/aggregation/" style="font-size: 10px;">aggregation</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/args/" style="font-size: 10px;">args</a> <a href="/tags/assembly/" style="font-size: 12.14px;">assembly</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/awk/" style="font-size: 11.43px;">awk</a> <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/bare-repository/" style="font-size: 10px;">bare repository</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/benchmark/" style="font-size: 12.14px;">benchmark</a> <a href="/tags/blowfish/" style="font-size: 10px;">blowfish</a> <a href="/tags/boot/" style="font-size: 10px;">boot</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/c/" style="font-size: 10.71px;">c</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/centos/" style="font-size: 10.71px;">centos</a> <a href="/tags/charset/" style="font-size: 10px;">charset</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/color/" style="font-size: 10px;">color</a> <a href="/tags/command/" style="font-size: 11.43px;">command</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/count/" style="font-size: 10px;">count</a> <a href="/tags/coursera/" style="font-size: 10px;">coursera</a> <a href="/tags/cpu/" style="font-size: 10.71px;">cpu</a> <a href="/tags/create/" style="font-size: 10px;">create</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/database/" style="font-size: 10.71px;">database</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/db/" style="font-size: 13.57px;">db</a> <a href="/tags/deploy/" style="font-size: 10.71px;">deploy</a> <a href="/tags/df/" style="font-size: 10px;">df</a> <a href="/tags/disque/" style="font-size: 10.71px;">disque</a> <a href="/tags/ditaa/" style="font-size: 10px;">ditaa</a> <a href="/tags/docker/" style="font-size: 10.71px;">docker</a> <a href="/tags/dosbox/" style="font-size: 10px;">dosbox</a> <a href="/tags/du/" style="font-size: 10px;">du</a> <a href="/tags/editor/" style="font-size: 10.71px;">editor</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/emacs/" style="font-size: 14.29px;">emacs</a> <a href="/tags/email/" style="font-size: 10.71px;">email</a> <a href="/tags/english/" style="font-size: 10px;">english</a> <a href="/tags/env/" style="font-size: 10px;">env</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/es/" style="font-size: 10px;">es</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/escape/" style="font-size: 10.71px;">escape</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/exports/" style="font-size: 10px;">exports</a> <a href="/tags/fail2ban/" style="font-size: 10px;">fail2ban</a> <a href="/tags/firewall/" style="font-size: 11.43px;">firewall</a> <a href="/tags/fonts/" style="font-size: 10px;">fonts</a> <a href="/tags/foreign-key/" style="font-size: 10px;">foreign key</a> <a href="/tags/forward/" style="font-size: 10px;">forward</a> <a href="/tags/gcc/" style="font-size: 11.43px;">gcc</a> <a href="/tags/getline/" style="font-size: 10px;">getline</a> <a href="/tags/git/" style="font-size: 12.86px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 11.43px;">gitlab</a> <a href="/tags/gnuplot/" style="font-size: 10.71px;">gnuplot</a> <a href="/tags/goaccess/" style="font-size: 10px;">goaccess</a> <a href="/tags/golang/" style="font-size: 11.43px;">golang</a> <a href="/tags/grep/" style="font-size: 10.71px;">grep</a> <a href="/tags/gyp/" style="font-size: 10px;">gyp</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/head/" style="font-size: 10px;">head</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/iTerm2/" style="font-size: 10px;">iTerm2</a> <a href="/tags/iWatch/" style="font-size: 10px;">iWatch</a> <a href="/tags/id-rsa/" style="font-size: 10px;">id_rsa</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/iptables/" style="font-size: 10.71px;">iptables</a> <a href="/tags/iterm2/" style="font-size: 10.71px;">iterm2</a> <a href="/tags/javascript/" style="font-size: 11.43px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/jmeter/" style="font-size: 10px;">jmeter</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/jsdoc/" style="font-size: 10px;">jsdoc</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kernel/" style="font-size: 10.71px;">kernel</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/kvm/" style="font-size: 10.71px;">kvm</a> <a href="/tags/libuv/" style="font-size: 11.43px;">libuv</a> <a href="/tags/linux/" style="font-size: 19.29px;">linux</a> <a href="/tags/log/" style="font-size: 12.86px;">log</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/logrotate/" style="font-size: 10.71px;">logrotate</a> <a href="/tags/loop/" style="font-size: 10px;">loop</a> <a href="/tags/lsof/" style="font-size: 10px;">lsof</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/macdown/" style="font-size: 10px;">macdown</a> <a href="/tags/machine-learning/" style="font-size: 11.43px;">machine learning</a> <a href="/tags/make/" style="font-size: 10px;">make</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 11.43px;">markdown</a> <a href="/tags/masm/" style="font-size: 10.71px;">masm</a> <a href="/tags/master/" style="font-size: 10px;">master</a> <a href="/tags/math/" style="font-size: 10.71px;">math</a> <a href="/tags/maxmind/" style="font-size: 10px;">maxmind</a> <a href="/tags/memerory/" style="font-size: 10px;">memerory</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/mongo/" style="font-size: 17.86px;">mongo</a> <a href="/tags/monitor/" style="font-size: 10px;">monitor</a> <a href="/tags/mycli/" style="font-size: 10px;">mycli</a> <a href="/tags/mysql/" style="font-size: 15.71px;">mysql</a> <a href="/tags/mysqldump/" style="font-size: 10px;">mysqldump</a> <a href="/tags/mysqldumpslow/" style="font-size: 10px;">mysqldumpslow</a> <a href="/tags/n/" style="font-size: 10.71px;">n</a> <a href="/tags/netstat/" style="font-size: 10px;">netstat</a> <a href="/tags/network/" style="font-size: 18.57px;">network</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/nginx/" style="font-size: 11.43px;">nginx</a> <a href="/tags/nmon/" style="font-size: 10px;">nmon</a> <a href="/tags/node/" style="font-size: 10.71px;">node</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/npm/" style="font-size: 11.43px;">npm</a> <a href="/tags/nvm/" style="font-size: 11.43px;">nvm</a> <a href="/tags/octave/" style="font-size: 11.43px;">octave</a> <a href="/tags/ops/" style="font-size: 10px;">ops</a> <a href="/tags/org-mode/" style="font-size: 10px;">org-mode</a> <a href="/tags/phthon/" style="font-size: 10px;">phthon</a> <a href="/tags/ping/" style="font-size: 10px;">ping</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/plantuml/" style="font-size: 13.57px;">plantuml</a> <a href="/tags/plot/" style="font-size: 12.86px;">plot</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pm2/" style="font-size: 12.14px;">pm2</a> <a href="/tags/pm2-web/" style="font-size: 10px;">pm2-web</a> <a href="/tags/postgresql/" style="font-size: 10.71px;">postgresql</a> <a href="/tags/powerline/" style="font-size: 10px;">powerline</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/proc/" style="font-size: 10px;">proc</a> <a href="/tags/profile/" style="font-size: 10px;">profile</a> <a href="/tags/python/" style="font-size: 10.71px;">python</a> <a href="/tags/redirect/" style="font-size: 10px;">redirect</a> <a href="/tags/redis/" style="font-size: 11.43px;">redis</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/request/" style="font-size: 10px;">request</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/sentinel/" style="font-size: 10px;">sentinel</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/server/" style="font-size: 13.57px;">server</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/shell/" style="font-size: 17.14px;">shell</a> <a href="/tags/slave/" style="font-size: 10px;">slave</a> <a href="/tags/slow/" style="font-size: 10px;">slow</a> <a href="/tags/smtp/" style="font-size: 10px;">smtp</a> <a href="/tags/socket/" style="font-size: 17.14px;">socket</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/source-code/" style="font-size: 10px;">source code</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/startup/" style="font-size: 11.43px;">startup</a> <a href="/tags/strace/" style="font-size: 10.71px;">strace</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/subsystem/" style="font-size: 10px;">subsystem</a> <a href="/tags/subtitle/" style="font-size: 10px;">subtitle</a> <a href="/tags/sudo/" style="font-size: 10.71px;">sudo</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/system/" style="font-size: 10.71px;">system</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tcpdump/" style="font-size: 10.71px;">tcpdump</a> <a href="/tags/ternimal/" style="font-size: 10px;">ternimal</a> <a href="/tags/test/" style="font-size: 12.86px;">test</a> <a href="/tags/tick/" style="font-size: 10px;">tick</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tmux/" style="font-size: 11.43px;">tmux</a> <a href="/tags/tmux-resurrect/" style="font-size: 10px;">tmux-resurrect</a> <a href="/tags/tpm/" style="font-size: 10px;">tpm</a> <a href="/tags/tr/" style="font-size: 10px;">tr</a> <a href="/tags/ubuntu/" style="font-size: 12.14px;">ubuntu</a> <a href="/tags/uml/" style="font-size: 13.57px;">uml</a> <a href="/tags/unicode/" style="font-size: 10px;">unicode</a> <a href="/tags/unix/" style="font-size: 16.43px;">unix</a> <a href="/tags/upstream/" style="font-size: 10px;">upstream</a> <a href="/tags/user/" style="font-size: 10.71px;">user</a> <a href="/tags/useradd/" style="font-size: 10px;">useradd</a> <a href="/tags/utf-8/" style="font-size: 10px;">utf-8</a> <a href="/tags/utf8/" style="font-size: 10px;">utf8</a> <a href="/tags/utf8mb4/" style="font-size: 10px;">utf8mb4</a> <a href="/tags/utf8mb4-unicode-ci/" style="font-size: 10px;">utf8mb4_unicode_ci</a> <a href="/tags/v8/" style="font-size: 14.29px;">v8</a> <a href="/tags/vim/" style="font-size: 10.71px;">vim</a> <a href="/tags/vnc/" style="font-size: 10px;">vnc</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/word/" style="font-size: 10px;">word</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/zabbix/" style="font-size: 11.43px;">zabbix</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/字符集/" style="font-size: 10px;">字符集</a>
     </div>
   </div>
 
@@ -549,7 +561,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
     </div>
   </div>
 
@@ -562,23 +574,23 @@
       <ul>
         
           <li>
-            <a href="/2017/07/31/mysql-select-换行/">mysql select 换行</a>
+            <a href="/2017/09/13/nvm-切换版本/">nvm 切换版本</a>
           </li>
         
           <li>
-            <a href="/2017/07/27/从代码中生成-uml-文档/">从代码中生成 uml 文档</a>
+            <a href="/2017/09/08/linux-汇编-程序说明/">linux 汇编 -- 程序说明</a>
           </li>
         
           <li>
-            <a href="/2017/07/27/octave-处理文件/">octave 处理文件</a>
+            <a href="/2017/09/02/org-mode-使用/">org-mode 使用</a>
           </li>
         
           <li>
-            <a href="/2017/07/27/线性回归实例-1/">线性回归实例 1</a>
+            <a href="/2017/08/30/emacs-常用操作/">emacs 常用操作</a>
           </li>
         
           <li>
-            <a href="/2017/07/26/jenkins-安装/">jenkins 安装</a>
+            <a href="/2017/08/29/tmux-源码安装/">tmux 源码安装</a>
           </li>
         
       </ul>
